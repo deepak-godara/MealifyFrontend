@@ -35,7 +35,7 @@ function AuthOwnerProvider(props) {
         isAuth:OwnerData.isAuth,
         OwnerId:OwnerData.OwnerId,
         OwnerEmail:OwnerData.OwnerEmail,
-        OwnerId:OwnerData.OwnerUserName,
+        OwnerUserName:OwnerData.OwnerUserName,
         addOwner:addOwner,
         removeOwner:removeOwner
     }

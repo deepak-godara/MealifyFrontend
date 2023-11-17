@@ -31,8 +31,7 @@ function OwnerHotels() {
             }
         }
         fecthHotels();
-        console.log('jiji');
-    },[])
+    },[hotelList,LoadingandError,params.id])
 
   return (
     <>

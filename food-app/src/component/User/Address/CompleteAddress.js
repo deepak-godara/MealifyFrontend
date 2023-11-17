@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { AddressTypeArray } from "./AddressType";
 import AddressTypes from "./AddressTypes";
+import ClientContext from "../../../store/AuthClient";
+import { AddAddress } from "../../../BackendApi/Address";
 import "./Address.css";
 function CompleteAddress(props) {
+  const ClientCtx = useContext(ClientContext);
   const [Line1, SetLine1] = useState(null);
   const [Line2, SetLine2] = useState(null);
   const [isValid, SetValid] = useState(false);
@@ -18,9 +21,24 @@ function CompleteAddress(props) {
       SetValid(true);
     else SetValid(false);
   };
-  const AddAddressType=(val)=>{
+  const AddAddressType = (val) => {
     SetAddressType(val);
-  }
+  };
+  const SubmitAddressFunc = async (e) => {
+    e.preventDefault();
+    if (isValid) {
+      console.log("sdvvs");
+      console.log(props.Coordinates);
+      const AddressData = {
+        AddLine1: Line1,
+        AddLine2: Line2,
+        Address: props.LocName,
+        Coordinates: props.Coordinates,
+        Type: AddressType,
+      };
+      await AddAddress({ Address: AddressData, ClientId: ClientCtx.ClientId });
+    }
+  };
   return (
     <form className="User-Address-Form">
       {!props.Location && (
@@ -65,7 +83,13 @@ function CompleteAddress(props) {
           </div>
         </div>
       )}
-      {props.Location && <AddressTypes Addresses={AddressTypeArray} currentType={AddressType} func={AddAddressType}/>}
+      {props.Location && (
+        <AddressTypes
+          Addresses={AddressTypeArray}
+          currentType={AddressType}
+          func={AddAddressType}
+        />
+      )}
       <div className="Address-Submit-Button">
         {!props.Location && (
           <button className="Add-Address" onClick={() => props.func()}>
@@ -73,7 +97,10 @@ function CompleteAddress(props) {
           </button>
         )}
         {props.Location && (
-          <button className={!isValid ? "Not-Add-Address" : "Add-Address"}>
+          <button
+            className={!isValid ? "Not-Add-Address" : "Add-Address"}
+            onClick={SubmitAddressFunc}
+          >
             Save and Proceed
           </button>
         )}

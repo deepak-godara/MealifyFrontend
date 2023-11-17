@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { GoogleMap, Marker, InfoWindow } from "@react-google-maps/api";
+import { GoogleMap, Marker,} from "@react-google-maps/api";
 import "./Address.css";
 function AddLocation(props) {
   const [mapCenter, setMapCenter] = useState({
@@ -8,6 +8,25 @@ function AddLocation(props) {
   }); // Default center
   const [cursorPosition, setCursorPosition] = useState(null);
   const mapRef = useRef();
+  const handleGetLocationName = async (clickedLocation) => {
+    try {
+      const response = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${clickedLocation.lat},${clickedLocation.lng}&key=AIzaSyCu1pHsemJ5XMhOE36gG9e77EE1VTb1QUM`
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      if (data.results.length > 0) {
+        const address = data.results[0].formatted_address;
+        props.func(address);
+      }
+    } catch (error) {
+      console.error("Error fetching location name:", error);
+    }
+  };
   useEffect(() => {
     const getLocation = () => {
       if (navigator.geolocation) {
@@ -25,36 +44,17 @@ function AddLocation(props) {
     };
 
     getLocation();
-  }, []);
-  const handleGetLocationName = async (clickedLocation) => {
-    try {
-      const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${clickedLocation.lat},${clickedLocation.lng}&key=AIzaSyCu1pHsemJ5XMhOE36gG9e77EE1VTb1QUM`
-      );
+  });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log(data);
-      if (data.results.length > 0) {
-        const address = data.results[0].formatted_address;
-        props.func(address);
-      }
-    } catch (error) {
-      console.error("Error fetching location name:", error);
-    }
-  };
   const onMapClick = async (event) => {
     const clickedLocation = {
       lat: event.latLng.lat(),
       lng: event.latLng.lng(),
     };
-    console.log(clickedLocation);
     handleGetLocationName(clickedLocation);
     setMapCenter(clickedLocation);
     setCursorPosition(clickedLocation);
+    props.AddCoorFunc(clickedLocation);
   };
 
   const mapOptions = {

@@ -1,5 +1,4 @@
 export const GetCart = async (ClientId) => {
-  console.log("evve" + " " + ClientId);
   const Data = await fetch(`http://localhost:4000/${ClientId}/getcart`, {
     method: "GET",
   });

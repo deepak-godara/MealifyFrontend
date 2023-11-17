@@ -1,10 +1,7 @@
 import React,{useState} from 'react'
 import ModalPortal from '../component/UI/ModalPortal';
-import AuthOwnerProvider from '../store/AuthOwnerProvider';
 import OwnerLoginForm from '../component/Authorization/OwnerLoginForm';
 import OwnerSignUpForm from '../component/Authorization/OwnerSignUpForm';
-import HeaderLayout from '../component/HeaderLayout/HeaderLayout';
-import AuthClientProvider from '../store/AuthClientProvider';
 import './Login.css'
 // import ModalPortal from '../component/UI/ModalPortal';
 function OwnerLogin(props) {
