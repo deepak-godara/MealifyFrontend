@@ -1,0 +1,19 @@
+.Cancel-div{
+    display:block;
+    width:100%;
+}
+.Cancel-stat{
+    margin:0.5rem auto;
+    width:100%;
+    text-align:center;
+        font-size:1.3rem;
+}
+.Cancel-Declaration{
+    margin-top:1.5rem;
+    font-size:1.1rem;
+    padding:0.5rem;
+    box-sizing: border-box;
+    width:100%;
+    background-color: white;
+    border-radius: 12px;
+}

@@ -1,0 +1,54 @@
+.BillData-Container{
+width:100%;
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+row-gap:1rem;
+}
+.Bill-FirstBox{
+margin:0.5rem auto;
+font-size:1.3rem;
+
+}
+.BillDetails-Container{
+    width:100%;
+    display:flex;
+    padding:0.5rem;
+    row-gap:1.5rem;
+    background-color: white;
+    border-radius: 12px;
+    box-sizing: border-box;
+    flex-direction:column;
+    justify-content: flex-start;
+    align-items:flex-start;
+}
+.B-Container1{
+    display:flex;
+    width:100%;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items:flex-start;
+}
+.Bill-Detail-Element{
+color:black;
+font-size: 1.3rem;
+font-weight: 500;
+}
+.Bill-Data-Element{
+    display:flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    column-gap:0.5rem;
+    align-items:flex-start;
+    flex:1;
+}
+.Bill-Icons{
+height:2rem;
+width:2rem;
+color:rgb(58, 57, 57)
+}
+.Bill-Data{
+color:rgb(36, 36, 36);
+font-size:1.2rem;
+font-weight: 400;
+}

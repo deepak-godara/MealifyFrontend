@@ -1,0 +1,126 @@
+.add-hotel-form {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 35rem;
+  max-width: 80%;
+  /* left: 35px; */
+  margin: 10rem auto;
+  padding: 1rem;
+  /* border-radius: 9px;/ */
+  background-color: rgb(255, 255, 255);
+}
+.add-hotel-div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  row-gap: 0.4rem;
+  padding: 0.2rem;
+  width:90%;
+}
+.location-input {
+  position: relative;
+  z-index: 100;
+}
+.add-hotel-div1 {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 0.4rem;
+  row-gap: 0.6rem;
+  padding: 0.2rem;
+  width: 100%;
+  flex-wrap: wrap;
+  flex: 1;
+  /* background-color: rgb(243, 240, 240); */
+  /* color:blanchedalmond */
+}
+.add-client-label {
+  padding: 0.3rem;
+  color: rgb(11, 11, 11);
+  font-size: 1.2rem;
+  font: bold;
+}
+.add-hotel-input {
+  background-color: rgb(158, 156, 155);
+  font-size: 1rem;
+  width: 20rem;
+  max-width: 90%;
+  padding: 0.4rem;
+  border: 1px solid rgb(57, 57, 57);
+  /* border-radius: 12px; */
+}
+.add-hotel-button {
+  border: 1px solid black;
+  border-radius: 60px;
+  padding: 0.3rem 0.3rem;
+  margin-right: 15%;
+  background-color: rgb(206, 54, 23);
+}
+.add-hotel-button button {
+  border: none;
+  background: none;
+  font-size: 1.2rem;
+}
+.login-error-options {
+  background-color: rgb(236, 153, 20);
+  font-size: 1rem;
+  padding: 0.4rem;
+  text-align: center;
+  align-self: left;
+  width: 100%;
+}
+@media only screen and (max-width: 665px) {
+  .add-hotel-div1 {
+    flex-direction: column;
+    width: 95%;
+  }
+  .add-client-form {
+    width: 50vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .add-hotel-div {
+    width: 95%;
+  }
+  .add-hotel-input {
+    width: 90%;
+  }
+  .add-hotel-button {
+    margin-right: 1rem;
+  }
+}
+@media only screen and (max-width: 430px) {
+  .add-hotel-div1 {
+    flex-direction: column;
+  }
+  .add-hotel-form {
+    width: 90%;
+  }
+  .add-hotel-input {
+    width: 90%;
+  }
+}
+.Div-Optioons {
+  overflow-y: scroll;
+  scrollbar-width: 2px;
+  height: 5rem;
+  scrollbar-base-color: white;
+  scrollbar-base-color: grey;
+}
+::-webkit-scrollbar-thumb {
+  background: #424241;
+}
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background-color: white;
+}

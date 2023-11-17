@@ -1,0 +1,30 @@
+.Layout-Div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.Header-Div{
+    width:100%;
+}
+.Body-Container {
+  height: calc(100vh - 5rem);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.Main-Body-Container{
+    width: calc(100vw - 18rem);
+    overflow-y: scroll;
+    height:100%;
+
+}
+/* @media only screen and (max-width: 500px) {
+    .Side-Bar-Container{
+        display: none};
+        .Main-Body-Container{
+            width:100vw;
+        }
+    
+} */

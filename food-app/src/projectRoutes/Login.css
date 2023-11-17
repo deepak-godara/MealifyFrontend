@@ -1,0 +1,56 @@
+.client-login-options{
+  margin: 1rem auto;
+  display: flex;
+  background-color: white;
+  flex-direction: row;
+  align-items: flex-start;
+  column-gap: 4rem;
+  justify-content: space-between;
+  width: 20rem;
+}
+.client-options{
+    font-size: 1rem;
+    font: bold;
+    width: 5rem;
+
+    padding: 0.5rem;
+    border-radius: 60px;
+    text-align: center;
+    border: 1.5px solid rgb(133, 132, 132);
+    background-color: rgb(232, 155, 12);
+}
+.static-login-options{
+    position:absolute;
+    top: 12rem;
+    width:100%;
+    z-index: 600;
+    /* background-color: white; */
+}
+.Current-Login-Options{
+    font-size: 2rem;
+    width: 90%;
+}
+.Login-SignUp-Options{
+    position: relative;
+    width: 90%;
+    padding: 0.3rem;
+    /* text-align: center; */
+    font-size: 1.2rem;
+}
+@media only screen and (max-width: 665px) {
+    .client-login-options{
+        width: 15rem;
+        column-gap: 0rem;
+    }
+}
+.Login-Color{
+    background-color: white;
+    width: 24rem;
+    padding: 1rem 1rem;
+    margin:0rem auto;
+}
+@media only screen and (max-width: 400px){
+    .Login-Color{
+        width: 90%;
+    }
+}

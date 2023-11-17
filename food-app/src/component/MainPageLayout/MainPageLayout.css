@@ -1,0 +1,13 @@
+.City-Locater-Div{
+    position: relative;
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 1rem auto;
+    align-items: flex-start;
+    justify-content: center;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    background: none;
+}

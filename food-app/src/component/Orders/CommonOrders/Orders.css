@@ -1,0 +1,91 @@
+.Order-Main-Container{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap:1.5rem;
+  margin:2rem auto;
+  width:60%;
+  /* background-color: azure; */
+  /* border: 0.125rem solid black; */
+  border-radius:20px;
+  padding:1rem;
+}
+.Order-Hotel-Container{
+    padding:0.5rem 0rem;
+    font-size:1.7rem;
+    color:black;
+}
+.Order-Items-Div{
+    display: flex;
+    width:100%;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap:2rem;
+}
+.Order-Items{
+    display: flex;
+    padding:0.5rem;
+    width:100%;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius:20px;
+    row-gap:1rem;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.Order-Time{
+    width:100%;
+    box-sizing: border-box;
+    padding:0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap:0.5rem;
+    background-color: white;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    color:rgb(50, 50, 50);
+}
+.Timer-Icon{
+    color:red;
+    padding-top: 0.5rem;
+    height: 2rem;
+    width:2rem;
+}
+.Order-Button{
+    background-color: red;
+    width:100%;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-size: 1.6rem;
+}
+.Items-Added{
+
+   margin: 0rem auto;
+    font-size:1.5rem;
+    color:rgb(50, 50, 50);
+}
+.Add-Cart-Item{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-decoration: none;
+    padding:0.5rem ;
+    border-radius: 12px;
+    color: black;
+    background-color: white;
+}
+.Add-Cart-Item-1{
+    flex:1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    column-gap: 0.8rem;
+    align-items: center;
+     font-size:1.2rem;
+     color: black;
+     font-weight:450;
+}

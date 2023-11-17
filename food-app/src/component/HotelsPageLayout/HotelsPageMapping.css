@@ -1,0 +1,11 @@
+.Hotel-Mapper-Div{
+    width: 80vw;
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: row;
+    row-gap: 1rem;
+    flex-wrap: wrap;
+    column-gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}

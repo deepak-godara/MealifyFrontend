@@ -1,0 +1,62 @@
+.Search-Form-Div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 70%;
+    padding: 0rem 0rem 0rem 1rem;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid rgb(223, 220, 220);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
+}
+.Search-Form-Main-Div{
+    position: relative;
+    border-radius: 5px;
+    display: flex;
+    height: 60%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+    width: 28vw;
+    padding: 0.5rem;
+    color: brown;
+}
+.Search-Form-Input{
+    /* border: none; */
+    border: 1px solid white;
+    flex: 1;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    display: inline;
+}
+.Search-Form-Button{
+    margin-right: 0.6rem;
+    color: rgb(171, 168, 168);
+    font-size: 1.3rem;
+    font-weight: lighter;
+    padding-top: 1rem;
+    border: none;
+    background-color: white;
+}
+.Fa-MapPin{
+    color: red;
+}
+.FaSearch{
+    background-color: white;
+    height: 5px;
+width: 5px;
+}
+.Search-Form-Separation{
+    height: 70%;
+    /* width: 1rem; */
+    z-index: 100;
+    border: 1px solid rgb(31, 30, 30);
+}
+input:focus {
+    outline: none;
+  }
+  .Location-Search-Form-Div{
+    width: 15vw;
+  }

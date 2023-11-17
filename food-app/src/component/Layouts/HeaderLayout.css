@@ -1,0 +1,24 @@
+.Nav-header{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    background-color: #fcfcfc;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between ;
+    align-items: center;
+    padding: 0 10%;
+    box-sizing: border-box;
+    overflow: visible;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+}
+.Mealify
+{
+    color: black;
+  font-size: 2rem;
+  font-weight: 600;
+}

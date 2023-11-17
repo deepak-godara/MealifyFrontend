@@ -1,0 +1,56 @@
+.Owner-Hotel-Display-Main-Div{
+    /* border: 2px solid brown; */
+    background-color: rgb(240, 239, 239);
+    display: flex;
+    position: relative;
+    border-radius: 12px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+     width: 20rem;
+     margin:1%;
+     padding:1% 1%;
+
+}
+
+.Owner-Hotel-Display-Image{
+    border-radius: 12px;
+    width: 98%;
+    height: 35vh;
+}
+.Owner-Hotel-Display-Image img{
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+}
+.Owner-Hotel-Display{
+    color: brown;
+    font-size: 1.1rem;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1rem;
+    justify-content: space-between;
+}
+.Hotel-Name{
+    font-size: 1.3rem;
+}
+.Hotel-Type{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 40%;
+    justify-content: space-between;
+}
+.Submit-Hotel-Button{
+    background: none;
+    border: none;
+    position: absolute;
+    top: 2%;
+    width: 95%;
+    height: 95%;
+    z-index: 10;
+}

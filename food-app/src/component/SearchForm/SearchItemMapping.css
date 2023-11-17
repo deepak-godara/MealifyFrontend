@@ -1,0 +1,18 @@
+.Search-Item-Name{
+    color: black;
+    font-size:1.2rem;
+    padding: 0.2rem;
+    
+}
+.Search-Item-Type{
+    color: rgb(200, 199, 199);
+    font-size: 1rem;
+    padding: 0.2rem;
+}
+.Search-Data-Div{
+    cursor: pointer;
+}
+.Search-Data-Div:hover{
+    background-color: rgb(209, 208, 208);
+    border-radius: 6px;
+}

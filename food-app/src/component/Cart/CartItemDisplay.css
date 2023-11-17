@@ -1,0 +1,57 @@
+.Cart-Item-Display
+{
+   display: flex;
+   flex-direction: row;
+   /* align-items: flex-start; */
+   /* justify-self: space-between; */
+   justify-content: space-between;
+   /* width: 30rem; */
+    width: 100%;
+    padding: 0.5rem 0.6rem;
+    box-sizing: border-box;
+    /* box-shadow: 0px 2.3px 0px 0px rgb(230, 163, 75);*/ 
+     /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);  */
+     border-bottom: 2px solid #be6644;
+}
+.Cart-Item-Name
+{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.7rem;
+    /* font: 700; */
+    font-weight: 500;
+    align-items: flex-start;
+    justify-self: flex-start;
+}
+.Cart-Item-Detail
+{
+    display: flex;
+    flex-direction: row;
+    column-gap: 2rem;
+    font: bold;
+    align-items: flex-start;
+    justify-self: flex-start;
+}
+.Item-Quantity
+{
+    border: 0.5px solid rgb(183, 183, 182);
+    border-radius: 6px;
+    font: bold;
+    padding: 0.01rem 0.3rem;
+}
+.Cart-Button
+{
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.5rem;
+    
+    padding: 1rem 0rem;
+    align-items: flex-start;
+    justify-self: flex-start;
+}
+.Cart-Button button{
+    font-size: 1rem;
+    border: 0.5px solid rgb(241, 180, 111);
+    border-radius: 6px;
+    padding: 0.01rem 0.5rem;
+}

@@ -1,0 +1,130 @@
+.Con-Orders {
+ 
+  row-gap: 0.7rem;
+  width:65%;
+  padding:1rem;
+  box-sizing: border-box;
+  margin:2rem auto;
+  background-color: white;
+}
+.flex1{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.flex2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.flex3{
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content: flex-start;
+}
+.Ord-Summary {
+  color: black;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.Ord-Hotel-Name{
+  color:black;
+  font-size: 1.3rem;
+  font-weight: 450;
+}
+.Ord-Hotel{
+  width:100%;
+color:rgb(54, 54, 54);
+font-size: 1.3rem;
+}
+.Ord-Status {
+  color: rgb(42, 42, 42);
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+/* ------------------------------------------- */
+
+.Ord-Item-Div {
+  row-gap: 0.7rem;
+  /* padding: 0.5rem; */
+  width: 100%;
+  box-sizing: border-box;
+}
+.Ord-Item {
+ align-items: flex-end;
+  width: 100%;
+}
+.Ord-Block-1 {
+  flex: 1;
+  min-width: 5rem;
+}
+.Ord-Block-1-1 {
+  column-gap: 0.8rem;
+}
+.Ord-Item-Name {
+  color: black;
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+.Ord-Block-1-2 {
+  color: rgb(38, 38, 38);
+  font-size: 1.3rem;
+}
+.Ord-Block-2 {
+  color: black;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+.Ord-Total-Div{
+    width:100%;
+    row-gap:0.7rem;
+}
+.Ord-Total{
+  width:100%;
+  color: black;
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+/* Order-DetailsItems */
+.Order-Details-Div{
+  display:flex
+}
+/*     */
+.Ord-Details{
+  row-gap:0.5rem;
+}
+.Ord-Det-Con{
+  color: black;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 450;
+  padding-top:1rem;
+}
+.Ord-Items-Det{
+  row-gap:0.1rem;
+}
+.Ord-Det-Container{
+  width: 100%;
+}
+.Ord-ItemDet-1{
+  color: grey;
+  font-weight: 450;
+  font-size:1.2rem;
+}
+.Ord-ItemDet-2{
+  color: black;
+  width:100%;
+  font-weight: 400;
+  font-size:1.2rem;
+}
+.Under-Shadow{
+  padding-bottom:0.5rem;
+  border-bottom: 1px solid rgb(225, 225, 225);
+}
+.Under-Shadow1{
+  padding-top:0.5rem;
+  border-top: 1px solid rgb(215, 215, 215);
+}

@@ -1,0 +1,10 @@
+.client-logout{
+    color: black;
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 0.3rem;
+}
+.client-logout:hover{
+    background-color: grey;
+    border-radius: 8px;
+}

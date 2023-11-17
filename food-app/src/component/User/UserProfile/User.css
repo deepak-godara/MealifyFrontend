@@ -1,0 +1,73 @@
+.User-Profile-Form{
+    display: flex;
+    margin:5rem auto;
+    flex-direction: column;
+    align-items: center;
+    padding:2rem;
+    border-radius: 12px;
+    background-color: white;
+    justify-content: center;
+    width:55%;
+    min-width:25rem;
+     row-gap: 2rem;;
+}
+.User-Data-Box{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    row-gap:1rem;
+    width:100%;
+    justify-content: flex-start;
+    align-items: center;
+}
+.User-Data{
+    position: relative;
+    width:100%;
+    display:flex;
+    flex-direction: column;
+}
+.User-Data-Label{
+    position: absolute;
+    top:-1rem;
+    left:1rem;
+    color: rgb(109, 109, 109);
+    background-color: white;
+    opacity:1;
+    z-index: 10;
+    padding:0.1rem;
+    font-size: 1rem;
+}
+.User-Data-Input{
+    border-radius: 12px;;
+    width:100%;
+    box-sizing: border-box;
+    padding:0.7rem;
+    border: 1px solid rgb(152, 152, 152);
+    font-size: 1.4rem;
+
+}
+.User-Data-Button{
+    padding:0.5rem;
+    font-size: 1.5rem;
+    width:40%;
+    color: black;
+    cursor: pointer;
+    background-color: rgb(226, 9, 9);
+}
+.Update-Profile{
+    width:100%;
+    text-align: center;
+    font-size: 1.7rem;
+    color: black;
+    padding:0.2rem;
+    /* background-color: rgb(183, 183, 226); */
+    font-weight: 400;
+}
+@media (max-width:1149px){
+    .User-Data-Label{
+        font-size:1.1rem;
+    }
+    .User-Data-Input{
+        width:95%;
+    }
+}
