@@ -39,6 +39,7 @@ function AddLocation(props) {
           setMapCenter({ lat: latitude, lng: longitude });
           setCursorPosition({ lat: latitude, lng: longitude });
           handleGetLocationName(clickedLocation);
+          props.AddCoorFunc(clickedLocation);
         });
       }
     };

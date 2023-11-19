@@ -16,7 +16,7 @@ const ModalOverlay=(props)=>
     }
     console.log(props);
     return(
-        <div >
+        <div style={{backgroundColor:"white"}} >
             {props.children}
             </div>
     )

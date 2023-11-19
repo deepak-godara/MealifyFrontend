@@ -7,8 +7,8 @@ function FoodType(props) {
   return (
       <>
       <div className='Food-Type-Logo'>
-      {props.types==='Veg'&&<img src={VegLogo}></img>}
-      {props.types!=='Veg'&&<img src={NonVegLogo}></img>}
+      {props.types==='Veg'&&<img src={VegLogo} alt="not available"></img>}
+      {props.types!=='Veg'&&<img src={NonVegLogo} alt="not available"></img>}
       </div>
       </>
   )

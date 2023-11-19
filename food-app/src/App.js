@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import io from "socket.io-client";
-import { useContext } from "react";
+// import io from "socket.io-client";
+// import { useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import CommonLayout from "./component/Layouts/CommonLayout";
 import ClientLayout from "./component/Layouts/ClientLayout";
-import Orders from "./component/Orders/UserOrders/Main";
-import OwnerLayout from "./component/Layouts/OwnerLayout";
+// import Orders from "./component/Orders/UserOrders/Main";
+// import OwnerLayout from "./component/Layouts/OwnerLayout";
 import ConfirmedOrders from "./component/Orders/ConfiredOrders/Main";
-import Layout from "./component/SideBar/ClientSideBar/Layout";
-import Cart from "./component/Orders/CommonOrders/Cart";
-import OrderLists from "./component/Orders/OwnerOrders/OrderLists";
-import Login from "./projectRoutes/ClientLogin";
-import LoginOwner from "./projectRoutes/OwnerLogin";
+// import Layout from "./component/SideBar/ClientSideBar/Layout";
+// import Cart from "./component/Orders/CommonOrders/Cart";
+// import OrderLists from "./component/Orders/OwnerOrders/OrderLists";
+// import Login from "./projectRoutes/ClientLogin";
+// import LoginOwner from "./projectRoutes/OwnerLogin";
 import ClientContext from "./store/AuthClient";
 import OwnerContext from "./store/AuthOwner";
 import User from "./component/User/UserProfile/main";
@@ -26,11 +26,11 @@ import HotelDetails from "./projectRoutes/HotelDetails";
 import HomePage from "./projectRoutes/HomePage";
 import LocationPage from "./projectRoutes/LocationPage";
 import NavBarLayout from "./projectRoutes/NavBarLayout";
-import HotelsPageLayout from "./component/HotelsPageLayout/HotelsPageLayout";
+// import HotelsPageLayout from "./component/HotelsPageLayout/HotelsPageLayout";
 // const socket=io.connect("http://localhost:4000");
 function App() {
-  const ClientCtx = useContext(ClientContext);
-  const OwnerCtx = useContext(OwnerContext);
+  // const ClientCtx = useContext(ClientContext);
+  // const OwnerCtx = useContext(OwnerContext);
   const[user,SetUser]=useState("None");
   useEffect(()=>{
     const users=JSON.parse(localStorage.getItem('login-data'));
@@ -53,7 +53,7 @@ function App() {
         <Route path='/' element={<ClientLayout/>}>
           <Route index element={<LocationPage/>} />
           <Route path=":hotelid" element={<HotelDetails/>}/>
-          <Route path="cart" element={<Cart/>}/>
+          <Route path="cart" element={<User/>}/>
           <Route path="orders" >
             <Route index element={<MapContainer/>}/>
             <Route path=":orderid" element={<ConfirmedOrders/>}/>
