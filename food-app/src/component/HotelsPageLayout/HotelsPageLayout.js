@@ -66,7 +66,9 @@ function HotelsPageLayout() {
         }
       }
     }
-    getHotels();
+    if( Params.locationid)
+    {getHotels();
+    }
   }, [paramsLocation, Dishs, Categorys]);
   return (
     <>
