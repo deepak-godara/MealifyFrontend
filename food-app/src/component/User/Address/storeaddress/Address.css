@@ -1,0 +1,46 @@
+.main {
+    position: absolute;
+    right: 0px; /* Adjust the percentage as needed */
+    max-width: 750px;
+}
+
+
+.main>h2{
+    margin: 10px 0px;
+}
+.Address-box {
+    border: 1px solid rgb(232, 213, 213);
+    padding: 20px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-sizing: border-box; 
+    flex: 0 0 calc(33.333% - 20px); 
+}
+
+.address-container {
+    margin-right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.Address-Place {
+    padding: 5px;
+}
+
+.full-Address {
+    padding: 5px;
+}
+
+.Edit-Delete {
+    display: flex;
+    align-items: center;
+}
+
+.edit {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border: none;
+}
