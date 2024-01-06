@@ -11,7 +11,6 @@ function CompleteAddress(props) {
   const [isValid, SetValid] = useState(false);
   const [AddressType, SetAddressType] = useState("Home");
   const AddressFunc = ({ val, type }) => {
-    console.log(type);
     if (type === "Line1") {
       SetLine1(val);
     } else {
@@ -27,8 +26,6 @@ function CompleteAddress(props) {
   const SubmitAddressFunc = async (e) => {
     e.preventDefault();
     if (isValid) {
-      console.log("sdvvs");
-      console.log(props.Coordinates);
       const AddressData = {
         AddLine1: Line1,
         AddLine2: Line2,

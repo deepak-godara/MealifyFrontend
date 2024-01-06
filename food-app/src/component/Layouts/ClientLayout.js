@@ -1,7 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import "./HeaderLayout.css";
-import Header from "../HeaderLayout/Header";
 import ClientHeader from "../HeaderLayout/ClientHeader";
 import Layout from "../SideBar/ClientSideBar/Layout";
 import "./ClientLayout.css";

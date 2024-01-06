@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom";
 function FoodDisplayCategories(props) {
   const Params = useParams();
   const clientctx = useContext(ClientContext);
-  console.log(clientctx.ClientId);
   const [ItemData, SetItemData] = useState({});
   const [Confirmation, SetConfirmation] = useState(false);
   const [Error, SetError] = useState(false);

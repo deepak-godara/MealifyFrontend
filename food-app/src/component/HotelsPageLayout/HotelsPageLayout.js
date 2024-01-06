@@ -24,16 +24,11 @@ function HotelsPageLayout() {
   if (LocationName !== locationName) SetLocationName(locationName);
   useEffect(() => {
     async function getHotels() {
-      let url = `http://localhost:4000/gethotels/Hubli`;
+      let url = `http://localhost:4000/gethotels/${Params.locationid}`;
       if (Dishs)
-        url = `http://localhost:4000/gethotels/Hubli?Dish=${Dish}`;
+        url = `http://localhost:4000/gethotels/${Params.locationid}?Dish=${Dish}`;
       if (Categorys)
-        url = `http://localhost:4000/gethotels/Hubli?Category=${Category}`;
-      // let url = `http://localhost:4000/gethotels/${Params.locationid}`;
-      // if (Dishs)
-      //   url = `http://localhost:4000/gethotels/${Params.locationid}?Dish=${Dish}`;
-      // if (Categorys)
-      //   url = `http://localhost:4000/gethotels/${Params.locationid}?Category=${Category}`;
+        url = `http://localhost:4000/gethotels/${Params.locationid}?Category=${Category}`;
       const data = await fetch(url, {
         method: "POST",
         body: JSON.stringify({
@@ -45,8 +40,6 @@ function HotelsPageLayout() {
       });
       const js = await data.json();
       if (js.status === "200") {
-        console.log(js.status);
-        console.log(js.HotelData.length);
         if (js.HotelData.length > 0) {
           console.log(js);
           hotelCtx.AddHotels({ Hotels: js.HotelData, location: locationName });
@@ -73,7 +66,9 @@ function HotelsPageLayout() {
         }
       }
     }
-    getHotels();
+    if( Params.locationid)
+    {getHotels();
+    }
   }, [paramsLocation, Dishs, Categorys]);
   return (
     <>

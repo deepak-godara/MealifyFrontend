@@ -4,7 +4,6 @@ import CancellationPolicy from "./CancellationPolicy";
 import OrderBillDetails from "./OrderBillDetails";
 import DataDisplay from "../../Hotels/FoodAction/DataDisplay";
 import "./Orders.css";
-import { OrderData } from "./OrderDemo";
 import AddItem from "./AddItem";
 import { GetCart } from "../../../BackendApi/Cart";
 import ClientContext from "../../../store/AuthClient";
