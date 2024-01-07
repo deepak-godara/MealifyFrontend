@@ -27,6 +27,7 @@ box-sizing: border-box;
 .User-Image-Container {
   width: 100%;
   height: 18rem;
+  box-sizing: border-box;
   position: relative;
 }
 .Image-Container1{

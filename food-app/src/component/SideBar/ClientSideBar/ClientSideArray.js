@@ -14,7 +14,7 @@ export const ClientArray=[
         id:1,
         Icon:ImProfile,
         name:"Profile",
-        link:"sdvfv"
+        link:"profile"
     }
     ,
     {
