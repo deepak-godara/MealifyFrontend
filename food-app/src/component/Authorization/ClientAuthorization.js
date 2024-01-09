@@ -77,6 +77,7 @@ function ClientAuthorization(props) {
       const js = await data.json();
       if (js.status === "200") {
         props.onSubFunc(js.user);
+        console.log(props.localeData)
         const userData = {
           user: props.localeData,
           _id: js.user._id,
@@ -86,8 +87,10 @@ function ClientAuthorization(props) {
         localStorage.setItem("login-data", JSON.stringify(userData));
         console.log(props.transferlink + js.user._id);
         // if(props.localeData==='owner-data')
-        window.location.reload();
-        Navigate("/");
+        if(props.localeData==='client')
+        Navigate("/User")
+        // window.location.reload();
+        Navigate("/owner");
       } else if (js.status === "202") {
         SetErrorData({ type: "SetError", val: js.message });
       }

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./AddNewDish.css";
+import ModalPortal from "../../UI/ModalPortal";
 import { useParams, useNavigate } from "react-router-dom";
-function AddNewDish() {
+function AddNewDish(props) {
   const Params = useParams();
   const Navigate = useNavigate();
   const [FoodName, SetFoodName] = useState("");
@@ -18,6 +19,9 @@ function AddNewDish() {
       SetFoodDesscription(event.target.value);
     else SetFoodType(event.target.value);
   };
+  useEffect(()=>{
+    SetFoodCategory(props.Category)
+  },[])
   const handleFoodFormSubmit = (event) => {
     event.preventDefault();
     async function FoodDataSubmit() {
@@ -38,12 +42,14 @@ function AddNewDish() {
 
       const js = await data.json();
       if (js.status === "200") {
+        props.OnClose();
         Navigate(`/owner/${Params.id}/${Params.hotelid}`);
       }
     }
     FoodDataSubmit();
   };
   return (
+    <ModalPortal onClose={props.OnClose}>
     <form className="Add-Dish-Form" onSubmit={handleFoodFormSubmit}>
       <div className="Add-Dish-div">
         <div className="Add-Dish-div1">
@@ -79,7 +85,7 @@ function AddNewDish() {
             type="text"
             value={FoodCategory}
             name="food"
-            onChange={handleFoodFormChange}
+            readOnly
           ></input>
         </div>
         <div className="Add-Dish-div1">
@@ -94,6 +100,7 @@ function AddNewDish() {
         <button type="submit">Add Dish</button>
       </div>
     </form>
+    </ModalPortal>
   );
 }
 

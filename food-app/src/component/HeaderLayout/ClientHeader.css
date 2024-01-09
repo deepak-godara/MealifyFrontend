@@ -2,9 +2,55 @@
     color: black;
     font-size: 1.6rem;
     font-weight: 600;
-    padding: 0.3rem;
+   
 }
 .client-logout:hover{
     background-color: grey;
     border-radius: 8px;
 }
+.Client-Profile{
+    color:black;
+    display:flex;
+    flex-direction: row;
+    column-gap:0.5rem;
+    height:4rem;
+    background-color: transparent;
+    align-items: center;
+    border: none;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 0.3rem;
+}
+.Client-Profile img{
+    height:2.5rem;
+    width:2.5rem;
+    border-radius: 50%;
+}
+.Client-Name{
+    width:6rem;
+    font-weight:420;
+    font-size:1.1rem;
+    padding-top:0.8rem;
+    white-space: noWrap;
+    overflow-x: scroll;
+
+}
+.Client-Name::-webkit-scrollbar{
+    width:0;
+}
+.Client-DropDown{
+    position: absolute;
+    top:4.5rem;
+    width:10.5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap:1rem;
+    box-shadow: rgba(28, 28, 28, 0.15) 0px 2px 8px;
+    background-color: white;
+    /* border: 1px solid black; */
+    border-radius: 12px;
+}
+/* .Profile{
+    padding: 0.3rem;
+} */

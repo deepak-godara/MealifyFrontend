@@ -1,5 +1,6 @@
 .User-Profile-Form {
   display: flex;
+  
   flex-direction: column;
   align-items: center;
   padding: 2rem;
@@ -12,17 +13,21 @@ box-sizing: border-box;
 }
 .User-Profile-Container {
   margin: 0rem 30vw;
-  width: 35rem;
+  width: 38rem;
   height:100vh;
+  position: fixed;
   min-width: 25rem;
   z-index: 600;
   background-color: white;
-  position: absolute;
   display: flex;
+  border-radius:12px;
   overflow-y: scroll;
   overflow-x: hidden;
   flex-direction: column;
   align-items: center;
+}
+.User-Profile-Container::-webkit-scrollbar{
+  width:0;
 }
 .User-Image-Container {
   width: 100%;

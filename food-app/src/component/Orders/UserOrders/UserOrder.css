@@ -3,12 +3,12 @@
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
-  width: 80%;
   margin: 0rem auto;
   margin-top: 2rem;
   min-width: 26rem;
   row-gap: 2rem;
-  justify-content: space-between;
+  column-gap:2rem;
+  justify-content: center;
 }
 .All-Order-Box {
   display: flex;
@@ -17,7 +17,7 @@
   text-decoration: none;
   background-color: white;
   justify-content: flex-start;
-  width: 28rem;
+  width: 25rem;
   border-radius: 12px;
   padding-top: 0rem;
   height: inherit;

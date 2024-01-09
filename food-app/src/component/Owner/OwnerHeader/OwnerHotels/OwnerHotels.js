@@ -31,7 +31,7 @@ function OwnerHotels() {
             }
         }
         fecthHotels();
-    },[hotelList,LoadingandError,params.id])
+    },[params.id])
 
   return (
     <>

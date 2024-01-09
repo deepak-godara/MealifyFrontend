@@ -1,12 +1,13 @@
 .Side-Bar-Div{
     display:flex;
+    position: sticky;
     flex-direction:column;
     justify-content:flex-start;
     align-items: center;
     padding:1rem 0rem;
     width:18rem;
     box-sizing: border-box;
-    height: 100vh;
+    /* height: calc(100vh -12.5rem); */
     row-gap: 1rem;
     border-right:1px solid rgb(209, 209, 209);
     background-color: white;

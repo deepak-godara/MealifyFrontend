@@ -42,10 +42,10 @@ function AuthOwnerProvider(props) {
     const[dataset,setData]=useState(false);
     useEffect(()=>{
       async  function fecthLoginStatus(){
-      const  userDatajson=localStorage.getItem('owner-data');
+      const  userDatajson=localStorage.getItem('login-data');
       
       const userData=JSON.parse(userDatajson);
-      if(userData)
+      if(userData&&userData.user==='owner')
       {
         addOwner(userData);
       }

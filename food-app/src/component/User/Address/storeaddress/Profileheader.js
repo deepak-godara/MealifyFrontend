@@ -1,25 +1,34 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import './Profileheader.css'
 import Address from './Address'
+import { FiEdit } from "react-icons/fi";
+import ClientContext from '../../../../store/AuthClient';
+import User from '../../UserProfile/main';
+import { IoLocationOutline } from "react-icons/io5";
 const Profileheader = () => {
+    const ClientCtx=useContext(ClientContext);
+    const [OpenProfileDiv,SetProfileDiv]=useState(false);
+    const ChangeProfileDivVisibility=()=>{
+        SetProfileDiv(!OpenProfileDiv)
+    }
   return (
     <>
-     <container class="max-width">
         <div class="review overlay">
+            <img src={ClientCtx.ForeGroundImage} alt="not available"/>
             <div class="review-header">
                 <div class="Left-review-header">
                     <div class="email-logo">
-                        <p class="name-word">A</p>
+                        <img  className="name-word"src={ClientCtx.BackGroundImage} alt="not available"/>
                     </div>
                     <div class="full-name">
-                        <p class="name">Anurag Singh</p>
-                        <p class="location"><span class="material-symbols-outlined">
-                            location_on
-                            </span> Indore</p>
+                        <p class="name">{ClientCtx.ClientUserName}</p>
+                        <p class="location">
+                           <IoLocationOutline style={{color:"white"}}/>
+                            Indore</p>
                     </div>
                 </div>
                 <div class="right-review-header"> 
-                        <button class="edit-button"> <span class="material-symbols-outlined">edit_square</span> &nbsp;Edit Profile</button>
+                        <button class="edit-button" onClick={ChangeProfileDivVisibility}><FiEdit style={{color:"white", height:"1rem", width:"1rem",paddingBottom:"0.2rem"}}/> <div>Edit Profile</div></button>
                     <div class="details">
                         <div class="data">
                             <p>0</p>
@@ -37,10 +46,10 @@ const Profileheader = () => {
                 </div>
             </div>
         </div>
-    <div className='address'>
-    <Address/>
-    </div>
-    </container>
+        {
+            OpenProfileDiv&&
+            <User func={ChangeProfileDivVisibility}/>
+        }
     </>
   )
 }

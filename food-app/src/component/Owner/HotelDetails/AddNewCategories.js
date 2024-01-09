@@ -1,7 +1,8 @@
 import React ,{useState} from 'react'
 import './AddNewCategories.css'
 import { useParams,useNavigate } from 'react-router-dom';
-function AddNewCategories() {
+import ModalPortal from '../../UI/ModalPortal';
+function AddNewCategories(props) {
   const Params=useParams();
   const Navigate=useNavigate();
   const [FoodCategory,SetFoodCategory]=useState('');
@@ -28,6 +29,7 @@ event.preventDefault();
 FoodCategorySubmit();
 }
 return (
+  <ModalPortal onClose={props.OnClose}>
   <form className='Add-Category-Form' onSubmit={handleFoodFormSubmit}>
       <div className='Add-Category-div'>
           <div className='Add-Category-div1'>
@@ -40,6 +42,7 @@ return (
           <button type='submit'>Add Dish</button>
       </div>
   </form>
+  </ModalPortal>
 )
 }
 

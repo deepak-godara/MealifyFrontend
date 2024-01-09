@@ -10,8 +10,9 @@ import { UploadPersonalImage } from "../../../BackendApi/UploadPersonalmage";
 import { UploadBackImage } from "../../../BackendApi/UploadUserBackImage";
 import { UpdateProfile } from "../../../BackendApi/UpdateProfile";
 import ModalPortal from "../../UI/ModalPortal";
-function User() {
+function User(prop) {
   const clientCtx = useContext(ClientContext);
+  const [ProfileDiv,SetProfileDiv]=useState(true)
   const [isOpen1, SetisOpen1] = useState(false);
   const [isOpen2, SetisOpen2] = useState(false);
   const [Image1, SetImage1] = useState(Meals);
@@ -23,6 +24,10 @@ function User() {
   const [Email, SetEmail] = useState(null);
   const ref1 = useRef(null);
   const ref2 = useRef(null);
+  const OnClose=()=>{
+    console.log("sbrsbd")
+    SetProfileDiv(false)
+  }
   const CloseDiv1 = () => {
     SetisOpen1(false);
   };
@@ -43,6 +48,7 @@ function User() {
     }
   }, []);
   const getUserDatas = async () => {
+    console.log(clientCtx)
     const Datas = await GetUser(clientCtx.ClientId);
     //  console.log(Datas);
     const Data = Datas.User;
@@ -73,10 +79,13 @@ function User() {
       PhoneNo: PhoneNo,
       Gender: Gender,
     };
+    console.log(clientCtx.ClientId)
     UpdateProfile({ Profile: Profile, ClientId: clientCtx.ClientId });
   };
   return (
-    <ModalPortal>
+    <>
+    {ProfileDiv&&
+    <ModalPortal onClose={prop.func}>
       <div className="User-Profile-Container">
         <div className="Update-Profile">Edit Profile</div>
         <div className=" User-Image-Container">
@@ -165,6 +174,8 @@ function User() {
         </form>
       </div>
     </ModalPortal>
+}
+    </>
   );
 }
 

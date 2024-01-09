@@ -45,13 +45,14 @@ function AddLocation(props) {
     };
 
     getLocation();
-  });
+  },[]);
 
   const onMapClick = async (event) => {
     const clickedLocation = {
       lat: event.latLng.lat(),
       lng: event.latLng.lng(),
     };
+    console.log(clickedLocation)
     handleGetLocationName(clickedLocation);
     setMapCenter(clickedLocation);
     setCursorPosition(clickedLocation);

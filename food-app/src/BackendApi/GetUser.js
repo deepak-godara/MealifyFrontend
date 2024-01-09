@@ -1,4 +1,5 @@
 export const GetUser = async (ClientId) => {
+  console.log(ClientId)
   const Data = await fetch(`http://localhost:4000/${ClientId}/data`, {
     method: "GET",
   });
@@ -9,6 +10,7 @@ export const GetUser = async (ClientId) => {
    
     console.log(js.Data);
     const UserData = {
+      _id:js.Data._id,
       UserName: js.Data.UserName,
       Email: js.Data.Email,
       PhoneNo: js.Data.PhoneNo,
@@ -21,4 +23,5 @@ export const GetUser = async (ClientId) => {
   } else {
     return { status: "fail" };
   }
+
 };

@@ -1,66 +1,86 @@
-import React ,{useReducer,useEffect, useState}from 'react'
-import ClientContext from './AuthClient';
-const IntialState={
-    isAuth:false,
-    ClientUserName:'',
-    ClientEmail:'',
-    ClientId:0
-}
-const AddClientReducer=(state=IntialState,action)=>
-{
-console.log(action.item._id)
-    const newState={...state};
-    if(action.type==='login')
-    {newState.isAuth=true;
-    newState.ClientId=action.item._id;
-    
-    newState.ClientEmail=action.item.Email;
-    newState.ClientUserName=action.item.UserName;}
-    else
-    {
-      newState.isAuth=false;
-      newState.ClientId='';
-    newState.ClientEmail='';
-    newState.ClientUserName='';
-    }
-    console.log(newState.ClientId);
-    return newState;
-}
+import React, { useReducer, useEffect, useState } from "react";
+import ClientContext from "./AuthClient";
+import { GetUser } from "../BackendApi/GetUser";
+import Address from "../component/User/Address/storeaddress/Address";
+const IntialState = {
+  isAuth: false,
+  ClientUserName: "",
+  ClientEmail: "",
+  ClientId: 0,
+  ClientDob: 0,
+  Gender: null,
+  ForeGroundImage: null,
+  BackGroundImage: null,
+};
+const AddClientReducer = (state = IntialState, action) => {
+  console.log(action.item._id);
+  const newState = { ...state };
+  if (action.type === "login") {
+    newState.isAuth = true;
+    newState.ClientId = action.item._id;
+
+    newState.ClientEmail = action.item.Email;
+    newState.ClientUserName = action.item.UserName;
+    if (action.item.DOB) newState.ClientDob = action.item.DOB;
+    if (action.item.Gender) newState.Gender = action.item.Gender;
+    if (action.item.ForeGroundImage)
+      newState.ForeGroundImage = action.item.ForeGroundImage;
+    if (action.item.BackGroundImage)
+      newState.BackGroundImage = action.item.BackGroundImage;
+  } else {
+    newState.isAuth = false;
+    newState.ClientId = "";
+    newState.ClientEmail = "";
+    newState.ClientUserName = "";
+  }
+  return newState;
+};
 
 function AuthClientProvider(props) {
-    const [ClientData,SetClientData]=useReducer(AddClientReducer,IntialState);
-    const addClient=(event)=>{
-           SetClientData({type:'login',item:event});
-    }
-    const RemoveClient=(event)=>{
-      SetClientData({type:'logout'});
-    }
-    const ClientCtx={
-        isAuth:ClientData.isAuth,
-        ClientId:ClientData.ClientId,
-        ClientEmail:ClientData.ClientEmail,
-        ClientU:ClientData.ClientUserName,
-        addClient:addClient,
-        RemoveClient:RemoveClient
-    }
-    const[dataset,setData]=useState(false);
-    useEffect(()=>{
-      async  function fecthLoginStatus(){
-      const  userDatajson=localStorage.getItem('login-data');
-      const userData=JSON.parse(userDatajson);
-      if(userData)
-      {
-        addClient(userData);
+  const [ClientData, SetClientData] = useReducer(AddClientReducer, IntialState);
+  const addClient = (event) => {
+    SetClientData({ type: "login", item: event });
+  };
+  const RemoveClient = (event) => {
+    SetClientData({ type: "logout" });
+  };
+  const ClientCtx = {
+    isAuth: ClientData.isAuth,
+    ClientId: ClientData.ClientId,
+    ClientEmail: ClientData.ClientEmail,
+    ClientUserName: ClientData.ClientUserName,
+    ClientDob: ClientData.ClientDob,
+    Gender: ClientData.Gender,
+    ForeGroundImage: ClientData.ForeGroundImage,
+    BackGroundImage: ClientData.BackGroundImage,
+    addClient: addClient,
+    RemoveClient: RemoveClient,
+  };
+  const [dataset, setData] = useState(false);
+  useEffect(() => {
+    async function fecthLoginStatus() {
+      const userDatajson = localStorage.getItem("login-data");
+      const userData = JSON.parse(userDatajson);
+      if (userData&&userData.user==='client') {
+        GetUser(userData._id).then((Data) => {
+          addClient(Data.User);
+          setData(true);
+        });
       }
-      setData(!dataset);
+      else{
+        setData(true)
+      }
+      
     }
-      fecthLoginStatus();
-
-    },[])
-    if(dataset)
-  {return (
-    <ClientContext.Provider value={ClientCtx}>{props.children}</ClientContext.Provider>
-  )}
+    fecthLoginStatus();
+  }, []);
+  if (dataset) {
+    return (
+      <ClientContext.Provider value={ClientCtx}>
+        {props.children}
+      </ClientContext.Provider>
+    );
+  }
 }
 
-export default AuthClientProvider
+export default AuthClientProvider;

@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import CompleteAddress from "./CompleteAddress";
 import AddLocation from "./AddLocation";
 import ModalPortal from "../../UI/ModalPortal";
-const MapContainer = () => {
+const MapContainer = (props) => {
   // const
+  // console.log(props.func);
   const [OpenAddressForm, SetAddressForm] = useState(true);
   const ChangeFormVisibility = () => {
+    console.log('hii')
     SetAddressForm(!OpenAddressForm);
+    props.func()
   };
   const [LocationAdded, setLocationAdded] = useState(false);
   const [LocationName, SetLocationName] = useState(null);
@@ -15,13 +18,12 @@ const MapContainer = () => {
     setLocationAdded(!LocationAdded);
   };
   const AddCoordinates = (clickedLocation) => {
-    console.log(clickedLocation.lat);
     SetCoordinates({ lat: clickedLocation.lat, lng: clickedLocation.lng });
   };
   return (
     <ModalPortal onClose={ChangeFormVisibility}>
       {OpenAddressForm && (
-        <div className="Address-Container">
+        <div className="Address-Container" >
           <div className="Address-Box">
             <AddLocation func={SetLocationName} AddCoorFunc={AddCoordinates} />
             <CompleteAddress

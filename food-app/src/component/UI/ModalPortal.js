@@ -14,9 +14,8 @@ const ModalOverlay=(props)=>
         console.log('modla-clicked');
         props.OnClose();
     }
-    console.log(props);
     return(
-        <div style={{backgroundColor:"white"}} >
+        <div style={{backgroundColor:"white"}}  >
             {props.children}
             </div>
     )

@@ -12,21 +12,26 @@ export const ClientArray=[
     ,
     {
         id:1,
-        Icon:ImProfile,
-        name:"Profile",
-        link:"profile"
-    }
-    ,
-    {
-        id:2,
         Icon:FiShoppingCart,
         name:"Cart",
         link:"cart"
     },
     {
-        id:3,
+        id:2,
         Icon:CgNotes,
         name:"Orders",
         link:"orders"
+    },
+    {
+        id:3,
+        Icon:CgNotes,
+        name:"Address",
+        link:"address"
+    },
+    {
+    id:4,
+    Icon:CgNotes,
+    name:"Review",
+    link:"review"
     }
 ]

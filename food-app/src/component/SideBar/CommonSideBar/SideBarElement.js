@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./SideBarElement.css";
 function SideBarElement(props) {
+  console.log(props.link)
   return (
     <NavLink to={props.link} className="Nav-Link">
       {({ isActive }) => {

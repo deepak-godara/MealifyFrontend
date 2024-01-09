@@ -6,13 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import AuthClientProvider from './store/AuthClientProvider';
 import AuthOwnerProvider from './store/AuthOwnerProvider';
 import HotelContextProvider from './store/HotelContextProvider';
+import {BrowserRouter as Router} from "react-router-dom"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AuthClientProvider>
       <AuthOwnerProvider>
         <HotelContextProvider>
+          <Router>
         <App />
+        </Router>
         </HotelContextProvider>
       </AuthOwnerProvider>
     </AuthClientProvider>

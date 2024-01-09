@@ -13,11 +13,18 @@
   box-sizing: border-box;
 }
 .Address-Container{
-    width:100%;
-    position: absolute;
+    width:35rem;
+    position: fixed;
+    margin:0vh  calc(50vw - 19rem);
     height:100vh;
     z-index:600;
+    overflow-x:hidden;
     overflow-y: scroll;
+    scroll-padding: 0rem;
+  
+}
+.Address-Container::-webkit-scrollbar{
+  width:0px;
 }
 .Address-Box {
   display: flex;
@@ -25,13 +32,14 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
   /* position: absolute; */
-
+/* z-index:600; */
   align-items: center;
   background-color: white;
-  width: 35%;
+  width: 100%;
   min-height: 26rem;
   border-radius:12px;
   overflow: hidden;
+  /* z-index: 800; */
   min-width: 30rem;
   /* padding-top:1rem; */
   margin: 0.5rem auto;
