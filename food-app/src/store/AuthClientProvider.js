@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect, useState } from "react";
 import ClientContext from "./AuthClient";
 import { GetUser } from "../BackendApi/GetUser";
-import Address from "../component/User/Address/storeaddress/Address";
+import io from "socket.io-client";
 const IntialState = {
   isAuth: false,
   ClientUserName: "",
@@ -9,6 +9,7 @@ const IntialState = {
   ClientId: 0,
   ClientDob: 0,
   Gender: null,
+  Socket: null,
   ForeGroundImage: null,
   BackGroundImage: null,
 };
@@ -27,6 +28,9 @@ const AddClientReducer = (state = IntialState, action) => {
       newState.ForeGroundImage = action.item.ForeGroundImage;
     if (action.item.BackGroundImage)
       newState.BackGroundImage = action.item.BackGroundImage;
+  } else if (action === "socket") {
+    newState.Socket = action.item.socket;
+    return newState;
   } else {
     newState.isAuth = false;
     newState.ClientId = "";
@@ -44,6 +48,9 @@ function AuthClientProvider(props) {
   const RemoveClient = (event) => {
     SetClientData({ type: "logout" });
   };
+  const addSocket = (event) => {
+    SetClientData({ action: "socket", item: event });
+  };
   const ClientCtx = {
     isAuth: ClientData.isAuth,
     ClientId: ClientData.ClientId,
@@ -51,26 +58,31 @@ function AuthClientProvider(props) {
     ClientUserName: ClientData.ClientUserName,
     ClientDob: ClientData.ClientDob,
     Gender: ClientData.Gender,
+    Socket: ClientData.Socket,
     ForeGroundImage: ClientData.ForeGroundImage,
     BackGroundImage: ClientData.BackGroundImage,
     addClient: addClient,
     RemoveClient: RemoveClient,
+    addSocket:addSocket
   };
   const [dataset, setData] = useState(false);
+  // const socket = io("http://localhost:4000");
   useEffect(() => {
     async function fecthLoginStatus() {
+      
       const userDatajson = localStorage.getItem("login-data");
       const userData = JSON.parse(userDatajson);
-      if (userData&&userData.user==='client') {
+      if (userData && userData.user === "client") {
         GetUser(userData._id).then((Data) => {
           addClient(Data.User);
+          // addSocket(socket);
           setData(true);
+          
         });
+      } else {
+        // socket.disconnect();
+        setData(true);
       }
-      else{
-        setData(true)
-      }
-      
     }
     fecthLoginStatus();
   }, []);

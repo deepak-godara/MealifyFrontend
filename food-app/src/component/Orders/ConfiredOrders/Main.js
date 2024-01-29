@@ -3,9 +3,11 @@ import { Order } from "./OrderData";
 import OrderTotal from "./OrderTotal";
 import OrderDetails from "./OrderDetails";
 import OrderItemDetails from "./OrderItemDetails";
+import ModalPortal from "../../UI/ModalPortal";
 import './ConfirmedOrders.css'
-function ConfirmedOrders() {
+function ConfirmedOrders(props) {
   return (
+    <ModalPortal onClose={props.OnClose}>
     <div className="Con-Orders flex1">
       <div className="Ord-Summary">Order Summary</div>
       <div className="Ord-Hotel Under-Shadow">
@@ -23,6 +25,7 @@ function ConfirmedOrders() {
       <OrderDetails item={Order.OrderDetails} />
       
     </div>
+    </ModalPortal>
   );
 }
 

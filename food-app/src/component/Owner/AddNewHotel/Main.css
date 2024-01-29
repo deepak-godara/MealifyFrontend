@@ -1,0 +1,84 @@
+.Add-Hotel-Form{
+    border-radius: 12px;
+    width:60vw;
+    position: relative;
+    margin:5rem auto;
+    background-color: white;
+    display:flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    row-gap: 1.5rem;
+    padding:3rem;
+    border: 1px solid rgb(222, 222, 222);
+    /* height:100vh; */
+}
+.Add-Hotel-Name{
+    font-weight: 700;
+    font-family: Poppins,sans-serif;
+    color: rgb(112, 112, 112);
+    font-size: 1.8rem!important;
+}
+.Add-Data-Div-1{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+     row-gap: 0.5rem;
+}
+.Add-Hotel-Label{
+    color:rgb(112, 112, 112);
+    font-size: 1.2rem;
+    /* padding:0.5rem; */
+}
+.Add-Hotel-Input{
+    width:100%;
+    font-size: 1.1rem;
+    color:rgb(112, 112, 112);
+    height:3.5rem;
+    display: flex;
+    align-items: center;
+    background: none;
+    border:none;
+    padding:0.5rem;
+    border-radius: 12px;
+    
+    background-color: rgb(230, 235, 240);
+}
+.Add-Data-Div-2{
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.Add-Data-Sub-Div{
+    width:48%;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    row-gap:0.5rem;
+}
+.Add-Location-Div{
+    border-radius: 155px;
+    width:100%;
+    height:30rem;
+}
+.Hotel-Submit-Button{
+    border: none;
+    height: 3.6rem;
+    background: black;
+    border-radius: 16px;
+    font-family: Poppins, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    position: relative;
+    color: white;
+    cursor: pointer;
+}
+.Hotel-Form-Status{
+    position: absolute;
+    color:red;
+    top:63rem;
+    right:4rem;
+    font-size: 1.2rem;
+}

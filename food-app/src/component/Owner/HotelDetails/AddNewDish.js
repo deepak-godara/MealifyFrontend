@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./AddNewDish.css";
 import ModalPortal from "../../UI/ModalPortal";
+import OwnerContext from "../../../store/AuthOwner";
 import { useParams, useNavigate } from "react-router-dom";
 function AddNewDish(props) {
   const Params = useParams();
+  const OwnerCtx=useContext(OwnerContext)
   const Navigate = useNavigate();
   const [FoodName, SetFoodName] = useState("");
   const [FoodPrice, SetFoodPrice] = useState("");
@@ -26,7 +28,7 @@ function AddNewDish(props) {
     event.preventDefault();
     async function FoodDataSubmit() {
       const data = await fetch(
-        `http://localhost:4000/${Params.hotelid}/adddish`,
+        `http://localhost:4000/${OwnerCtx.OwnerHotelId}/adddish`,
         {
           method: "POST",
           body: JSON.stringify({
@@ -42,8 +44,9 @@ function AddNewDish(props) {
 
       const js = await data.json();
       if (js.status === "200") {
+        props.AddItem(js.dish,FoodCategory)
         props.OnClose();
-        Navigate(`/owner/${Params.id}/${Params.hotelid}`);
+        // Navigate(`/owner/${Params.id}/${Params.hotelid}`);
       }
     }
     FoodDataSubmit();

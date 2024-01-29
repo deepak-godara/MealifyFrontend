@@ -1,4 +1,4 @@
-import React ,{useContext, useState,useEffect}from 'react'
+import React ,{useContext,useEffect}from 'react'
 import OwnerContext from '../../store/AuthOwner'
 import ClientContext from '../../store/AuthClient'
 import Header from './Header';
@@ -11,8 +11,9 @@ function HeaderLayout( props) {
     const OwnerCtx=useContext(OwnerContext);
     const loginned=(OwnerCtx.isAuth||ClientCtx.isAuth)
     useEffect(()=>{
-    console.log(ClientCtx.isAuth);
-    },[ClientCtx]);
+    console.log(ClientCtx.isAuth+ "client is loged in");
+
+    },[]);
     // console.log(NotLoggedIn)
   return (
     <>
@@ -20,7 +21,7 @@ function HeaderLayout( props) {
      <div className='Mealify'>Mealify</div>
      {OwnerCtx.isAuth&&<OwnerHeader/>}
      {ClientCtx.isAuth&&<ClientHeader/>}
-     {!loginned&&<Header/>}
+     {!OwnerCtx.isAuth&&!ClientCtx.isAuth&&<Header/>}
      </div>
      </>
   )

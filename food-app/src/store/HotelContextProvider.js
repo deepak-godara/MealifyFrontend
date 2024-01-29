@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react'
+import React, { useState } from 'react'
 import HotelContext from './HotelsContext';
 function HotelContextProvider(props) {
     const [Hotels, SetHotels] = useState([]);

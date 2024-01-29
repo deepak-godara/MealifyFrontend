@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { SocketProvider } from './store/SocketContext';
 import reportWebVitals from './reportWebVitals';
 import AuthClientProvider from './store/AuthClientProvider';
 import AuthOwnerProvider from './store/AuthOwnerProvider';
@@ -13,11 +14,14 @@ root.render(
     <AuthClientProvider>
       <AuthOwnerProvider>
         <HotelContextProvider>
+          <SocketProvider>
           <Router>
         <App />
         </Router>
+        </SocketProvider>
         </HotelContextProvider>
       </AuthOwnerProvider>
+      
     </AuthClientProvider>
    
   </React.StrictMode>

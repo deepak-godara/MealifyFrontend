@@ -4,6 +4,7 @@ export const GetCart = async (ClientId) => {
   });
   const js = await Data.json();
   if (js.status === "200") {
+    // console.log(js.Cart)
     const CartData = {
       HotelName: js.Cart.HotelName,
       HotelId: js.Cart.HotelId,

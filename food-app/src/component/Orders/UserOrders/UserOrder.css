@@ -4,21 +4,24 @@
   flex-wrap: wrap;
   align-items: flex-start;
   margin: 0rem auto;
-  margin-top: 2rem;
   min-width: 26rem;
-  row-gap: 2rem;
-  column-gap:2rem;
+  row-gap: 1rem;
+  column-gap: 1rem;
   justify-content: center;
 }
 .All-Order-Box {
   display: flex;
   flex-direction: column;
+  border: 1px solid rgb(195, 192, 192);
   align-items: center;
   text-decoration: none;
   background-color: white;
   justify-content: flex-start;
-  width: 25rem;
+  min-width: 16rem;
+  width: 45%;
   border-radius: 12px;
+  box-sizing: border-box;
+  padding: 1rem;
   padding-top: 0rem;
   height: inherit;
 }
@@ -26,73 +29,100 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 00.5rem 0.8rem 0rem 0.8rem;
-  padding-top: 0.5rem;
   border-radius: 12px 12px 0px 0px;
-  background-color: rgb(226, 226, 245);
+  background-color: rgb(255, 255, 255);
   width: 100%;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgb(232, 232, 232);
   box-sizing: border-box;
   justify-content: space-between;
 }
 .All-Hotel-Box1 {
-  max-width: 70%;
-  width: 20rem;
+  max-width: 60%;
   column-gap: 0.5rem;
   display: flex;
-  align-items:center;
+  align-items: center;
 
   flex-direction: row;
+  column-gap: 0.5rem;
   justify-content: flex-start;
 }
 .All-Hotel-Image img {
   height: 3rem;
   width: 3rem;
-  padding-top:0.3rem;
+  padding-top: 0.3rem;
   border-radius: 8px;
 }
 .All-Hotel-Data {
   display: flex;
-  width: 80%;
+  width: calc(100% - 4rem);
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  overflow-x: hidden;
   /* row-gap:0.1rem; */
 }
 .HotelData1 {
   color: black;
+  height: 1.3rem;
+  width: fit-content;
+  white-space: nowrap;
   font-size: 1.3rem;
 }
 .HotelData2 {
   color: grey;
+  height: 1.3rem;
+  width: fit-content;
+  white-space: nowrap;
   font-size: 1.1rem;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 .HotelData3 {
   color: red;
 }
 .All-Hotel-Box2 {
-  background-color: rgb(200, 203, 212);
+  background-color: rgb(253, 253, 253);
   color: rgb(97, 96, 96);
   font-weight: 400;
+  text-align: right;
   border-radius: 3px;
+  width: 25%;
   padding: 0.2rem;
 }
 .All-Item-Box {
   display: flex;
   flex-direction: column;
-  width:100%;
-  align-items: center;
+  width: 100%;
+  padding-top: 0.3rem;
+  align-items: flex-start;
   justify-content: flex-start;
-  row-gap: 0.3rem;
+  row-gap: 0.2rem;
 }
 .All-Data-Box {
   display: flex;
   flex-direction: row;
-  width:100%;
-  padding:0.8rem;
+  width: 100%;
   box-sizing: border-box;
   align-items: center;
   justify-content: space-between;
+}
+.Order-Datas {
+  width: 100%;
+  white-space: nowrap;
+  background: none;
+}
+.Order-Datas-1 {
+  color: rgb(84, 84, 84);
+  font-size: 1.1rem;
+  /* margin-bottom: 0.1rem; */
+}
+.Order-Datas-2 {
+  color: black;
+  font-size: 1.1rem;
+  display: flex;
+  overflow-x: hidden;
+  flex-direction: row;
 }
 .Order-Items1 {
   display: flex;
@@ -100,17 +130,29 @@
   align-items: center;
   width: 100%;
   overflow: hidden;
-  padding: 0.8rem;
   box-sizing: border-box;
   justify-content: flex-start;
   column-gap: 0.2rem;
 }
-.Item-Data{
-    font-size:1.1rem;
-    font-weight:400;
-    color: rgb(67, 66, 66);
+.Item-Data {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: rgb(67, 66, 66);
 }
-.Item-Divider{
-    width:95%;
-    border:1px rgb(188, 186, 186) dashed;
+.Item-Divider {
+  width: 95%;
+  border: 1px rgb(188, 186, 186) dashed;
+}
+.Order-Detail-View {
+  margin-top: 3rem;
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.Order-Detail-Button {
+  padding: 0.6rem;
+  border: 1px solid rgb(245, 81, 81);
+  background: none;
+  color: rgb(254, 154, 154);
 }

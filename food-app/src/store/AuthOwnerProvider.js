@@ -1,61 +1,81 @@
-import React ,{useReducer,useEffect,useState}from 'react'
-import OwnerContext from './AuthOwner';
-const IntialState={
-    isAuth:false,
-    OwnerUserName:'',
-    OwnerEmail:'',
-    OwnerId:''
-}
-const AddOwnerReducer=(state=IntialState,action)=>
-{
-    const newState={...state};
-    if(action.type==='login')
-   { newState.isAuth=true;
-    newState.OwnerId=action.item.Id;
-    newState.OwnerEmail=action.item.Email
-    newState.OwnerUserName=action.item.UserName}
-    else{
-      newState.isAuth=false;
-    newState.OwnerId='';
-    newState.OwnerEmail=''
-    newState.OwnerUserName=''
-    }
+import React, { useReducer, useEffect, useState } from "react";
+import OwnerContext from "./AuthOwner";
+import io from "socket.io-client";
+const IntialState = {
+  isAuth: false,
+  OwnerUserName: "",
+  OwnerEmail: "",
+  Socket: null,
+  HotelId: undefined,
+  OwnerId: "",
+};
+const AddOwnerReducer = (state = IntialState, action) => {
+  const newState = { ...state };
+  if (action.type === "login") {
+    newState.isAuth = true;
+    newState.OwnerId = action.item._id;
+    newState.OwnerEmail = action.item.Email;
+    newState.OwnerUserName = action.item.UserName;
+    newState.HotelId = action.item.HotelId;
+  } else if (action === "socket") {
+    newState.Socket = action.item.socket;
     return newState;
-}
+  } else {
+    newState.isAuth = false;
+    newState.OwnerId = "";
+    newState.OwnerEmail = "";
+    newState.OwnerUserName = "";
+    newState.HotelId = undefined;
+  }
+  return newState;
+};
 
 function AuthOwnerProvider(props) {
-    const [OwnerData,SetOwnerData]=useReducer(AddOwnerReducer,IntialState);
-    const addOwner=(event)=>{
-           SetOwnerData({type:'login',item:event});
-    }
-    const removeOwner=(event)=>{
-      SetOwnerData({type:'logout'})
-    }
-    const OwnerCtx={
-        isAuth:OwnerData.isAuth,
-        OwnerId:OwnerData.OwnerId,
-        OwnerEmail:OwnerData.OwnerEmail,
-        OwnerUserName:OwnerData.OwnerUserName,
-        addOwner:addOwner,
-        removeOwner:removeOwner
-    }
-    const[dataset,setData]=useState(false);
-    useEffect(()=>{
-      async  function fecthLoginStatus(){
-      const  userDatajson=localStorage.getItem('login-data');
-      
-      const userData=JSON.parse(userDatajson);
-      if(userData&&userData.user==='owner')
-      {
+  const [OwnerData, SetOwnerData] = useReducer(AddOwnerReducer, IntialState);
+  const addOwner = (event) => {
+    SetOwnerData({ type: "login", item: event });
+  };
+  const removeOwner = (event) => {
+    SetOwnerData({ type: "logout" });
+  };
+  const addSocket = (event) => {
+    SetOwnerData({ action: "socket", item: event });
+  };
+  const OwnerCtx = {
+    isAuth: OwnerData.isAuth,
+    OwnerId: OwnerData.OwnerId,
+    OwnerEmail: OwnerData.OwnerEmail,
+    OwnerUserName: OwnerData.OwnerUserName,
+    OwnerHotelId:OwnerData.HotelId,
+    addOwner: addOwner,
+    removeOwner: removeOwner,
+    addSocket: addSocket,
+  };
+  const [dataset, setData] = useState(false);
+  // const socket = io("http://localhost:4000");
+  useEffect(() => {
+    async function fecthLoginStatus() {
+      const userDatajson = localStorage.getItem("login-data");
+      const userData = JSON.parse(userDatajson);
+      if (userData && userData.user === "owner") {
         addOwner(userData);
+        // addSocket(socket);
+        setData(!dataset);
+      } else {
+        // socket.disconnect();
+        setData(!dataset);
       }
-      setData(!dataset);}
-      fecthLoginStatus();
-
-    },[])
+    }
+    fecthLoginStatus();
+  }, []);
+  if(dataset)
+  {
   return (
-    <OwnerContext.Provider value={OwnerCtx}>{props.children}</OwnerContext.Provider>
-  )
+    <OwnerContext.Provider value={OwnerCtx}>
+      {props.children}
+    </OwnerContext.Provider>
+  );
+  }
 }
 
-export default AuthOwnerProvider
+export default AuthOwnerProvider;

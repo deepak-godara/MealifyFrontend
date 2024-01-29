@@ -17,7 +17,7 @@ text-decoration: none;
     text-decoration: none;
 }
 .LinkDiv2{
-    background-color: rgb(238, 240, 249);
+    background:linear-gradient(270deg, rgb(255, 237, 239) 0%, rgba(251, 246, 247, 0) 92.47%);
 }
 
 .Link-Element{

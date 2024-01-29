@@ -1,0 +1,20 @@
+.Layout-Div {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .Header-Div {
+    width: 100%;
+  }
+  .Body-Container {
+    position: sticky;
+    display: flex;
+    width: 80vw;
+    flex-direction: row;
+    /* background-color: white; */
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  

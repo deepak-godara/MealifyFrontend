@@ -1,7 +1,5 @@
 import React, { useReducer } from "react";
 import { useNavigate } from "react-router-dom";
-// import {RED} from 'react-dom'
-import ClientContext from "../../store/AuthClient";
 import "./ClientAuthorization.css";
 const InitialState = {
   UserName: "UserName",
@@ -77,18 +75,19 @@ function ClientAuthorization(props) {
       const js = await data.json();
       if (js.status === "200") {
         props.onSubFunc(js.user);
-        console.log(props.localeData)
+        console.log(props.localeData);
         const userData = {
           user: props.localeData,
           _id: js.user._id,
           Email: js.user.Email,
           UserName: js.user.UserName,
+          HotelId:js.user.HotelId
+          
         };
         localStorage.setItem("login-data", JSON.stringify(userData));
         console.log(props.transferlink + js.user._id);
         // if(props.localeData==='owner-data')
-        if(props.localeData==='client')
-        Navigate("/User")
+        if (props.localeData === "client") Navigate("/User");
         // window.location.reload();
         Navigate("/owner");
       } else if (js.status === "202") {

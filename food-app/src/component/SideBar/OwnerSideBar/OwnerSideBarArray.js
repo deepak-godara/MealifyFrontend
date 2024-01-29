@@ -2,27 +2,42 @@ export const OwnerArray=[
     {
         id:0,
         Icon:"IoRestaurantSharp",
-        name:"Update Hotel Details",
-        link:""
+        name:" Hotel Details",
+        link:"details"
     }
     ,
     {
         id:1,
-        Icon:"ImProfile",
-        name:"Add Dish",
-        link:"sdvfv"
-    }
-    ,
+        Icon:"Orders",
+        name:"Orders",
+        link:"order"
+    },
     {
         id:2,
-        Icon:"FiShoppingCart",
-        name:"Categories",
-        link:"fdgf"
+        Icon:"Activeorders",
+        name:"Active Orders",
+        link:"active"
+
     },
     {
         id:3,
-        Icon:"Orders",
-        name:"Orders",
-        link:"fdg"
+        Icon:"DeliverdOrders",
+        name:"Delivered Orders",
+        link:"active"
     }
+    ,
+    {
+        id:4,
+        Icon:"Updatemenu",
+        name:"Menu",
+        link:"menu"
+    }
+    ,
+    {
+        id:5,
+        Icon:"Review",
+        name:"Reviews",
+        link:"review"
+    }
+    
 ]

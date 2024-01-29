@@ -1,0 +1,17 @@
+.Owner-Hotel-Menu{
+  display:flex;
+  width:100%;
+  flex-direction: column;
+  justify-content: flex-start; 
+  row-gap:1.1rem;
+  padding: 0.5rem;
+ background-color: white;
+  border-radius: 12px;
+  border: 1px solid rgb(221, 220, 220);
+}
+.Owner-Menu{
+    font-size: 1.5rem;
+    padding-left: 0.5rem;
+    font-weight: 500;
+    color: black;
+}

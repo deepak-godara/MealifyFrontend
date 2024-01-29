@@ -3,7 +3,6 @@ import AuthClient from '../../store/AuthClient'
 import './Header.css'
 import {useState } from 'react'
 import Logout from '../Authorization/Logout'
-import HeaderCardButton from '../Layout/HeaderCardButton'
 import LoginOption from '../Layout/LoginOption'
 import SearchForm from '../SearchForm/SearchForm'
 function Header(props) {

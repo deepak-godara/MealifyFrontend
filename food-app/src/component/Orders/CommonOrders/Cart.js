@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { RiTimerFill } from "react-icons/ri";
+import io from "socket.io-client";
 import CancellationPolicy from "./CancellationPolicy";
 import OrderBillDetails from "./OrderBillDetails";
 import DataDisplay from "../../Hotels/FoodAction/DataDisplay";
@@ -7,21 +8,37 @@ import "./Orders.css";
 import AddItem from "./AddItem";
 import { GetCart } from "../../../BackendApi/Cart";
 import ClientContext from "../../../store/AuthClient";
-
-const CartSubmit = () => {};
+import { useSocket } from "../../../store/SocketContext";
 function Cart() {
   const [Cart, SetCart] = useState(null);
   const ClientCtx = useContext(ClientContext);
+  const SocketCtx = useSocket();
+  const [socketid, SetSocketid] = useState(SocketCtx);
+  useEffect(() => {
+    SetSocketid(SocketCtx);
+  }, [SocketCtx]);
+  const CartSubmit = (event) => {
+    console.log(SocketCtx);
+    event.preventDefault();
+    SocketCtx.emit("NewOrder", { id:Cart.HotelId, Cart: Cart,UserId:ClientCtx.ClientId });
+  };
   useEffect(() => {
     async function GetCartData() {
       const Data = await GetCart(ClientCtx.ClientId);
-      if (Data.status === "success") SetCart(Data.Cart);
+      if (Data.status === "success") 
+      {SetCart(Data.Cart);
+        console.log(Data.Cart)
+      }
+      // console.log(ClientCtx.Socket)
+      SocketCtx.on("OrderConfirmationByHotel",({message,code})=>{
+       console.log(message+" svsv "+code);
+      })
     }
     GetCartData();
   }, []);
   return (
     <div>
-      {Cart !== null && (
+      {Cart !== null&&Cart.HotelId!==null && (
         <div className="Order-Main-Container">
           <div className="Order-Hotel-Container">{Cart.HotelName}</div>
           <div className="Order-Time">
@@ -49,6 +66,11 @@ function Cart() {
           </button>
         </div>
       )}
+      {
+        (Cart==null||Cart.HotelId==null)&&<div className="Empty-Cart">
+          Your Cart is Empty
+          </div>
+      }
     </div>
   );
 }

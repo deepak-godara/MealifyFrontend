@@ -3,11 +3,13 @@ import "./FoodDisplayCategories.css";
 import ClientContext from "../../../store/AuthClient";
 import HotelFoodDataDetail from "../../Hotels/FoodAction/FoodDataDetail";
 import CartChange from "../../Cart/CartChange";
+import AddNewCategories from "./AddNewCategories";
 import { useParams } from "react-router-dom";
 function FoodDisplayCategories(props) {
   const Params = useParams();
   const clientctx = useContext(ClientContext);
   const [ItemData, SetItemData] = useState({});
+  const [OpenCategory,SetCategory]=useState(false)
   const [Confirmation, SetConfirmation] = useState(false);
   const [Error, SetError] = useState(false);
   const onSubFunc = (data) => {
@@ -76,8 +78,11 @@ function FoodDisplayCategories(props) {
             func={onSubFunc}
             item={items}
             Name={props.Name}
+            AddItem={props.AddItem}
           ></HotelFoodDataDetail>
         ))}
+        <button onClick={()=>{SetCategory(true)}} style={{background:"rgb(230, 235, 240)"}}>Add New Category</button>
+        {OpenCategory&&<AddNewCategories func={SetCategory}/>}
       </div>
     </>
   );

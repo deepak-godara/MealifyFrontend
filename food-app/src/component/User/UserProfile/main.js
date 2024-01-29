@@ -24,10 +24,6 @@ function User(prop) {
   const [Email, SetEmail] = useState(null);
   const ref1 = useRef(null);
   const ref2 = useRef(null);
-  const OnClose=()=>{
-    console.log("sbrsbd")
-    SetProfileDiv(false)
-  }
   const CloseDiv1 = () => {
     SetisOpen1(false);
   };

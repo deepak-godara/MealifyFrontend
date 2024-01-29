@@ -1,0 +1,33 @@
+.Notification{
+    width:4rem;
+    display: flex;
+    flex-direction: row;
+    border:none;
+    /* background-color: white; */
+    background: none;
+    justify-content: center;
+    column-gap: 0.3rem;
+    align-items: center;
+    height:3rem;
+}
+.Notification-DropDown{
+    width:13rem;
+padding:1rem;
+    display:flex;
+    flex-direction: column;
+    row-gap:1rem;
+    border-radius: 12px;
+    max-height:10rem;
+    overflow-y:scroll;
+    position: absolute;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    background-color: white;
+}
+.Notification-DropDown::-webkit-scrollbar{
+    width:0;
+}
+.Notification-Message{
+    color:black;
+    font-size:1rem;
+    font-weight: 400;
+}

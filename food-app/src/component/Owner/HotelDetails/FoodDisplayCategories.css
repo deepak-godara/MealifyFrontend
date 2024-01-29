@@ -8,7 +8,7 @@
     z-index: 0;
     padding-left: 0.5rem;
     padding-bottom:2rem;
-    border-left: 1.5px solid;
+    /* border-left: 1.5px solid; */
     border-color: rgb(192, 189, 189);
     justify-content: flex-start;
     row-gap: 0.5rem;

@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react'
 import './Profileheader.css'
-import Address from './Address'
 import { FiEdit } from "react-icons/fi";
 import ClientContext from '../../../../store/AuthClient';
 import User from '../../UserProfile/main';

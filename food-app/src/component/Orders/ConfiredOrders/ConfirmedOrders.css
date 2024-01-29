@@ -1,11 +1,19 @@
 .Con-Orders {
  
   row-gap: 0.7rem;
-  width:65%;
+  width:55%;
+  margin: 1rem 23.5%;
   padding:1rem;
+  height:95%;
+  overflow-y: scroll;
+  position: absolute;
+  z-index: 600;
+  border-radius: 12px;
   box-sizing: border-box;
-  margin:2rem auto;
   background-color: white;
+}
+.Con-Orders::-webkit-scrollbar{
+  width:0%;
 }
 .flex1{
   display: flex;

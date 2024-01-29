@@ -15,7 +15,7 @@ function FoodActionOptions(props) {
     event.preventDefault();
     async function DeleteFoodItem() {
       const data = await fetch(
-        `http://localhost:4000/${Params.hotelid}/deleteitem`,
+        `http://localhost:4000/${ownerCtx.OwnerHotelId}/deleteitem`,
         {
           method: "POST",
           body: JSON.stringify({
@@ -53,12 +53,12 @@ function FoodActionOptions(props) {
             value={itemCount}
             onChange={SetCountFunc}
           ></input>
-          <button type="submit">ADD</button>
+          <button type="submit" style={{background:"rgb(230, 235, 240)"}}>ADD</button>
         </form>
       )}
       {ownerCtx.isAuth && (
         <form className="FoodItem-Form" onSubmit={FoddDeleteFunc}>
-          <button type="submit">Delete</button>
+          <button type="submit" style={{background:"rgb(230, 235, 240)"}}>Delete</button>
         </form>
       )}
     </>

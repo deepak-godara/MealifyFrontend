@@ -14,13 +14,14 @@
     flex-direction: row;
     column-gap:0.5rem;
     height:4rem;
+    padding:0rem;
     background-color: transparent;
     align-items: center;
     border: none;
+    position:relative;
     justify-content: center;
     font-size: 1.6rem;
     font-weight: 600;
-    padding: 0.3rem;
 }
 .Client-Profile img{
     height:2.5rem;
@@ -36,21 +37,43 @@
     overflow-x: scroll;
 
 }
+.Logout-Div{
+    font-size: 1.3rem;
+    font-weight: 400;
+    color:rgb(93, 93, 93);}
+.Header-DropDown{
+    display:flex;
+    flex-direction: column;
+    row-gap:1rem;
+    padding: 0rem;
+}
 .Client-Name::-webkit-scrollbar{
     width:0;
 }
+.Client-DropDown-Main{
+    display:flex;
+    position:relative;
+    flex-direction:row;
+    column-gap:1.5rem;
+    align-items: center;
+}
 .Client-DropDown{
     position: absolute;
-    top:4.5rem;
+    top:3.5rem;
+    z-index:300;
+    /* left:2rem; */
     width:10.5rem;
     display: flex;
     flex-direction: column;
-    row-gap:1rem;
     box-shadow: rgba(28, 28, 28, 0.15) 0px 2px 8px;
     background-color: white;
-    /* border: 1px solid black; */
     border-radius: 12px;
 }
-/* .Profile{
-    padding: 0.3rem;
-} */
+.Client-Header-Block{
+    display: flex;
+    position: relative;
+    flex-direction:row;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 1.5rem;
+}
