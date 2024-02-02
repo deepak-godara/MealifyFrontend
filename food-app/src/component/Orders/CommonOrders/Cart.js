@@ -21,6 +21,7 @@ function Cart() {
     console.log(SocketCtx);
     event.preventDefault();
     SocketCtx.emit("NewOrder", { id:Cart.HotelId, Cart: Cart,UserId:ClientCtx.ClientId });
+    SetCart(null);
   };
   useEffect(() => {
     async function GetCartData() {

@@ -8,10 +8,6 @@ function CategoryData(props) {
   return (
     <div className='Food-Category-Display'>
         {props.menu.map(item=><CategoryDisplay key={item.Name} item={item.Name}></CategoryDisplay>)}
-        <button onClick={()=>{SetCategoryDiv(true)}}>Add Category</button>
-        {AddCategoryDiv&&
-         <AddNewCategories OnClose={()=>{SetCategoryDiv(false)}}/>
-        }
     </div>
   )
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Route, Routes, useLocation,useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 import "./App.css";
+
 import Address from "./component/User/Address/storeaddress/Address";
 import CommonLayout from "./component/Layouts/CommonLayout";
 import ClientLayout from "./component/Layouts/ClientLayout";
@@ -51,7 +52,7 @@ function App() {
   return (
     // <AuthClientProvider>
     <Routes>
-      {user === "Client" && (
+      {ClientCtx.isAuth&& (
         <Route path="/User" element={<ClientLayout />}>
           <Route index element={<Cart />} />
           <Route path="address" element={<Address />} />
