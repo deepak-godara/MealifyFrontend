@@ -3,14 +3,14 @@ export const OwnerArray=[
         id:0,
         Icon:"IoRestaurantSharp",
         name:" Hotel Details",
-        link:"details"
+        link:"/owner/details"
     }
     ,
     {
         id:1,
         Icon:"Orders",
         name:"Orders",
-        link:"order"
+        link:"/owner/order"
     },
     {
         id:2,

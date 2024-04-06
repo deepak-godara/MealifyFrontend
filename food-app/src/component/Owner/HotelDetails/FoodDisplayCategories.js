@@ -15,8 +15,6 @@ function FoodDisplayCategories(props) {
   const [Confirmation, SetConfirmation] = useState(false);
   const [Error, SetError] = useState(false);
   const onSubFunc = (data) => {
-    // data.preventDefault();
-    console.log("submittingtocart");
     SetItemData(data);
     async function SetCartData() {
       const Data = await fetch(
@@ -60,8 +58,6 @@ function FoodDisplayCategories(props) {
     ReSetCartData();
   };
   const onClose = (data) => {
-    console.log("dsfdv");
-    console.log(data);
     SetConfirmation(false);
     if (data === "yes") {
       ResubmitData();
@@ -73,6 +69,8 @@ function FoodDisplayCategories(props) {
         <CartChange onClose={onClose} ChangeHotel={ResubmitData}></CartChange>
       )}
       {Error && <div></div>}
+      {(props.menu===null||props.menu.length===0)&&<div>menu is empty</div>}
+      {(props.menu!==null||props.menu.length!==0)&&
       <div className="Display-Food-Item-Categories">
         {props.menu.map((items) => (
           <HotelFoodDataDetail
@@ -97,6 +95,7 @@ function FoodDisplayCategories(props) {
           </>
         )}
       </div>
+}
     </>
   );
 }

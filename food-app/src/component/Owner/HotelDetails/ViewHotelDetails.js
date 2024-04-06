@@ -43,7 +43,6 @@ function ViewHotelDetails(props) {
       );
       const js = await Data.json();
       if (js.status === "200") {
-        console.log(js.Menu);
         SetHotelData({ type: "AddName", val: js.hotel.Name });
         SetHotelData({ type: "Categories", val: js.hotel.Category });
         SetHotelData({
@@ -53,6 +52,9 @@ function ViewHotelDetails(props) {
         SetHotelData({ type: "Ad", val: js.hotel.Image });
         SetHotelData({ type: "Rating", val: js.hotel.Rating.$numberDecimal });
         SetHotelData({ type: "Count", val: js.hotel.Count });
+        if(js.Menu===null)
+        SetHotelMenu([])
+      else
         SetHotelMenu(js.Menu.Menu);
       }
     }

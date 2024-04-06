@@ -24,7 +24,6 @@ import OwnerMenu from "./component/Owner/OwnerHotelDetails/Main";
 const Redirect = (to) => {
   const navigate = useNavigate();
   useEffect(() => {
-    console.log(to.to)
     navigate(to.to, { replace: true });
   }, [navigate,to]);
   return <></>;
@@ -34,21 +33,19 @@ function App() {
  
   const socket = io.connect("http://localhost:4000");
   const OwnerCtx = useContext(OwnerContext);
-  // console.log(OwnerCtx.isAuth+" owner")
   const location = useLocation();
-  console.log(OwnerCtx.OwnerHotelId)
   const [user, SetUser] = useState("None");
-  useEffect(() => {
-    const users = JSON.parse(localStorage.getItem("login-data"));
-    // console.log(users);
-    if (users)
-      if (users.user === "client") {
-        console.log("yes");
+  // useEffect(() => {
+  //   const users = JSON.parse(localStorage.getItem("login-data"));
+  //   // console.log(users);
+  //   if (users)
+  //     if (users.user === "client") {
+  //       console.log("yes");
 
-        SetUser("Client");
-      } else {
-      }
-  }, []);
+  //       SetUser("Client");
+  //     } else {
+  //     }
+  // }, []);
   return (
     // <AuthClientProvider>
     <Routes>

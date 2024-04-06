@@ -20,6 +20,7 @@ function Cart() {
   const CartSubmit = (event) => {
     console.log(SocketCtx);
     event.preventDefault();
+    if(SocketCtx)
     SocketCtx.emit("NewOrder", { id:Cart.HotelId, Cart: Cart,UserId:ClientCtx.ClientId });
     SetCart(null);
   };
@@ -31,6 +32,7 @@ function Cart() {
         console.log(Data.Cart)
       }
       // console.log(ClientCtx.Socket)
+      if(SocketCtx)
       SocketCtx.on("OrderConfirmationByHotel",({message,code})=>{
        console.log(message+" svsv "+code);
       })
