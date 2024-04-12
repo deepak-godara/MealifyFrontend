@@ -4,9 +4,7 @@ import ModalPortal from "../../UI/ModalPortal";
 import OwnerContext from "../../../store/AuthOwner";
 import { useParams, useNavigate } from "react-router-dom";
 function AddNewDish(props) {
-  const Params = useParams();
   const OwnerCtx=useContext(OwnerContext)
-  const Navigate = useNavigate();
   const [FoodName, SetFoodName] = useState("");
   const [FoodPrice, SetFoodPrice] = useState("");
   const [FoodCategory, SetFoodCategory] = useState("");
@@ -41,12 +39,9 @@ function AddNewDish(props) {
           headers: { "Content-type": "application/json" },
         }
       );
-
       const js = await data.json();
       if (js.status === "200") {
-        props.AddItem(js.dish,FoodCategory)
-        props.OnClose();
-        // Navigate(`/owner/${Params.id}/${Params.hotelid}`);
+        window.location.reload();
       }
     }
     FoodDataSubmit();

@@ -2,18 +2,18 @@ export const OwnerHeaderArray=[
     {
         id:0,
         name:" Hotel Details",
-        link:""
+        link:"/owner/details"
     }
     ,
     {
         id:1,
         name:"Orders",
-        link:"fdg"
+        link:"/owner/order"
     },
     {
         id:2,
         name:"Active Orders",
-        link:"active"
+        link:"/owner/active"
 
     }
     ,

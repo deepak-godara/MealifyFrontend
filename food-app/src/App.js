@@ -21,6 +21,7 @@ import ClientContext from "./store/AuthClient";
 import OwnerContext from "./store/AuthOwner";
 import OwnerLayout2 from "./component/Layouts/OwnerLayout2";
 import OwnerMenu from "./component/Owner/OwnerHotelDetails/Main";
+import ViewHotelDetails from "./component/Owner/HotelDetails/ViewHotelDetails";
 const Redirect = (to) => {
   const navigate = useNavigate();
   useEffect(() => {
@@ -60,9 +61,7 @@ function App() {
           </Route>
         </Route>
       )}
-      <Route path="/owner/addhotel" element={<OwnerLayout2 />}>
-        <Route index element={<AddNewHotel/>}></Route>
-      </Route>
+      
       <Route path="/" element={<CommonLayout />}>
         <Route path="xt" element={<User />}></Route>
         <Route path="xt/Con" element={<ConfirmedOrders />}></Route>
@@ -77,6 +76,8 @@ function App() {
      
         <Route path="/owner" element={OwnerCtx.OwnerHotelId!==undefined?<OwnerLayout />:<Redirect to="/owner/addhotel"/>}>
           <Route index element={<OwnerMainPage />} />
+          <Route path="addhotel" element={<AddNewHotel/>}/>
+          <Route path="details" element={<ViewHotelDetails/>}/>
           {/* <Route  path="/updatemenu" element={} */}
           <Route path="menu" element={<OwnerMenu/>}/>
           <Route path="order" element={<NewOrder />} />

@@ -19,7 +19,7 @@ function User(prop) {
   const [Image2, SetImage2] = useState(Pizza);
   const [UserName, SetUserName] = useState("");
   const [Dob, SetDob] = useState("11-9-2021");
-  const [PhoneNo, SetPhoneNo] = useState(null);
+  const [PhoneNo, SetPhoneNo] = useState(1234567890);
   const [Gender, SetGender] = useState("male");
   const [Email, SetEmail] = useState(null);
   const ref1 = useRef(null);
@@ -49,13 +49,14 @@ function User(prop) {
     //  console.log(Datas);
     const Data = Datas.User;
     if (Datas.status === "success") {
-      if (Data.ForeGroundImage !== null) SetImage1(Data.ForeGroundImage);
-      if (Data.BackGroundImage !== null) SetImage2(Data.BackGroundImage);
-      if (Data.PhoneNo !== null) SetPhoneNo(Data.PhoneNo);
-      if (Data.UserName !== null) SetUserName(Data.UserName);
-      if (Data.Gender !== null) SetGender(Data.Gender);
-      if (Data.Email !== null) SetEmail(Data.Email);
-      if (Data.DOB !== null) {
+      if (Data.ForeGroundImage ) SetImage1(Data.ForeGroundImage);
+      if (Data.BackGroundImage ) SetImage2(Data.BackGroundImage);
+      if (Data.PhoneNo ) SetPhoneNo(Data.PhoneNo);
+      if (Data.UserName ) SetUserName(Data.UserName);
+      if (Data.Gender ) SetGender(Data.Gender);
+      if (Data.Email ) SetEmail(Data.Email);
+      if (Data.DOB) {
+        console.log(Data.DOB)
         const isoDate = Data.DOB.toString();
         const onlyDate = isoDate.split("T")[0];
         SetDob(onlyDate);
@@ -119,7 +120,7 @@ function User(prop) {
         <form className="User-Profile-Form">
           <div className="User-Data-Box">
             <div className="User-Data">
-              <label className="User-Data-Label">{UserName}</label>
+              <label className="User-Data-Label">UserName</label>
               <input
                 className="User-Data-Input"
                 type="text"

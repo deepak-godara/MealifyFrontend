@@ -69,7 +69,7 @@ function FoodDisplayCategories(props) {
         <CartChange onClose={onClose} ChangeHotel={ResubmitData}></CartChange>
       )}
       {Error && <div></div>}
-      {(props.menu===null||props.menu.length===0)&&<div>menu is empty</div>}
+      {(props.menu===null||props.menu.length===0)&&<div  className="Empty-Cart">menu is empty</div>}
       {(props.menu!==null||props.menu.length!==0)&&
       <div className="Display-Food-Item-Categories">
         {props.menu.map((items) => (

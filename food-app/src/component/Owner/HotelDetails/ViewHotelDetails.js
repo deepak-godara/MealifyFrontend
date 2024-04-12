@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer, useContext } from "react";
 import { useParams } from "react-router-dom";
+import OwnerContext from "../../../store/AuthOwner";
 import HotelInfoDisplay from "./HotelInfoDisplay";
 import FoodDisplayCategories from "./FoodDisplayCategories";
 import CategoryData from "./CategoryData";
@@ -29,19 +30,36 @@ function ViewHotelDetails(props) {
     HotelDataReducerFunc,
     intialState
   );
+
   const [HotelMenu, SetHotelMenu] = useState([]);
   const params = useParams();
   const [hotelid, SetHotelId] = useState(null);
+  const owner=useContext(OwnerContext);
   if (hotelid !== params.hotelid) SetHotelId(params.hotelid);
   useEffect(() => {
     async function getDetails() {
-      const Data = await fetch(
+      let Data;
+      console.log(owner)
+      if(owner.isAuth)
+      {
+
+        Data = await fetch(
+          `http://localhost:4000/${owner.OwnerHotelId}/getdata`,
+          {
+            method: "GET",
+          }
+        );
+      }
+      else
+      { Data = await fetch(
         `http://localhost:4000/${params.hotelid}/getdata`,
         {
           method: "GET",
         }
       );
+    }
       const js = await Data.json();
+      console.log(js);
       if (js.status === "200") {
         SetHotelData({ type: "AddName", val: js.hotel.Name });
         SetHotelData({ type: "Categories", val: js.hotel.Category });

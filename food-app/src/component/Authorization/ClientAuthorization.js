@@ -34,7 +34,6 @@ const ClientReducer = (state = InitialState, action) => {
 const errorClientLogin = (state = InitialError, action) => {
   const NewState = { ...state };
   if (action.type === "SetError") {
-    console.log("ewfrebtnfhfgbf");
     NewState.message = action.val;
     NewState.err = "true";
   } else {
@@ -71,7 +70,6 @@ function ClientAuthorization(props) {
         }),
         headers: { "Content-type": "application/json" },
       });
-      // console.log(data);
       const js = await data.json();
       if (js.status === "200") {
         props.onSubFunc(js.user);
@@ -85,11 +83,11 @@ function ClientAuthorization(props) {
           
         };
         localStorage.setItem("login-data", JSON.stringify(userData));
-        console.log(props.transferlink + js.user._id);
-        // if(props.localeData==='owner-data')
-        if (props.localeData === "client") Navigate("/User");
-        // window.location.reload();
-        Navigate("/owner");
+        if (props.localeData === "client")
+        {
+         Navigate("/User");}
+        else
+          Navigate("/owner");
       } else if (js.status === "202") {
         SetErrorData({ type: "SetError", val: js.message });
       }

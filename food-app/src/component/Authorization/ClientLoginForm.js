@@ -4,7 +4,6 @@ import ClientAuthorization from './ClientAuthorization';
 import {} from 'react-router-dom'
 function ClientLoginForm(props) {
 const clientContext=useContext(ClientContext);
-console.log(clientContext);
     const [loginlink]=useState("http://localhost:4000/client/login");
     const[localeData]=useState('client');
   return (
