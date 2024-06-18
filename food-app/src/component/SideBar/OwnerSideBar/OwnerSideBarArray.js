@@ -16,14 +16,14 @@ export const OwnerArray=[
         id:2,
         Icon:"Activeorders",
         name:"Active Orders",
-        link:"active"
+        link:"/owner/active"
 
     },
     {
         id:3,
         Icon:"DeliverdOrders",
         name:"Delivered Orders",
-        link:"active"
+        link:"Deliver"
     }
     ,
     {

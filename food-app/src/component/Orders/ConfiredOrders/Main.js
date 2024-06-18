@@ -16,7 +16,7 @@ function ConfirmedOrders(props) {
       </div>
       <div className="Ord-Status">{Order.Status}</div>
       <OrderItemDetails item={Order.OrderItems} />
-      <OrderTotal
+      <OrderTotal 
       ItemTotal={Order.ItemTotal}
         tax={Order.GST}
         delivery={Order.Delivery}

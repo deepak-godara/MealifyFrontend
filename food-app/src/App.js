@@ -21,6 +21,8 @@ import ClientContext from "./store/AuthClient";
 import OwnerContext from "./store/AuthOwner";
 import OwnerLayout2 from "./component/Layouts/OwnerLayout2";
 import OwnerMenu from "./component/Owner/OwnerHotelDetails/Main";
+// import OwnerActiveOrders from "./component/Owner/OwnerOrders/OwnerActiveOrders";
+import OwnerActiveOrder2 from "./component/Owner/OwnerOrders/OwnerActiveOrder2";
 const Redirect = (to) => {
   const navigate = useNavigate();
   useEffect(() => {
@@ -80,6 +82,7 @@ function App() {
           {/* <Route  path="/updatemenu" element={} */}
           <Route path="menu" element={<OwnerMenu/>}/>
           <Route path="order" element={<NewOrder />} />
+          <Route path="active" element={<OwnerActiveOrder2/>} />
         </Route>
     </Routes>
     // </AuthClientProvider>

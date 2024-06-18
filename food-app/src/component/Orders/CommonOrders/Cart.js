@@ -16,13 +16,22 @@ function Cart() {
   const [socketid, SetSocketid] = useState(SocketCtx);
   useEffect(() => {
     SetSocketid(SocketCtx);
+    // if(SocketCtx) SocketCtx.emit("check", {message: "cart is connected:"});
   }, [SocketCtx]);
   const CartSubmit = (event) => {
-    console.log(SocketCtx);
+    console.log("socket  fom cart is : ",SocketCtx);
     event.preventDefault();
     if(SocketCtx)
-    SocketCtx.emit("NewOrder", { id:Cart.HotelId, Cart: Cart,UserId:ClientCtx.ClientId });
-    SetCart(null);
+  {  SocketCtx.emit("NewOrder", { id:Cart.HotelId, Cart: Cart,UserId:ClientCtx.ClientId });
+  // console.log("socket  from if condition  cart is : ",SocketCtx);
+  // console.log("hotel from if condition  cart is : ",Cart.HotelId);
+}
+  // if(SocketCtx){
+  //   SocketCtx.on("rejectionbyHotel" , (message)=>{
+  //        console.log(message);
+  //   })
+  // }
+  SetCart(null);
   };
   useEffect(() => {
     async function GetCartData() {
@@ -54,10 +63,11 @@ function Cart() {
             <div className="Items-Added">ITEM(S) ADDED</div>
 
             <div className="Order-Items">
-              {Cart.Items.map((items) => (
-                <DataDisplay Name={Cart.HotelName} item={items} />
-              ))}
+              {Cart.Items.map((item, index) => (
+               <DataDisplay key={index} Name={Cart.HotelName} item={item} />
+                ))}
             </div>
+
           </div>
           <AddItem HotelId={Cart.HotelId} />
           <div className="Order-Items-Div">

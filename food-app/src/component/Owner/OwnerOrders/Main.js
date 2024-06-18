@@ -3,6 +3,7 @@ import { useSocket } from "../../../store/SocketContext";
 import OrderLists from "./OrderLists";
 import OwnerContext from "../../../store/AuthOwner";
 import { getNewOrder } from "../../../BackendApi/GetNewOrders";
+
 function NewOrder() {
   const OwnerCtx=useContext(OwnerContext)
   const SocketCtx = useSocket();
@@ -26,9 +27,10 @@ function NewOrder() {
     if (SocketCtx) {
       SocketCtx.on(
         "NewOrderReceived",
-        ({ message, OrderId, Order, UserId }) => {
-            console.log(Order)
+        ({ message, OrderId, Order, UserId } , acknowledgment) => {
+            console.log("order in  Ownerorders is " , Order)
           SetNewOrder([Order, ...NewOrder]);
+          acknowledgment(true);
         }
       );
     }
@@ -38,7 +40,7 @@ function NewOrder() {
       {NewOrder.length > 0 && (
         <div className="Order-List-Container">
           {NewOrder.map((item, index) => (
-            <OrderLists Order={item} DeleteFunction={DeleteOrder} />
+            <OrderLists Order={item}  DeleteFunction={DeleteOrder} />
           ))}
         </div>
       )}

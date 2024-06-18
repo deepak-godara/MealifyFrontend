@@ -22,6 +22,7 @@ padding:1rem;
     position: absolute;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     background-color: white;
+    color: black;
 }
 .Notification-DropDown::-webkit-scrollbar{
     width:0;
