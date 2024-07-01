@@ -28,7 +28,7 @@ function AddLocation(props) {
     }
   };
   useEffect(() => {
-    const getLocation = () => {
+    const getLocation = async() => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
           const { latitude, longitude } = position.coords;
@@ -42,9 +42,12 @@ function AddLocation(props) {
           props.AddCoorFunc(clickedLocation);
         });
       }
+      else {
+        console.log("Geolocation is not supported by this browser.");
+      }
     };
 
-    getLocation();
+   getLocation();
   },[]);
 
   const onMapClick = async (event) => {

@@ -19,6 +19,7 @@ function DataDisplay(props) {
         item={props.item.Name}
         type={props.item.FoodType}
         Price={props.item.Price}
+        CategoryName={props.CategoryName}
         Name={props.Name}
       ></FoodActionOptions>
     </div>

@@ -44,9 +44,9 @@ function User(prop) {
     }
   }, []);
   const getUserDatas = async () => {
-    console.log(clientCtx)
+    // console.log(clientCtx)
     const Datas = await GetUser(clientCtx.ClientId);
-    //  console.log(Datas);
+     console.log(Datas);
     const Data = Datas.User;
     if (Datas.status === "success") {
       if (Data.ForeGroundImage ) SetImage1(Data.ForeGroundImage);

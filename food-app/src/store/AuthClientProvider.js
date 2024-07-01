@@ -8,13 +8,16 @@ const IntialState = {
   ClientEmail: "",
   ClientId: 0,
   ClientDob: 0,
+  Address:[],
+  CurrentAddress:null,
   Gender: null,
   Socket: null,
+  Orders:[],
   ForeGroundImage: null,
   BackGroundImage: null,
 };
 const AddClientReducer = (state = IntialState, action) => {
-  console.log(action.item._id);
+  console.log(action);
   const newState = { ...state };
   if (action.type === "login") {
     newState.isAuth = true;
@@ -28,6 +31,12 @@ const AddClientReducer = (state = IntialState, action) => {
       newState.ForeGroundImage = action.item.ForeGroundImage;
     if (action.item.BackGroundImage)
       newState.BackGroundImage = action.item.BackGroundImage;
+    if(action.item.Address)
+    newState.Address=action.item.Address;
+  if(action.item.Orders)
+  {
+    console.log(action.item.Orders)
+  newState.Orders=action.item.Orders}
   } else if (action === "socket") {
     newState.Socket = action.item.socket;
     return newState;
@@ -36,6 +45,7 @@ const AddClientReducer = (state = IntialState, action) => {
     newState.ClientId = "";
     newState.ClientEmail = "";
     newState.ClientUserName = "";
+    
   }
   return newState;
 };
@@ -47,14 +57,19 @@ function AuthClientProvider(props) {
   };
   const RemoveClient = (event) => {
     SetClientData({ type: "logout" });
+    localStorage.removeItem("login-data");
   };
   const addSocket = (event) => {
     SetClientData({ action: "socket", item: event });
+
   };
   const ClientCtx = {
     isAuth: ClientData.isAuth,
     ClientId: ClientData.ClientId,
+    Address:ClientData.Address,
     ClientEmail: ClientData.ClientEmail,
+    Orders:ClientData.Orders,
+    CurrentAddress:ClientData.CurrentAddress,
     ClientUserName: ClientData.ClientUserName,
     ClientDob: ClientData.ClientDob,
     Gender: ClientData.Gender,

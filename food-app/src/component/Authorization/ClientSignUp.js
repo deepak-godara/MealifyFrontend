@@ -70,7 +70,6 @@ function ClientSignUp(props) {
   const ClientDataSubmit = (event) => {
     event.preventDefault();
     async function fetchClient() {
-      console.log("ues");
       console.log(ClientSignData)
       const data = await fetch(props.loginlink, {
         method: "POST",

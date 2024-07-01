@@ -11,7 +11,7 @@ function HotelFoodDataDetail(props) {
       <div className="Food-Category" id={props.item.Name}>
         <div className="Food-Category-Name">{props.item.Name}</div>
         {props.item.items.map((ite) => (
-          <DataDisplay item={ite} func={props.func} Name={props.Name} />
+          <DataDisplay item={ite} func={props.func} Name={props.Name}  CategoryName={props.CategoryName}/>
         ))}
         {OwnerCtx.isAuth && (
           <button

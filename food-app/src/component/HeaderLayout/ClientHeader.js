@@ -43,7 +43,7 @@ function ClientHeader(props) {
                   <HeaderDropDown link={item.link} name={item.name} />
                 </div>
               ))}
-              <div onClick={props.LogOut} className="Logout-Div">
+              <div onClick={()=>{clientCtx.RemoveClient()}} className="Logout-Div">
                 Logout
               </div>
             </div>

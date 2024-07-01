@@ -77,6 +77,7 @@ function FoodDisplayCategories(props) {
             key={items.Name}
             func={onSubFunc}
             item={items}
+            CategoryName={items.Name}
             Name={props.Name}
             AddItem={props.AddItem}
           ></HotelFoodDataDetail>

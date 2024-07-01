@@ -20,7 +20,7 @@ function FoodActionOptions(props) {
           method: "POST",
           body: JSON.stringify({
             foodname: props.item,
-            foodcategory: props.Name,
+            foodcategory: props.CategoryName,
           }),
           headers: { "Content-type": "application/json" },
         }
