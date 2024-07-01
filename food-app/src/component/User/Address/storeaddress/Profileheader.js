@@ -10,6 +10,7 @@ const Profileheader = () => {
     const ChangeProfileDivVisibility=()=>{
         SetProfileDiv(!OpenProfileDiv)
     }
+  
   return (
     <>
         <div class="review overlay">

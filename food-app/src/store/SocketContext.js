@@ -31,21 +31,29 @@ export const SocketProvider = ({ children }) => {
       // Cleanup on unmount or page refresh
       const cleanup = () => {
         if(ClientCtx.isAuth)
-        newSocket.emit("disconnec",{id:ClientCtx.ClientId});
+        newSocket.emit("disconnec",{id:ClientCtx.ClientId });
       if(OwnerCtx.isAuth)
-      newSocket.emit("disconnec",{id:OwnerContext.OwnerId});
+      newSocket.emit("disconnec",{id:OwnerContext.OwnerId });
         // Additional cleanup if needed
       };
-  
+
+      // const cleanup = () => {
+      //     if(ClientCtx.isAuth)
+      //     newSocket.emit("disconnec",{id:ClientCtx.ClientId });
+      //   if(OwnerCtx.isAuth)
+      //   newSocket.emit("disconnec",{id:OwnerContext.OwnerId });
+      //     // Additional cleanup if needed
+      //   };
+        
+        window.addEventListener('beforeunload', cleanup);
       // Add event listener for beforeunload
-      window.addEventListener('beforeunload', cleanup);
   
-      // return () => {
-      //   // Remove the event listener on component unmount
-      //   window.removeEventListener('beforeunload', cleanup);
-      //   cleanup();
-      // };
-    }, [ClientCtx.isAuth, OwnerCtx.isAuth]);
+      return () => {
+        // Remove the event listener on component unmount
+        window.removeEventListener('beforeunload', cleanup);
+        cleanup();
+      };
+    }, [ClientCtx.isAuth, OwnerCtx.isAuth ]);
   
   return (
    
