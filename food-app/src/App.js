@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 import "./App.css";
-
+import OwnerActiveOrder2 from "./component/Owner/OwnerOrders/OwnerActiveOrder2"
 import Address from "./component/User/Address/storeaddress/Address";
 import CommonLayout from "./component/Layouts/CommonLayout";
 import ClientLayout from "./component/Layouts/ClientLayout";
@@ -86,6 +86,14 @@ function App() {
         />
         <Route path="/location/:locationid" element={<LocationPage />} />
       </Route>
+     
+        <Route path="/owner" element={OwnerCtx.OwnerHotelId!==undefined?<OwnerLayout />:<Redirect to="/owner/addhotel"/>}>
+          <Route index element={<OwnerMainPage />} />
+          {/* <Route  path="/updatemenu" element={} */}
+          <Route path="menu" element={<OwnerMenu/>}/>
+          <Route path="order" element={<NewOrder />} />
+          <Route path="active" element={<OwnerActiveOrder2/>} />
+        </Route>
     </Routes>
     // </AuthClientProvider>
   );

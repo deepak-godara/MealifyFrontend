@@ -24,10 +24,8 @@ function ItemSearchForm() {
   }, [Url]);
   useEffect(() => {
     let ItemLists = [];
-    console.log(SearchList);
     SetItemList([]);
     if (SearchList !== "") {
-      console.log(hotelCtx.AllHotels);
       if (hotelCtx.AllHotels !== null)
         for (let i = 0; i < hotelCtx.AllHotels.length; i++) {
           if (
@@ -35,7 +33,6 @@ function ItemSearchForm() {
               SearchList.toLowerCase()
             )
           ) {
-            console.log("cdssucsdbs");
             ItemLists.push({
               Name: hotelCtx.AllHotels[i].Name,
               Id: hotelCtx.AllHotels[i]._id,
@@ -88,7 +85,6 @@ function ItemSearchForm() {
   };
   const SubmitSearchDataFunc = async (data) => {
     SetSearchList("");
-    console.log("svs");
     SetDisplayVisibility(false);
     if (data.items.type === "Restaurant") {
       Navigate(`/location/${Params.locationid}/${data.items.Id}`);

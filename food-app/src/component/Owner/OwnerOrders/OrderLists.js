@@ -13,14 +13,17 @@ function OrderLists(props) {
       orderid: OrderId,
       code: 1,
       OrderData: props.Order,
+      currDate :props.currDate
     });
     props.DeleteFunction(OrderId)
   };
   const RejectOrder = (OrderId, Order) => {
     SocketCtx.emit("OrderConfirmationFromHotel", {
       orderid: OrderId,
+      id : Order._id,
       code: 0,
       OrderData: props.Order,
+      currDate :props.currDate
     });
     props.DeleteFunction(OrderId)
   };
@@ -69,5 +72,7 @@ function OrderLists(props) {
     </div>
   );
 }
+
+
 
 export default OrderLists;

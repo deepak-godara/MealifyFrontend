@@ -55,7 +55,9 @@ html {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    font-size: 3rem;
     font-weight: 400;
+    width: 45vw;
 }
 
 .email-logo {
@@ -111,10 +113,12 @@ html {
 }
 
 .right-review-header {
+    position: relative;
     background: transparent;
     position: relative;
     display: flex;
     flex-direction: column;
+    width: 20vw;
 }
 
 .details {
@@ -142,7 +146,7 @@ html {
     background: transparent;
     width: 7.8125rem; 
     position: relative;
-    right: 0;
+    /* right: 0; */
     padding:0.2rem;
     height: 2.25rem; 
     background-color: #EF4F5F;

@@ -19,6 +19,7 @@ function AddLocation(props) {
       }
 
       const data = await response.json();
+      // console.log(`location is : ${data}`);
       if (data.results.length > 0) {
         const address = data.results[0].formatted_address;
         props.func(address);

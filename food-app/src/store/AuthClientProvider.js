@@ -17,7 +17,6 @@ const IntialState = {
   BackGroundImage: null,
 };
 const AddClientReducer = (state = IntialState, action) => {
-  console.log(action);
   const newState = { ...state };
   if (action.type === "login") {
     newState.isAuth = true;
@@ -35,7 +34,6 @@ const AddClientReducer = (state = IntialState, action) => {
     newState.Address=action.item.Address;
   if(action.item.Orders)
   {
-    console.log(action.item.Orders)
   newState.Orders=action.item.Orders}
   } else if (action === "socket") {
     newState.Socket = action.item.socket;

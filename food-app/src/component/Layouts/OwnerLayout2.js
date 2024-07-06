@@ -17,4 +17,4 @@ function OwnerLayout2() {
   )
 }
 
-export default OwnerLayout2
+export default OwnerLayout2;

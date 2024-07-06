@@ -1,0 +1,121 @@
+.order-status {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+
+}
+
+.main-div{
+  position: relative;
+  top: 0px;
+  border: 1px solid grey;
+  width: 90%;
+  border-radius: 3vh;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+
+}
+.status {
+  text-align: center;
+}
+
+.order-status img {
+  max-width: 5vh;
+  max-height: 5vh;
+  border-radius: 50%;
+}
+
+label {
+  display: block;
+  margin-top: 5px;
+}
+
+.status {
+  text-align: center;
+}
+
+.status button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  object-fit:cover;
+}
+
+.status img {
+  border-radius: 50%;
+  margin: auto;
+  transition: all 0.3s ease;
+}
+
+.status label {
+  display: block;
+  margin-top: 1rem;
+}
+
+.status button:focus img {
+  filter: brightness(70%);
+}
+
+.OrderDetails{
+  position:relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}    
+
+.OrderId{
+  position: relative;
+  left: 4vh;
+}
+.order-status{
+  position: relative;
+}
+.orderAcceptedIcon{
+color: grey;
+background-color: gray;
+}
+
+.confirmation-popup {
+  position: fixed;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  z-index: 9999;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.confirmation-popup p {
+  margin-bottom: 10px;
+}
+
+.confirmation-popup button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.confirmation-popup button:last-child {
+  margin-right: 0;
+  background-color: #dc3545; /* Red color for cancel button */
+}
+.confirmation-popup button:hover {
+  opacity: 0.8;
+}
+
+.main-display-page{
+  position: relative;
+  left: 2rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}

@@ -3,6 +3,9 @@ import { useParams, useLocation } from "react-router-dom";
 import HotelContext from "../../store/HotelsContext";
 import "./HotelsPageLayout.css";
 import HotelsPageMapping from "./HotelsPageMapping";
+export async function getUpdatedHotels(type ){
+
+}
 function HotelsPageLayout() {
   const Params = useParams();
   const location = useLocation();
@@ -23,7 +26,7 @@ function HotelsPageLayout() {
   const [LocationName, SetLocationName] = useState("");
   if (LocationName !== locationName) SetLocationName(locationName);
   useEffect(() => {
-    async function getHotels() {
+      async function getHotels() {
       let url = `http://localhost:4000/gethotels/${Params.locationid}`;
       if (Dishs)
         url = `http://localhost:4000/gethotels/${Params.locationid}?Dish=${Dish}`;
@@ -58,6 +61,7 @@ function HotelsPageLayout() {
             }
           );
           const Js = await datas.json();
+          console.log(Js)
           hotelCtx.AddHotels({
             AllHotels: Js.AllData,
             MenuList: Js.MenuItem,
@@ -69,7 +73,7 @@ function HotelsPageLayout() {
     if( Params.locationid)
     {getHotels();
     }
-  }, [paramsLocation, Dishs, Categorys]);
+  }, [paramsLocation,Dishs,Categorys]);
   return (
     <>
       <div className="Hotel-City-Location">

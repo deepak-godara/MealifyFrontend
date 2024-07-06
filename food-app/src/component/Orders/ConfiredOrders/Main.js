@@ -26,9 +26,9 @@ function ConfirmedOrders(props) {
         <div className="Ord-Hotel-Name">{Order.HotelName}</div>
         <div>{Order.HotelAddress}</div>
       </div>
-      <div className="Ord-Status">{Order.OrderStatus}</div>
-      <OrderItemDetails item={Order.Items} />
-      <OrderTotal
+      <div className="Ord-Status">{Order.Status}</div>
+      <OrderItemDetails item={Order.OrderItems} />
+      <OrderTotal 
       ItemTotal={Order.ItemTotal}
         tax={Order.GST}
         delivery={Order.Delivery}

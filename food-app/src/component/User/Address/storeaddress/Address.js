@@ -1,19 +1,53 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useContext } from "react";
+import { useEffect } from "react";
+// import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
 import "./Address.css";
-import ClientContext from "../../../../store/AuthClient";
 import { GoPlusCircle } from "react-icons/go";
+import ClientContext from "../../../../store/AuthClient";
+import User from "../../UserProfile/main";
 import MapContainer from "../main";
 import { AiFillCaretRight } from "react-icons/ai";
+import AddressEditForm from "./addresseditform";
+import {
+  AddressList,
+  DeleteAddress,
+} from "../../../../reduxtool/reduxActions/AddressActions";
 const Address = () => {
+  const ClientCtx = useContext(ClientContext);
+  const Cid = ClientCtx.ClientId;
+  console.log(` Address  user id  : ${ClientCtx.ClientId}`);
   const [AddAddressDiv, SetAddressDiv] = useState(false);
+  // const [addressData , setAddressData] = useState({})
   const SetAddressVisibility = () => {
     console.log("bfd");
     SetAddressDiv(false);
   };
-  const clients = useContext(ClientContext);
-  console.log(clients)
+  const dispatch = useDispatch();
+  const Addressdata = useSelector((state) => state.Addressdata);
+  const { error, loading, address } = Addressdata;
+  // console.log(`address id is : ${ClientCtx.Address._id}`)
+  useEffect(() => {
+    dispatch(AddressList({ Cid }));
+  }, [dispatch]);
+  console.log(`address.js redux address  is : ${address}`);
+  // const AddressHandler =({x}) => {
+  //     setAddressData();
+  //     AddressDeleteHandler({
+  //       Cid: ClientCtx.ClientId,
+  //       addressData: addressData,
+  //     });
+  // }
+  const AddressDeleteHandler = async ({ Cid, addressData , Type}) => {
+    console.log(`address   id  deletion : ${addressData}`);
+
+    dispatch(DeleteAddress({ Cid, addressData ,Type }));
+    console.log("address Deleted  front end side  ");
+  };
+
   return (
     <>
+      {" "}
       <div className="address-main">
         <h2>My address</h2>
         <div></div>
@@ -31,15 +65,27 @@ const Address = () => {
               <div>Add address</div>
             </div>
           </button>
-          {clients.Address.map((item, index) => (
-            <div className="Address-box" key={index}>
-              <div className="Address-Place">{item.Type}</div>
-              <div className="full-Address">{item.AddressLine1} {item.AddressLine2}</div>
+
+          {address.map((x) => (
+            <div className="Address-box" key={x._id}>
+              <div className="Address-Place">{x.Type}</div>
+              <div className="full-Address">{x.Address}</div>
               <div className="Edit-Delete">
                 <button className="edit-div">
                   Edit <AiFillCaretRight />
                 </button>
-                <button className="edit">Delete </button>
+                <button
+                  className="edit"
+                  onClick={() =>
+                    AddressDeleteHandler({
+                      Cid: ClientCtx.ClientId,
+                      addressData: x.Address,
+                      Type : x.Type
+                    })
+                  }
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))}
