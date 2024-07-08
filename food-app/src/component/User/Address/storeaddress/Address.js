@@ -26,22 +26,14 @@ const Address = () => {
   const dispatch = useDispatch();
   const Addressdata = useSelector((state) => state.Addressdata);
   const { error, loading, address } = Addressdata;
-  // console.log(`address id is : ${ClientCtx.Address._id}`)
   useEffect(() => {
     dispatch(AddressList({ Cid }));
   }, [dispatch]);
   console.log(`address.js redux address  is : ${address}`);
-  // const AddressHandler =({x}) => {
-  //     setAddressData();
-  //     AddressDeleteHandler({
-  //       Cid: ClientCtx.ClientId,
-  //       addressData: addressData,
-  //     });
-  // }
-  const AddressDeleteHandler = async ({ Cid, addressData , Type}) => {
-    console.log(`address   id  deletion : ${addressData}`);
+  const AddressDeleteHandler = async ({ Cid, Aid}) => {
+    console.log(`address   id  deletion : ${Aid}`);
 
-    dispatch(DeleteAddress({ Cid, addressData ,Type }));
+    dispatch(DeleteAddress({ Cid, Aid }));
     console.log("address Deleted  front end side  ");
   };
 
@@ -79,8 +71,7 @@ const Address = () => {
                   onClick={() =>
                     AddressDeleteHandler({
                       Cid: ClientCtx.ClientId,
-                      addressData: x.Address,
-                      Type : x.Type
+                      Aid: x.Aid,
                     })
                   }
                 >
