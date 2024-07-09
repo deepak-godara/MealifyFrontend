@@ -21,6 +21,7 @@ function Cart() {
   const CartSubmit = (event) => {
     console.log("socket  fom cart is : ",SocketCtx);
     event.preventDefault();
+    console.log(SocketCtx);
     if(SocketCtx)
   {  
     console.log(Cart);
