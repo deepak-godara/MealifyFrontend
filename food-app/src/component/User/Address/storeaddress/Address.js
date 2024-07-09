@@ -1,6 +1,4 @@
-import React, { useState, useContext } from "react";
-import { useEffect } from "react";
-// import { useParams } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./Address.css";
 import { GoPlusCircle } from "react-icons/go";
@@ -13,44 +11,39 @@ import {
   AddressList,
   DeleteAddress,
 } from "../../../../reduxtool/reduxActions/AddressActions";
+
 const Address = () => {
   const ClientCtx = useContext(ClientContext);
   const Cid = ClientCtx.ClientId;
-  console.log(` Address  user id  : ${ClientCtx.ClientId}`);
+  const [listOfAddress, setListOfAddress] = useState(ClientCtx.Address || []);
+  console.log(`Address user id: ${Cid}`);
   const [AddAddressDiv, SetAddressDiv] = useState(false);
-  // const [addressData , setAddressData] = useState({})
+
   const SetAddressVisibility = () => {
-    console.log("bfd");
+    console.log("SetAddressVisibility called");
     SetAddressDiv(false);
   };
+
   const dispatch = useDispatch();
   const Addressdata = useSelector((state) => state.Addressdata);
   const { error, loading, address } = Addressdata;
-  // console.log(`address id is : ${ClientCtx.Address._id}`)
-  useEffect(() => {
-    dispatch(AddressList({ Cid }));
-  }, [dispatch]);
-  console.log(`address.js redux address  is : ${address}`);
-  // const AddressHandler =({x}) => {
-  //     setAddressData();
-  //     AddressDeleteHandler({
-  //       Cid: ClientCtx.ClientId,
-  //       addressData: addressData,
-  //     });
-  // }
-  const AddressDeleteHandler = async ({ Cid, addressData , Type}) => {
-    console.log(`address   id  deletion : ${addressData}`);
 
-    dispatch(DeleteAddress({ Cid, addressData ,Type }));
-    console.log("address Deleted  front end side  ");
+  useEffect(() => {
+    console.log("useEffect block: address.js");
+    setListOfAddress(ClientCtx.Address);
+  }, [ClientCtx.Address]);
+
+  const AddressDeleteHandler = async ({ Cid, Aid }) => {
+    console.log(`address id deletion: ${Aid}`);
+    dispatch(DeleteAddress({ Cid, Aid }));
+    console.log("address deleted front end side");
+    setListOfAddress(ClientCtx.Address.filter((address) => address.Aid !== Aid));
   };
 
   return (
     <>
-      {" "}
       <div className="address-main">
         <h2>My address</h2>
-        <div></div>
         <div className="address-container">
           <button
             className="Address-box"
@@ -66,7 +59,7 @@ const Address = () => {
             </div>
           </button>
 
-          {address.map((x) => (
+          {listOfAddress && listOfAddress.map((x) => (
             <div className="Address-box" key={x._id}>
               <div className="Address-Place">{x.Type}</div>
               <div className="full-Address">{x.Address}</div>
@@ -79,8 +72,7 @@ const Address = () => {
                   onClick={() =>
                     AddressDeleteHandler({
                       Cid: ClientCtx.ClientId,
-                      addressData: x.Address,
-                      Type : x.Type
+                      Aid: x.Aid,
                     })
                   }
                 >

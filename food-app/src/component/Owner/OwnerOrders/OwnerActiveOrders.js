@@ -10,7 +10,6 @@ import { useSocket } from '../../../store/SocketContext';
 
 const OwnerActiveOrders = ({item , socket}) => {
   if (socket) console.log("ownerConformation socket is: ", socket.id);
-
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [confirmationType, setConfirmationType] = useState('');
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
@@ -43,8 +42,8 @@ const OwnerActiveOrders = ({item , socket}) => {
 
   })
  }
-  const  Status = useSelector(state => state.StatusUpdate);
-  const {order} = Status
+  // const  Status = useSelector(state => state.StatusUpdate);
+  // const {order} = Status
   const confirmStatusChange = () => {
     setShowConfirmation(false);
     switch (confirmationType) {
@@ -57,8 +56,8 @@ const OwnerActiveOrders = ({item , socket}) => {
       default:
           break;
     }
-    dispatch(saveOrderStatus({ orderId : id, status: status}));
-    if(socket) socket.emit('statusUpdateMessage' , { status:status, ownerId : ownerId , userId : userId,  orderId:id });
+    // dispatch(saveOrderStatus({ orderId : id, status: status}));
+    if(socket) socket.emit('statusUpdateMessage' , { status:status, ownerId : ownerId , userId : userId,  orderId:item._id });
   };
   
   return (
