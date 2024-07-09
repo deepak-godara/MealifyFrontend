@@ -1,11 +1,12 @@
 import axios from "axios";
 import { ADDRESS_DELETE, ADDRESS_FAIL,ADDRESS_REQUEST,ADDRESS_SUCCESS } from "../constants/addressConstants";
 export const AddressList = ({Cid}) => async(dispatch) =>{
+  console.log("cid from address action side is : " , Cid);
   try{
     dispatch({type : ADDRESS_REQUEST});
     const data = await axios.get(`http://localhost:4000/${Cid}/address`)
     console.log(data);
-    console.log(`address id  from action side is : ${data[1]._id}`);
+    console.log(`address id  from action side is : ${data[1].Aid}`);
     dispatch({type : ADDRESS_SUCCESS , payload : data})
   }catch(error){
         dispatch({type:ADDRESS_FAIL , payload:error});

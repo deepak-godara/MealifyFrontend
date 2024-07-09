@@ -7,7 +7,6 @@ import {useDispatch , useSelector}  from 'react-redux'
 import { GetActiveOrders } from '../../../reduxtool/reduxActions/OrdersActions';
 import { useSocket } from '../../../store/SocketContext';
 function Orders() {
-
   const socket = useSocket();
  if(socket)console.log("socekt id from order    mai.js i is :" , socket.id)
   if(socket){
@@ -16,12 +15,12 @@ function Orders() {
       // Id=orderId
     })
   }
+  
     const dispatch = useDispatch();
     const activeOrderdata = useSelector((state) => state.ActiveOrderdata);
     const { loading, error, Order } = activeOrderdata;
     console.log("Active order from  main order page is : " , Order);
 
-  
     useEffect(() => {
         dispatch(GetActiveOrders());
     }, [dispatch]);
@@ -32,7 +31,7 @@ function Orders() {
 
     <div><h3>Active Orders</h3></div>
       <div className='ActiveOrderClass'> 
-      {Order.map((item , index) => (
+      {Order && Order.map((item , index) => (
         //  socket={socket}
         <Activeorder key={index} item = {item}  socket= {socket}  />
       ))}
@@ -40,13 +39,15 @@ function Orders() {
     {/* <div className='ActiveOrderClass'> <Activeorder/></div> */}
     <div className='PastOrders'><h3>Past Orders</h3></div>
     <div className='Order-Main-Containers'>
-        {OrderData.map((item)=><UserOrder OrderData={item} />)}
+        {OrderData && OrderData.map((item)=><UserOrder OrderData={item} />)}
     </div>
 
     </div>
     </>
-
   )
 }
+
+
+
 
 export default Orders;
