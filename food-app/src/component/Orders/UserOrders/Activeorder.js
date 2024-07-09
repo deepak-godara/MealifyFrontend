@@ -43,7 +43,7 @@ const Activeorder = ({ item , socket }) => {
     socket.on("changeStatusUserside", ({ status, ownerid, userId, orderId }) => {
       console.log("confirmmessage and  order id is : ", status, orderId);
       if (item._id === orderId) {
-        switch (status) {
+        switch (status) {    
           case 'preparing':
             setPreparing('orderAccepted');
             break;

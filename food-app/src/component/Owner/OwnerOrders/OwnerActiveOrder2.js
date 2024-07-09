@@ -21,13 +21,13 @@ const OwnerActiveOrder2 = () => {
     dispatch(GetActiveOrders());
   }, [dispatch , socket]);
 
-  useEffect(()=>{
-    if(socket){
-      socket.on("DeliveryConfirmed" , ({orderId , status}) =>{
-        dispatch(GetActiveOrders());
-      })
-    }
-  } , [dispatch , Order , socket])
+  // useEffect(()=>{
+  //   if(socket){
+  //     socket.on("DeliveryConfirmed" , ({orderId , status}) =>{
+  //       dispatch(GetActiveOrders());
+  //     })
+  //   }
+  // } , [dispatch , Order , socket])
 
   return (
     <>
