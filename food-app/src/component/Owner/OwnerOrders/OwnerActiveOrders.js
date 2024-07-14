@@ -39,7 +39,7 @@ const OwnerActiveOrders = ({item , socket}) => {
  if(socket){
   socket.on("DeliveryConfirmed" , ({orderId, status}) =>{
     if(orderId === item._id) setDelivered(status);
-
+    saveOrderStatus({orderId:orderId , status:status});
   })
  }
   // const  Status = useSelector(state => state.StatusUpdate);

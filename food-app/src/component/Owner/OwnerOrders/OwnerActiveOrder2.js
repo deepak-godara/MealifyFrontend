@@ -19,16 +19,18 @@ const OwnerActiveOrder2 = () => {
 
   useEffect(() => {
     dispatch(GetActiveOrders());
-  }, [dispatch , socket]);
+  }, [dispatch , socket , Order]);
+
+
 
   // useEffect(()=>{
   //   if(socket){
   //     socket.on("DeliveryConfirmed" , ({orderId , status}) =>{
-  //       dispatch(GetActiveOrders());
+  //       dispatch(set());
   //     })
   //   }
   // } , [dispatch , Order , socket])
-
+  
   return (
     <>
       <div className='main-display-page'>

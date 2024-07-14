@@ -37,8 +37,11 @@ const Activeorder = ({ item , socket }) => {
         break;
     }
     dispatch(saveOrderStatus({ orderId : item._id, status: confirmationType}));
+    console.log("confirmdelivery from user side is : " , item.OwnerId)
     socket.emit("deliveryConfirmationByiUser" , {orderId:item._id , ownerId : item.OwnerId , useId:item.UserId , status:confirmationType})
   };
+
+
   if (socket) {
     socket.on("changeStatusUserside", ({ status, ownerid, userId, orderId }) => {
       console.log("confirmmessage and  order id is : ", status, orderId);
@@ -56,6 +59,7 @@ const Activeorder = ({ item , socket }) => {
       }
     });
   }
+
 
   return (
     <>

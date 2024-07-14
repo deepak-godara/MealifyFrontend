@@ -20,10 +20,11 @@ function Orders() {
     const activeOrderdata = useSelector((state) => state.ActiveOrderdata);
     const { loading, error, Order } = activeOrderdata;
     console.log("Active order from  main order page is : " , Order);
+    console.log(" orderdata is   main order page is : " , OrderData);
 
     useEffect(() => {
         dispatch(GetActiveOrders());
-    }, [dispatch]);
+    }, [dispatch , socket]);
      
   return (
     <>
@@ -33,21 +34,25 @@ function Orders() {
       <div className='ActiveOrderClass'> 
       {Order && Order.map((item , index) => (
         //  socket={socket}
-        <Activeorder key={index} item = {item}  socket= {socket}  />
+        (item.OrderStatus === "delivered")?" ":
+        (<Activeorder key={index} item = {item}  socket= {socket}  />)
       ))}
       </div>
-    {/* <div className='ActiveOrderClass'> <Activeorder/></div> */}
-    <div className='PastOrders'><h3>Past Orders</h3></div>
-    <div className='Order-Main-Containers'>
-        {OrderData && OrderData.map((item)=><UserOrder OrderData={item} />)}
-    </div>
+ <div className='PastOrders'><h3>Past Orders</h3></div>
+        <div className='Order-Main-Containers'>
+          {Order && Order.length > 0 ? (
+            Order.map((item, index) => (
+              (item.OrderStatus === "delivered")?
+              (<UserOrder key={index} OrderData={item} />) : ""
+            ))
+          ) : (
+            <p>No past orders available</p>
+          )}
+        </div>
 
     </div>
     </>
   )
 }
-
-
-
 
 export default Orders;
