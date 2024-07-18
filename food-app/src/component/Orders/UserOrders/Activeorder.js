@@ -7,6 +7,7 @@ import outForDeliveryIcon from './OrderStatusLogos/delivered_12247400.png';
 import deliveredIcon from './OrderStatusLogos/delivered_12247400.png';
 import { saveOrderStatus } from '../../../reduxtool/reduxActions/OrdersActions';
 import { useDispatch , useSelector } from 'react-redux';
+import ConfirmedOrders from '../ConfiredOrders/Main';
 
 const Activeorder = ({ item , socket }) => {
 
@@ -18,6 +19,7 @@ const Activeorder = ({ item , socket }) => {
   const [confirmationType, setConfirmationType] = useState('');
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
+  const [orderDetails , setorderDetails]  = useState(false);
 
   const  Status = useSelector(state => state.StatusUpdate);
   const {order} = Status
@@ -31,20 +33,26 @@ const Activeorder = ({ item , socket }) => {
     setShowConfirmation(false);
     switch (confirmationType) {
       case 'delivered':
-        setDelivered('orderAccepted');
+        if(item.OrderStatus === 'outForDelivery')setDelivered('orderAccepted');
         break;
       default:
         break;
     }
-    dispatch(saveOrderStatus({ orderId : item._id, status: confirmationType}));
     console.log("confirmdelivery from user side is : " , item.OwnerId)
-    socket.emit("deliveryConfirmationByiUser" , {orderId:item._id , ownerId : item.OwnerId , useId:item.UserId , status:confirmationType})
+    if (confirmationType === "delivered" && item.OrderStatus === 'outForDelivery'){
+      socket.emit("deliveryConfirmationByUser" , {orderId:item._id , ownerId : item.OwnerId , useId:item.UserId , status:confirmationType})
+    }
+    else{
+      alert(`order  is at ${item.OrderStatus} stage`)
+    }
+    
   };
 
 
   if (socket) {
     socket.on("changeStatusUserside", ({ status, ownerid, userId, orderId }) => {
       console.log("confirmmessage and  order id is : ", status, orderId);
+      alert(`your order with order id ${orderId}  is ${status}`);
       if (item._id === orderId) {
         switch (status) {    
           case 'preparing':
@@ -60,6 +68,7 @@ const Activeorder = ({ item , socket }) => {
     });
   }
 
+   console.log(item.Status);
 
   return (
     <>
@@ -76,7 +85,7 @@ const Activeorder = ({ item , socket }) => {
           </div>
           <div>Total : {item.Total}rs.</div>
           <div>
-            <button type="button">Order Details</button>
+            <button type="button" onClick={() => setorderDetails(true)}>Order Details</button>
           </div>
         </div>
 
@@ -95,13 +104,13 @@ const Activeorder = ({ item , socket }) => {
           </div>
           <div className="status">
             <button type="button" >
-              <img src={((item.Status || []).includes('outForDelivery') || outForDelivery === 'orderAccepted') ? orderAcceptedIcon : outForDeliveryIcon}  alt="Out for Delivery Icon" />
+              <img src={((item.Status || []).includes('outForDelivery')|| outForDelivery === 'orderAccepted') ? orderAcceptedIcon : outForDeliveryIcon}  alt="Out for Delivery Icon" />
               <label>Out for Delivery</label>
             </button>
           </div>
           <div className="status">
             <button type="button" onClick={(e) => handleStatusChange('delivered' , e)}>
-              <img src={((item.Status || []).includes('delivered') || delivered === 'orderAccepted') ? orderAcceptedIcon : deliveredIcon} alt="Delivered Icon" />
+              <img src={((item.Status || []).includes('delivered')|| delivered === 'orderAccepted') ? orderAcceptedIcon : deliveredIcon} alt="Delivered Icon" />
               <label>Delivered</label>
             </button>
           </div>
@@ -113,6 +122,15 @@ const Activeorder = ({ item , socket }) => {
                 <button onClick={confirmStatusChange}>Yes</button>
                 <button onClick={() => setShowConfirmation(false)}>No</button>
               </div>
+            )}
+
+            {orderDetails && (
+              <ConfirmedOrders
+                Order={item}
+                OnClose={() => {
+                  setorderDetails(false);
+                }}
+              />
             )}
       </div>
     </>
