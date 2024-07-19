@@ -17,7 +17,7 @@ export const GetActiveOrders = () => async (dispatch) => {
 
 export const saveOrderStatus  = ({orderId, status})=> async(dispatch)=>{
     try {
-        const {data} = await axios.post('http://localhost:4000/owner/ActiveOrders/statusUpdate' , {orderId : orderId , status: status});
+        const {data} = await axios.put('http://localhost:4000/owner/ActiveOrders/statusUpdate' , {orderId : orderId , status: status});
         console.log("order status changed from backend size : ");
         dispatch({type:STATUS_UPDATE_SUCCESS  , payload: data});
         console.log("order status changed from backend size : ");

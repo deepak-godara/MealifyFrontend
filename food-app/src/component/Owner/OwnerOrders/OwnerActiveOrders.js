@@ -22,15 +22,16 @@ const OwnerActiveOrders = ({item , socket}) => {
   const [status , setStatus] = useState("");
   const dispatch = useDispatch();
 
+
   // const activeOrderdata = useSelector((state) => state.ActiveOrderdata);
   // const { loading, error, Order } = activeOrderdata;
   
+
   const handleStatusChange = (orderId, status, userId , ownerId, event) => {
     setId(orderId);
     setStatus(status)
     setUserId(userId)
     setOwnerId(ownerId)
-    // if(item && (item.Status ||[]).includes)
     setShowConfirmation(true);
     setConfirmationType(status);
     setPopupPosition({ x: event.clientX, y: event.clientY });
@@ -39,7 +40,7 @@ const OwnerActiveOrders = ({item , socket}) => {
  if(socket){
   socket.on("DeliveryConfirmed" , ({orderId, status}) =>{
     if(orderId === item._id) setDelivered(status);
-
+    // saveOrderStatus({orderId:orderId , status:status});
   })
  }
   // const  Status = useSelector(state => state.StatusUpdate);
@@ -48,16 +49,21 @@ const OwnerActiveOrders = ({item , socket}) => {
     setShowConfirmation(false);
     switch (confirmationType) {
       case 'preparing':
-        setPreparing('preparing');
+        if(item.OrderStatus === 'Accepted')setPreparing('preparing');
         break;
       case 'outForDelivery':
-        setOutForDelivery('outForDelivery');
+        if(item.OrderStatus === 'preparing')setOutForDelivery('outForDelivery');
         break;
       default:
           break;
     }
     // dispatch(saveOrderStatus({ orderId : id, status: status}));
-    if(socket) socket.emit('statusUpdateMessage' , { status:status, ownerId : ownerId , userId : userId,  orderId:item._id });
+    if((item.OrderStatus === 'Accepted' && confirmationType == 'preparing') ||  (item.OrderStatus === 'preparing' && confirmationType == 'outForDelivery') ) {
+      if(socket) socket.emit('statusUpdateMessage' , { status:status, ownerId : ownerId , userId : userId,  orderId:item._id });
+    }
+    else{
+      alert(`order  is at ${item.OrderStatus} stage`)
+    }
   };
   
   return (
