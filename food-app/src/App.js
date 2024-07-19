@@ -21,6 +21,7 @@ import ClientContext from "./store/AuthClient";
 import OwnerContext from "./store/AuthOwner";
 import OwnerMenu from "./component/Owner/OwnerHotelDetails/Main";
 import ViewHotelDetails from "./component/Owner/HotelDetails/ViewHotelDetails";
+import OwnerDeliverdOrder from "./component/Owner/OwnerOrders/OwnerDeliverdOrder";
 const Redirect = (to) => {
   const navigate = useNavigate();
   useEffect(() => {
@@ -93,6 +94,7 @@ function App() {
           <Route path="menu" element={<OwnerMenu/>}/>
           <Route path="order" element={<NewOrder />} />
           <Route path="active" element={<OwnerActiveOrder2/>} />
+          <Route path="Deliver" element={<OwnerDeliverdOrder/>} />
         </Route>
     </Routes>
     // </AuthClientProvider>
