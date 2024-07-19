@@ -7,20 +7,20 @@ import OrderItemDetails from "./OrderItemDetails";
 import "./UserOrder.css";
 import { Link } from "react-router-dom";
 function UserOrder(props) {
-  const OrderData = props.OrderData;
-  const [Order,StateOrder]=useState(null)
+  const Order = props.OrderData;
+  // const [Order,StateOrder]=useState(null)
   const [ShowDetails,SetShowDetails]=useState(false);
-  // console.log(OrderData)
-  useEffect(()=>{
-    console.log(OrderData)
-   async function GetOrderDatas(OrderId){
-    console.log(OrderId)
-      const data=await GetOrderDetails(OrderId)
-      // console.log(data.order)
-      StateOrder(data.order)
-    }
-    GetOrderDatas(OrderData)
-  },[])
+  console.log("hii fv")
+  // useEffect(()=>{
+  //   console.log(OrderData)
+  //  async function GetOrderDatas(OrderId){
+  //   console.log(OrderId)
+  //     const data=await GetOrderDetails(OrderId)
+  //     // console.log(data.order)
+  //     StateOrder(data.order)
+  //   }
+  //   GetOrderDatas(OrderData)
+  // },[])
   // const OrderItems = OrderData.Order.OrderItem;
   return (
     <>

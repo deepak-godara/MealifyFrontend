@@ -30,7 +30,6 @@ const OwnerActiveOrders = ({item , socket}) => {
     setStatus(status)
     setUserId(userId)
     setOwnerId(ownerId)
-    // if(item && (item.Status ||[]).includes)
     setShowConfirmation(true);
     setConfirmationType(status);
     setPopupPosition({ x: event.clientX, y: event.clientY });
