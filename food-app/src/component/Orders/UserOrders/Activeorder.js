@@ -20,13 +20,16 @@ const Activeorder = ({ item , socket }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
   const [orderDetails , setorderDetails]  = useState(false);
-
+  const  [confirmdelivery , setConfirmdelivery] = useState(false);
   const  Status = useSelector(state => state.StatusUpdate);
   const {order} = Status
  
   const handleStatusChange = (type , event) => {
     setConfirmationType(type);
-    setShowConfirmation(true);
+   if(type === "delivered") {
+    if(confirmdelivery)setShowConfirmation(true);
+   }
+   else setShowConfirmation(true)
     setPopupPosition({ x: event.clientX, y: event.clientY });
   };
   const confirmStatusChange = () => {
@@ -39,15 +42,26 @@ const Activeorder = ({ item , socket }) => {
         break;
     }
     console.log("confirmdelivery from user side is : " , item.OwnerId)
+
     if (confirmationType === "delivered" && item.OrderStatus === 'outForDelivery'){
       socket.emit("deliveryConfirmationByUser" , {orderId:item._id , ownerId : item.OwnerId , useId:item.UserId , status:confirmationType})
     }
     else{
       alert(`order  is at ${item.OrderStatus} stage`)
     }
-    
+  
   };
 
+  if (socket) {
+    socket.on('deliveryConfirmationRequestOwner', ({ UserId, OwnerId, OrderId }) => {
+      console.log("wreatyfykfuykuhguoiyghugjb12435678976857654jhghubkus");
+      saveOrderStatus({ OrderId: OrderId, status: "deliveryConfirmByUser" });
+      setConfirmdelivery(true);
+      alert(`Request for delivery confirmation by hotel. Please confirm if order is delivered!`);
+      console.log("Order confirmed by user:");
+    });
+  }
+  
 
   if (socket) {
     socket.on("changeStatusUserside", ({ status, ownerid, userId, orderId }) => {
@@ -70,16 +84,17 @@ const Activeorder = ({ item , socket }) => {
 
    console.log(item.Status);
 
+   
   return (
     <>
       <div className='main-div'>
-        <div className='OrderId'><h2>OrderId # {item._id}</h2></div>
+        <div className='OrderId'><h3>OrderId # {item._id} </h3> <h5>DeliveryConfirmId : #{item.DeliveryId}</h5></div>
         <div className='OrderDetails'>
           <div className='ItemNames'>
             <div><h2>Items</h2></div>
 
-            {item.Items.map((x, index) => (
-              <p key={index}>{x.Name} : {x.Total}rs.</p>
+            {item.Items.map((x, index) => ( 
+              <p key={index}>{x.Name} : {x.Total}rs.</p> 
             ))}
 
           </div>

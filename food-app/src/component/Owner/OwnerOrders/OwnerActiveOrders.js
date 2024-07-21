@@ -7,7 +7,7 @@ import deliveredIcon from './OrderStatusLogos/delivered_12247400.png';
 import { saveOrderStatus, GetActiveOrders } from '../../../reduxtool/reduxActions/OrdersActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSocket } from '../../../store/SocketContext';
-
+import { GoClock } from 'react-icons/go';
 const OwnerActiveOrders = ({item , socket}) => {
   if (socket) console.log("ownerConformation socket is: ", socket.id);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -21,6 +21,8 @@ const OwnerActiveOrders = ({item , socket}) => {
   const [id , setId] = useState("");
   const [status , setStatus] = useState("");
   const dispatch = useDispatch();
+  const [deliveryConfirmaion , setDeliveryConfirmation] = useState(false);
+
 
 
   // const activeOrderdata = useSelector((state) => state.ActiveOrderdata);
@@ -44,13 +46,34 @@ const OwnerActiveOrders = ({item , socket}) => {
     // saveOrderStatus({orderId:orderId , status:status});
   })
  }
-  // const  Status = useSelector(state => state.StatusUpdate);
-  // const {order} = Status
+
+ const onConfirm = () => {
+  if (socket) {
+    socket.emit("requestForDeliveryConformationbyOwner", {
+      UserId: item.UserId,
+      OwnerId: item.OwnerId,
+      OrderId: item._id
+    });
+  }
+  setDeliveryConfirmation(false);
+  alert("message   has been sent to  user wait for confirmation!!!")
+};
+
+const onCancel = () => {
+  setDeliveryConfirmation(false);
+};
+
+const deliveryHandler = () => {
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 2;
+  setPopupPosition({ x: centerX, y: centerY });
+  setDeliveryConfirmation(true);
+};
   const confirmStatusChange = () => {
     setShowConfirmation(false);
     switch (confirmationType) {
       case 'preparing':
-        if(item.OrderStatus === 'Accepted')setPreparing('preparing');
+        if(item.OrderStatus === 'Accpeted')setPreparing('preparing');
         break;
       case 'outForDelivery':
         if(item.OrderStatus === 'preparing')setOutForDelivery('outForDelivery');
@@ -59,7 +82,7 @@ const OwnerActiveOrders = ({item , socket}) => {
           break;
     }
     // dispatch(saveOrderStatus({ orderId : id, status: status}));
-    if((item.OrderStatus === 'Accepted' && confirmationType == 'preparing') ||  (item.OrderStatus === 'preparing' && confirmationType == 'outForDelivery') ) {
+    if((item.OrderStatus === 'Accpeted' && confirmationType === 'preparing') ||  (item.OrderStatus === 'preparing' && confirmationType === 'outForDelivery') ) {
       if(socket) socket.emit('statusUpdateMessage' , { status:status, ownerId : ownerId , userId : userId,  orderId:item._id });
     }
     else{
@@ -104,19 +127,28 @@ const OwnerActiveOrders = ({item , socket}) => {
               </div>
               <div className="status">
               {/* onClick={(e) => handleStatusChange(item._id, 'delivered', e)} */}
-                <button type="button" >
+                <button type="button" onClick={(e)=> deliveryHandler(e)} >
                   <img src={((item.Status || []).includes('delivered') || delivered === 'delivered') ? orderAcceptedIcon : deliveredIcon} alt="Delivered Icon" />
                   <label>Delivered</label>
                 </button>
               </div>
             </div>
             {showConfirmation && (
-              <div className="confirmation-popup" style={{ top: popupPosition.y, left: popupPosition.x }}>
+              <div className='boxStyle' style={{ top: popupPosition.y, left: popupPosition.x }}>
                 <p>Are you sure you want to proceed?</p>
-                <button onClick={confirmStatusChange}>Yes</button>
-                <button onClick={() => setShowConfirmation(false)}>No</button>
+                <button  className='confirmButtonStyle' onClick={confirmStatusChange}>Yes</button>
+                <button  className='cancelButtonStyle' onClick={() => setShowConfirmation(false)}>No</button>
               </div>
             )}
+            {deliveryConfirmaion && (
+             <div className='boxStyle'  style={{ top: popupPosition.y, left: popupPosition.x }}>
+             <p>Do you want to send the  delivery confirmation message to the user ? </p>
+             <button className='confirmButtonStyle' onClick={onConfirm}>Yes</button>
+             <button className='cancelButtonStyle' onClick={onCancel}>No</button>
+           </div>
+            )
+
+            }
           </div>
     </>
   );

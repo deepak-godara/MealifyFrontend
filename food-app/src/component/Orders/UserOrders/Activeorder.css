@@ -70,6 +70,9 @@ label {
 .OrderId{
     position: relative;
     left: 4vh;
+    display: flex; justify-content: space-between;
+    padding-right:10px ;
+    max-width: 90%;
 }
 .order-status{
     position: relative;
