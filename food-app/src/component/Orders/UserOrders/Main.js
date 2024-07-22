@@ -7,13 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GetActiveOrders } from '../../../reduxtool/reduxActions/OrdersActions';
 import { useSocket } from '../../../store/SocketContext';
 
-function Orders() {
+const Ordersss= () => {
   const socket = useSocket();
   const dispatch = useDispatch();
   const activeOrderdata = useSelector((state) => state.ActiveOrderdata);
   const { loading, error, Order } = activeOrderdata;
-
-  if (socket) console.log("socket id from order main.js is:", socket.id);
 
   useEffect(() => {
     dispatch(GetActiveOrders());
@@ -55,4 +53,4 @@ function Orders() {
   );
 }
 
-export default Orders;
+export default Ordersss;

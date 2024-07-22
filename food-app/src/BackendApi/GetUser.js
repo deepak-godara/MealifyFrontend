@@ -17,6 +17,7 @@ export const GetUser = async (ClientId) => {
       Gender: js.Data.Gender,
       ForeGroundImage: js.Data.ForeGroundImage,
       BackGroundImage: js.Data.BackGroundImage,
+      CurrentActiveAddress:js.Data.CurrentActiveAddress
     };
     return { status: "success", User: UserData };
   } else {

@@ -1,13 +1,14 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import io from "socket.io-client";
+// import { useLocation } from "react-router-dom";
 import "./App.css";
 import OwnerActiveOrder2 from "./component/Owner/OwnerOrders/OwnerActiveOrder2"
 import Address from "./component/User/Address/storeaddress/Address";
 import CommonLayout from "./component/Layouts/CommonLayout";
 import ClientLayout from "./component/Layouts/ClientLayout";
 import AddNewHotel from "./component/Owner/AddNewHotel/Main";
-import Orders from "./component/Orders/UserOrders/Main";
+import Ordersss from "./component/Orders/UserOrders/Main";
 import OwnerLayout from "./component/Layouts/OwnerLayout";
 import ConfirmedOrders from "./component/Orders/ConfiredOrders/Main";
 import Cart from "./component/Orders/CommonOrders/Cart";
@@ -24,6 +25,7 @@ import ViewHotelDetails from "./component/Owner/HotelDetails/ViewHotelDetails";
 import OwnerDeliverdOrder from "./component/Owner/OwnerOrders/OwnerDeliverdOrder";
 const Redirect = (to) => {
   const navigate = useNavigate();
+  
   useEffect(() => {
     navigate(to.to, { replace: true });
   }, [navigate, to]);
@@ -35,6 +37,7 @@ function App() {
   const socket = io.connect("http://localhost:4000");
   const OwnerCtx = useContext(OwnerContext);
   const location = useLocation();
+  console.log(OwnerCtx);
   const [user, SetUser] = useState("None");
   // useEffect(() => {
   //   const users = JSON.parse(localStorage.getItem("login-data"));
@@ -56,7 +59,7 @@ function App() {
           <Route path="address" element={<Address />} />
           <Route path="cart" element={<Cart />} />
           <Route path="orders">
-            <Route index element={<Orders />} />
+            <Route index element={<Ordersss />} />
             <Route path=":orderid" element={<ConfirmedOrders />} />
           </Route>
         </Route>
@@ -65,7 +68,7 @@ function App() {
         <Route
           path="/owner"
           element={
-            OwnerCtx.OwnerHotelId !== undefined ? (
+            OwnerCtx.OwnerHotelId !== undefined ||location.pathname==="/owner/addhotel"? (
               <OwnerLayout />
             ) : (
               <Redirect to="/owner/addhotel" />

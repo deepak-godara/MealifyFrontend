@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect, useState } from "react";
 import OwnerContext from "./AuthOwner";
+import { GetOwner } from "../BackendApi/GetOwner";
 import io from "socket.io-client";
 const IntialState = {
   isAuth: false,
@@ -37,6 +38,7 @@ function AuthOwnerProvider(props) {
   };
   const removeOwner = (event) => {
     SetOwnerData({ type: "logout" });
+    localStorage.removeItem("login-data")
   };
   const addSocket = (event) => {
     SetOwnerData({ action: "socket", item: event });
@@ -58,7 +60,10 @@ function AuthOwnerProvider(props) {
       const userDatajson = localStorage.getItem("login-data");
       const userData = JSON.parse(userDatajson);
       if (userData && userData.user === "owner") {
-        addOwner(userData);
+        
+        const Data= await GetOwner(userData._id);
+        if(Data.User)
+        addOwner(Data.User);
         // addSocket(socket);
         setData(!dataset);
       } else {

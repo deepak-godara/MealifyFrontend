@@ -45,26 +45,28 @@ background-color: rgb(255, 255, 255);
 .Add-Category-div1 label{
     padding: 0.3rem;
     color:rgb(11, 11, 11);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font: bold;
+    font-weight: bolder;
 }
 .Add-Category-div1 input{
-    background-color: rgb(141, 141, 141);
-    font-size: 1rem;
-    width:14rem;
+    background-color: rgb(230, 231, 232);
+    font-size: 1.5rem;
+    width:18rem;
     max-width: 90%;
-    padding: 0.4rem;
-    border: 1px solid rgb(57, 57, 57);
+    padding: 0.5rem;
+    height:3rem;
+    border: 1px solid rgb(198, 196, 196);
     border-radius: 12px;
 }
 .Add-Category-button {
     border: 1px solid black;
-    border-radius: 60px;
-    padding: 0.3rem 0.5rem;
-    color-scheme: brown;
+    border-radius: 12px;
+    padding: 0.5rem 0.5rem;
+    /* color-scheme: brown; */
     margin-top: 1rem;
     margin-right: 15%;
-    background-color: rgb(244, 76, 43);
+    background-color: #4d5966;
 }
 .Add-Category-button button{
     border: none;

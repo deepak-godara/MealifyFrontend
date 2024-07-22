@@ -37,6 +37,11 @@
     overflow-x: scroll;
 
 }
+@media (max-width: 500px) {
+    .Client-Name {
+      display: none;
+    }
+}
 .Logout-Div{
     font-size: 1.3rem;
     font-weight: 400;

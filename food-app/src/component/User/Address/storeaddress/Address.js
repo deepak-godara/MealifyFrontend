@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./Address.css";
+import { SetDefaultAddress } from "../../../../BackendApi/Address";
 import { GoPlusCircle } from "react-icons/go";
 import ClientContext from "../../../../store/AuthClient";
 import User from "../../UserProfile/main";
@@ -31,8 +32,17 @@ const Address = () => {
   useEffect(() => {
     console.log("useEffect block: address.js");
     setListOfAddress(ClientCtx.Address);
-  }, [ClientCtx.Address]);
+  }, [ClientCtx.Address,ClientCtx.CurrentActiveAddress]);
 
+  const SetCurrentAddress=async(Aid)=>{
+    console.log(Aid +" dddd" +ClientCtx.ClientId)
+    const Data=await SetDefaultAddress(ClientCtx.ClientId,Aid)
+    if(Data.status)
+    {
+      ClientCtx.addClient(Data.Caddress);
+    }
+
+  }
   const AddressDeleteHandler = async ({ Cid, Aid }) => {
     console.log(`address id deletion: ${Aid}`);
     dispatch(DeleteAddress({ Cid, Aid }));
@@ -79,6 +89,7 @@ const Address = () => {
                   Delete
                 </button>
               </div>
+              <div className="Make_Default_Address" style={{backgroundColor:ClientCtx.CurrentActiveAddress.Aid===x.Aid?"#EF4F5F":"white"}} onClick={()=>{SetCurrentAddress(x.Aid)}}></div>
             </div>
           ))}
         </div>

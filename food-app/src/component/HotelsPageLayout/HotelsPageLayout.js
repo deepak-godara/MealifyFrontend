@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import Loader from "react-js-loader";
 import { useParams, useLocation } from "react-router-dom";
 import HotelContext from "../../store/HotelsContext";
 import "./HotelsPageLayout.css";
@@ -19,6 +20,7 @@ function HotelsPageLayout() {
   const [Dishs, SetDish] = useState("");
   const [Categorys, SetCategorys] = useState("");
   if (Dishs !== Dish) SetDish(Dish);
+  const [Loading,SetLoading]=useState(true);
   if (Category !== Categorys) SetCategorys(Category);
   if (paramsLocation !== Params.locationid)
     SetParamsLocation(Params.locationid);
@@ -27,6 +29,8 @@ function HotelsPageLayout() {
   if (LocationName !== locationName) SetLocationName(locationName);
   useEffect(() => {
       async function getHotels() {
+        SetLoading(true);
+        hotelCtx.AddHotels({location:locationName});
       let url = `http://localhost:4000/gethotels/${Params.locationid}`;
       if (Dishs)
         url = `http://localhost:4000/gethotels/${Params.locationid}?Dish=${Dish}`;
@@ -69,17 +73,30 @@ function HotelsPageLayout() {
           });
         }
       }
+      SetLoading(false);
     }
     if( Params.locationid)
     {getHotels();
     }
-  }, [paramsLocation,Dishs,Categorys]);
+  }, [paramsLocation,Params.locationid,Dishs,Categorys]);
   return (
     <>
       <div className="Hotel-City-Location">
         Best Restaurants in {hotelCtx.Location}{" "}
       </div>
+      {!Loading&&<>
       {hotelCtx.Hotels.length > 0 && <HotelsPageMapping></HotelsPageMapping>}
+      {hotelCtx.Hotels.length===0&&<div className="No-Hotels">No hotels to display</div>}</>}
+      {Loading&&<div className="Spinner-Class"><Loader
+                type="spinner-cub"
+                color="red"
+                // style={{ position:"absolute", top:"2.9rem"}}
+               
+                // top="2.9rem"
+                bgColor="red"
+                // title={"spinner-cub"}
+                size={50}
+              ></Loader></div>}
     </>
   );
 }

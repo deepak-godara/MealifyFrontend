@@ -7,7 +7,7 @@ import deliveredIcon from './OrderStatusLogos/delivered_12247400.png';
 import { saveOrderStatus, GetActiveOrders } from '../../../reduxtool/reduxActions/OrdersActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSocket } from '../../../store/SocketContext';
-
+import ConfirmedOrders from '../../Orders/ConfiredOrders/Main';
 const OwnerActiveOrders = ({item , socket}) => {
   if (socket) console.log("ownerConformation socket is: ", socket.id);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -21,8 +21,12 @@ const OwnerActiveOrders = ({item , socket}) => {
   const [id , setId] = useState("");
   const [status , setStatus] = useState("");
   const dispatch = useDispatch();
-
-
+const [details,ShowDetails]=useState(false);
+const ViewDetails=()=>{
+  window.scrollTo(0,0)
+  ShowDetails(!details);
+ 
+}
   // const activeOrderdata = useSelector((state) => state.ActiveOrderdata);
   // const { loading, error, Order } = activeOrderdata;
   
@@ -58,7 +62,8 @@ const OwnerActiveOrders = ({item , socket}) => {
           break;
     }
     // dispatch(saveOrderStatus({ orderId : id, status: status}));
-    if((item.OrderStatus === 'Accepted' && confirmationType == 'preparing') ||  (item.OrderStatus === 'preparing' && confirmationType == 'outForDelivery') ) {
+    console.log(item.OrderStatus + confirmationType)
+    if((item.OrderStatus === 'Accepted' && confirmationType === 'preparing') ||  (item.OrderStatus === 'preparing' && confirmationType === 'outForDelivery') ) {
       if(socket) socket.emit('statusUpdateMessage' , { status:status, ownerId : ownerId , userId : userId,  orderId:item._id });
     }
     else{
@@ -79,7 +84,7 @@ const OwnerActiveOrders = ({item , socket}) => {
               </div>
               <div> Total : {item && item.Total}.rs </div>
               <div>
-                <button type="button">Order Details</button>
+                <button type="button" onClick={ViewDetails}>Order Details</button>
               </div>
             </div>
             <div className="order-status">
@@ -116,6 +121,7 @@ const OwnerActiveOrders = ({item , socket}) => {
                 <button onClick={() => setShowConfirmation(false)}>No</button>
               </div>
             )}
+            {details&&<ConfirmedOrders Order={item} OnClose={ViewDetails}/>}
           </div>
     </>
   );

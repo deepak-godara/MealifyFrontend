@@ -1,9 +1,20 @@
-import React from "react";
+import React,{useContext} from "react";
 import { FaStar } from "react-icons/fa";
+import {getDistance} from "geolib"
+import ClientContext from "../../store/AuthClient";
 import { useNavigate } from "react-router-dom";
 import "./HotelInfoDisplay.css";
 function HotelInfoDisplay(props) {
   const Navigate = useNavigate();
+  console.log(props)
+  const ClientCtx=useContext(ClientContext);
+  console.log(ClientCtx.CurrentActiveAddress.latitude)
+  const Distance=getDistance(
+    { latitude:ClientCtx.CurrentActiveAddress.latitude.$numberDecimal,longitude:ClientCtx.CurrentActiveAddress.longitude.$numberDecimal},{
+      latitude:props.info.Coordinates.Latitude,longitude:props.info.Coordinates.Longitude}
+
+  )
+  console.log(Distance)
   const HotelSubmition = (req, res, next) => {
     Navigate(`${props.info._id}`);
   };

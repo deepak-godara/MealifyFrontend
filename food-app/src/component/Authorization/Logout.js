@@ -8,9 +8,9 @@ function Logout(props) {
 const ClientCtx=useContext(ClientContext);
 const OwnerCtx=useContext(OwnerContext);
     const getLoggedOut=()=>{
-     localStorage.removeItem(props.data);
+     localStorage.removeItem("login-data");
 
-     if(props.data==='login-data')
+     if(ClientCtx.isAuthClient)
 ClientCtx.RemoveClient();
 else{
  OwnerCtx.removeOwner();
