@@ -34,7 +34,7 @@ const Profileheader = () => {
                             <p>0</p>
                             <p>Reviews</p>
                         </div>
-                        <div class="data">
+                        <div class="data">      
                             <p>0</p>
                             <p>Photos</p>
                         </div>

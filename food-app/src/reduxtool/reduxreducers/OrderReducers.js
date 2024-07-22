@@ -13,12 +13,13 @@ export const ActiveOrderReducer = (state = { Order: [] }, action) => {
     }
 };
 
-export const statusUpdateReducer = (state = {order:[]} , action) =>{
-    switch(action.type){
-        case STATUS_UPDATE_SUCCESS:
-            return {...state , order: action.payload}
+export const statusUpdateReducer = (state = {order:{}}, action) => {
+    switch (action.type) {
+        case 'STATUS_UPDATE_SUCCESS':
+            return { ...state, order: action.payload };
+        case 'STATUS_UPDATE_FAIL':
+            return { ...state, error: action.payload };
         default:
-            return state
-
-    } 
-}
+            return state;
+    }
+};
