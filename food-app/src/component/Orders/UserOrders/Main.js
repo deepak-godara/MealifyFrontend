@@ -27,25 +27,11 @@ function Orders() {
 
   useEffect(() => {
     dispatch(GetActiveOrders());
-
     if (socket) {
       socket.on("DeliveryConfirmed", ({ status, orderId, HotelName }) => {
-          setStatusDisplay(true);
-          setId(orderId);
-          setStatus(status);
-          setName(HotelName);
           dispatch(GetActiveOrders());
       });
     }
-  //   if (socket) {
-  //     socket.on("changeStatusUserside", ({ status, ownerid, userId, orderId , Name }) => {
-  //         setStatusDisplay(true);
-  //         setId(orderId);
-  //         setStatus(status);
-  //         setName(Name);
-  //         dispatch(GetActiveOrders());
-  //     });
-  //   }
   }, [dispatch, socket]);
 
   return (

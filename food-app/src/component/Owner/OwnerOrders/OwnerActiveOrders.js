@@ -6,12 +6,9 @@ import outForDeliveryIcon from './OrderStatusLogos/delivered_12247400.png';
 import deliveredIcon from './OrderStatusLogos/delivered_12247400.png';
 import { saveOrderStatus, GetActiveOrders } from '../../../reduxtool/reduxActions/OrdersActions';
 import { useDispatch, useSelector } from 'react-redux';
-import { useSocket } from '../../../store/SocketContext';
 import ConfirmedOrders from '../../Orders/ConfiredOrders/Main';
 
 const OwnerActiveOrders = ({ item, socket }) => {
-  if (socket) console.log("ownerConformation socket is: ", socket.id);
-
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [confirmationType, setConfirmationType] = useState('');
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
@@ -39,7 +36,9 @@ const OwnerActiveOrders = ({ item, socket }) => {
   useEffect(() => {
     if (socket) {
       socket.on("DeliveryConfirmed", ({ orderId, status, Name }) => {
-        if (orderId === item._id) setDelivered(status);
+        if (orderId === item._id) {
+          setDelivered(status);
+        }
       });
     }
   }, [socket, item._id]);
@@ -71,10 +70,14 @@ const OwnerActiveOrders = ({ item, socket }) => {
 
     switch (confirmationType) {
       case 'preparing':
-        if (item.OrderStatus === 'Accepted') setPreparing('preparing');
+        if (item.OrderStatus === 'Accepted') {
+          setPreparing('preparing');
+        }
         break;
       case 'outForDelivery':
-        if (item.OrderStatus === 'preparing') setOutForDelivery('outForDelivery');
+        if (item.OrderStatus === 'preparing') {
+          setOutForDelivery('outForDelivery');
+        }
         break;
       default:
         break;
@@ -88,16 +91,16 @@ const OwnerActiveOrders = ({ item, socket }) => {
           userId: userId,
           orderId: item._id
         });
-        dispatch(saveOrderStatus({ orderId: id, status: status }));
       }
+      dispatch(saveOrderStatus({ orderId: id, status: status }));
     } else {
       alert(`Order is at ${item.OrderStatus} stage`);
     }
   };
 
   useEffect(() => {
-    console.log(preparing);
-    console.log(outForDelivery);
+    console.log('Preparing:', preparing);
+    console.log('Out for Delivery:', outForDelivery);
   }, [delivered, preparing, outForDelivery, confirmationType]);
 
   return (

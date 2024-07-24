@@ -11,6 +11,7 @@ import ConfirmedOrders from '../ConfiredOrders/Main';
 import StatusDisplay from './statusDisplay';
 const Activeorder = ({ item, socket }) => {
 
+
   const dispatch = useDispatch();
   const [preparing, setPreparing] = useState('preparing');
   const [outForDelivery, setOutForDelivery] = useState('outForDelivery');
@@ -154,7 +155,7 @@ const Activeorder = ({ item, socket }) => {
             }}
           />
         )}
-        { statusDisplay&& (<StatusDisplay Status = {StatusForDisplay} OrderId = {item._id} Name={Name}/>)}
+        { statusDisplay&& (<StatusDisplay Status = {StatusForDisplay} OrderId = {item._id} Name={Name} OnClose = { ()=> setStatusDisplay(false)}/>)}
       </div>
     </>
   );
