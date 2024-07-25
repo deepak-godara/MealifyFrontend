@@ -31,6 +31,7 @@ const MapContainer = (props) => {
               LocName={LocationName}
               func={SetLocationAdd}
               Coordinates={Coordinates}
+              CloseFunc={ChangeFormVisibility}
             />
           </div>
         </div>

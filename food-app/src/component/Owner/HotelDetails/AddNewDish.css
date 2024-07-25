@@ -49,31 +49,35 @@ background-color: rgb(255, 255, 255);
     font: bold;
 }
 .Add-Dish-div1 input{
-    background-color: rgb(141, 141, 141);
+    background-color:  rgb(230, 231, 232);
     font-size: 1rem;
     width:14rem;
+    height:3rem;
     max-width: 90%;
     padding: 0.4rem;
-    border: 1px solid rgb(57, 57, 57);
+    border: 1px solid rgb(198, 196, 196);
     border-radius: 12px;
 }
 .Add-Dish-div1 select{
-    background-color: rgb(141, 141, 141);
+    background-color:  rgb(230, 231, 232);
     font-size: 1rem;
     width:14rem;
+    height:3rem;
     max-width: 95%;
     padding: 0.4rem;
-    border: 1px solid rgb(57, 57, 57);
+    border: 1px solid rgb(198, 196, 196);
     border-radius: 12px;
 }
 .Add-Dish-button {
     border: 1px solid black;
-    border-radius: 60px;
-    padding: 0.3rem 0.5rem;
-    color-scheme: brown;
+    border-radius: 12px;
+    padding: 0.5rem 0.5rem;
+    width:30%;
+    text-align: center;
+    /* color-scheme: brown; */
     margin-top: 1rem;
-    margin-right: 15%;
-    background-color: rgb(244, 66, 43);
+    margin-right: 10%;
+    background-color: #4d5966;
 }
 .Add-Dish-button button{
     border: none;

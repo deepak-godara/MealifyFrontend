@@ -1,126 +1,86 @@
 export const OrderData = [
   {
-    HotelData: {
-      Image: "/df",
-      Name: "S Jail",
-      Address: "Hosayellapur, Dharwad",
-      Status: "Open",
-    },
-    Order: {
-      OrderId: 1234,
-      Status: "Delieverd",
-      OrderItem: [
-        {
-          Name: "Kadhai Paneer",
-          Quantity: "2",
-          Price: "150",
-          type: "Veg",
-        },
-        {
-          Name: "Kadhai Paneer",
-          Quantity: "2",
-          Price: "150",
-          type: "Veg",
-        },
-        {
-          Name: "Kadhai Paneer",
-          Quantity: "2",
-          Price: "150",
-          type: "Veg",
-        },
-      ],
-      Date: "8 Oct 2023 at 12pm",
-      Amount: 900,
-    },
+    HotelName: "President hotel",
+    HotelAddress: "Hosayellapur, Dharwad",
+    OrderStatus: "Deliverd",
+    OrderId: 1234,
+    Items: [
+      {
+        Name: "Kadhai Paneer",
+        Quantity: "2",
+        Price: "150",
+        FoodType: "Veg",
+      },
+      {
+        Name: "Kadhai Paneer",
+        Quantity: "2",
+        Price: "150",
+        FoodType: "Veg",
+      },
+      {
+        Name: "Kadhai Paneer",
+        Quantity: "2",
+        Price: "150",
+        FoodType: "Veg",
+      },
+    ],
+
+    ItemTotal: 90,
+    GST: 2.7,
+    Delivery: 30,
+  
+    Date: "8 Oct 2023 at 12pm",
+    Total: 900,
+    OrderDetails:{
+Date:
+"Mon Jul 15 2024 19:31:31 GMT+0530 (India Standard Time)",
+Payment:
+"Cash On Delivery",
+DeliverTo:
+"Delivery Address",
+PhoneNo:
+123456778,}
   },
   {
-    HotelData: {
-      Image: "/df",
-      Name: "S Jail",
-      Address: "Hosayellapur, Dharwad",
-      Status: "Close Open at 12 AM",
-    },
-    Order: {
-      OrderId: 1234,
-      OrderStatus: "Delieverd",
-      OrderItem: [
-        {
-          Name: "Kadhai Paneer",
-          Quantity: "2",
-          Price: "150",
-          type: "veg",
-        },
-      ],
-      Date: "10-02-2023",
-      Amount: 900,
-    },
+    HotelName: "President hotel",
+    HotelAddress: "Hosayellapur, Dharwad",
+    OrderStatus: "Deliverd",
+    OrderId: 1234,
+    Items: [
+      {
+        Name: "Kadhai Paneer",
+        Quantity: "2",
+        Price: "150",
+        FoodType: "Veg",
+      },
+      {
+        Name: "Kadhai Paneer",
+        Quantity: "2",
+        Price: "150",
+        FoodType: "Veg",
+      },
+      {
+        Name: "Kadhai Paneer",
+        Quantity: "2",
+        Price: "150",
+        FoodType: "Veg",
+      },
+    ],
+
+    ItemTotal: 90,
+    GST: 2.7,
+    Delivery: 30,
+  
+    Date: "8 Oct 2023 at 12pm",
+    Total: 900,
+    OrderDetails:{
+Date:
+"Mon Jul 15 2024 19:31:31 GMT+0530 (India Standard Time)",
+Payment:
+"Cash On Delivery",
+DeliverTo:
+"Delivery Address",
+PhoneNo:
+123456778,}
   },
-  {
-    HotelData: {
-      Image: "/df",
-      Name: "S Jail",
-      Address: "Hosayellapur, Dharwad",
-      Status: "Close Open at 12 AM",
-    },
-    Order: {
-      OrderId: 1234,
-      OrderStatus: "Delieverd",
-      OrderItem: [
-        {
-          Name: "Kadhai Paneer",
-          Quantity: "2",
-          Price: "150",
-          type: "veg",
-        },
-        {
-          Name: "Kadhai Paneer",
-          Quantity: "2",
-          Price: "150",
-          type: "veg",
-        },
-        {
-          Name: "Kadhai Paneer",
-          Quantity: "2",
-          Price: "150",
-          type: "veg",
-        },
-      ],
-      Date: "10-02-2023",
-      Amount: 900,
-    },
-  },
-  {
-    HotelData: {
-      Image: "/df",
-      Name: "S Jail",
-      Address: "Hosayellapur, Dharwad",
-      Status: "Close Open at 12 AM",
-    },
-    Order: {
-      OrderId: 1234,
-      OrderStatus: "Delieverd",
-      OrderItem: [
-        {
-          Name: "Kadhai Paneer",
-          Quantity: "2",
-          Price: "150",
-          type: "veg",
-        },
-        {
-          Name: "Kadhai Paneer",
-          Quantity: "2",
-          Price: "150",
-          type: "veg",
-        },
-        {
-          Name: "Kadhai Paneer",
-          Quantity: "2",
-          Price: "150",
-          type: "veg",
-        },
-      ],
-      Date: "10-02-2023",
-      Amount: 900,
-    },
-  },
-];
+]

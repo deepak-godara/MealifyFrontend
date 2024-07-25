@@ -53,12 +53,12 @@ function FoodActionOptions(props) {
             value={itemCount}
             onChange={SetCountFunc}
           ></input>
-          <button type="submit" style={{background:"rgb(230, 235, 240)"}}>ADD</button>
+          <button type="submit" style={{backgroundColor:"#4d5966"}}>ADD</button>
         </form>
       )}
       {ownerCtx.isAuth && (
         <form className="FoodItem-Form" onSubmit={FoddDeleteFunc}>
-          <button type="submit" style={{background:"rgb(230, 235, 240)"}}>Delete</button>
+          <button type="submit" style={{backgroundColor:"#4d5966"}}>Delete</button>
         </form>
       )}
     </>

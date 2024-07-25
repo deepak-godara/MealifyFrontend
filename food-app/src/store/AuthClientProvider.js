@@ -9,7 +9,7 @@ const IntialState = {
   ClientId: 0,
   ClientDob: 0,
   Address:[],
-  CurrentAddress:null,
+  CurrentActiveAddress:null,
   Gender: null,
   Socket: null,
   Orders:[],
@@ -32,9 +32,10 @@ const AddClientReducer = (state = IntialState, action) => {
       newState.BackGroundImage = action.item.BackGroundImage;
     if(action.item.Address)
     newState.Address=action.item.Address;
-  if(action.item.Orders)
+  if(action.item.CurrentActiveAddress)
   {
-  newState.Orders=action.item.Orders}
+    newState.CurrentActiveAddress=action.item.CurrentActiveAddress;
+  }
   } else if (action === "socket") {
     newState.Socket = action.item.socket;
     return newState;
@@ -51,6 +52,7 @@ const AddClientReducer = (state = IntialState, action) => {
 function AuthClientProvider(props) {
   const [ClientData, SetClientData] = useReducer(AddClientReducer, IntialState);
   const addClient = (event) => {
+    console.log(event)
     SetClientData({ type: "login", item: event });
   };
   const RemoveClient = (event) => {
@@ -74,6 +76,7 @@ function AuthClientProvider(props) {
     Socket: ClientData.Socket,
     ForeGroundImage: ClientData.ForeGroundImage,
     BackGroundImage: ClientData.BackGroundImage,
+    CurrentActiveAddress:ClientData.CurrentActiveAddress,
     addClient: addClient,
     RemoveClient: RemoveClient,
     addSocket:addSocket
@@ -87,6 +90,7 @@ function AuthClientProvider(props) {
       const userData = JSON.parse(userDatajson);
       if (userData && userData.user === "client") {
         GetUser(userData._id).then((Data) => {
+          console.log(Data.User)
           addClient(Data.User);
           // addSocket(socket);
           setData(true);

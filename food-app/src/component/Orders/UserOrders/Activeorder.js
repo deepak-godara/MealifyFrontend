@@ -9,9 +9,8 @@ import { saveOrderStatus } from '../../../reduxtool/reduxActions/OrdersActions';
 import { useDispatch, useSelector } from 'react-redux';
 import ConfirmedOrders from '../ConfiredOrders/Main';
 import StatusDisplay from './statusDisplay';
+
 const Activeorder = ({ item, socket }) => {
-
-
   const dispatch = useDispatch();
   const [preparing, setPreparing] = useState('preparing');
   const [outForDelivery, setOutForDelivery] = useState('outForDelivery');
@@ -31,7 +30,6 @@ const Activeorder = ({ item, socket }) => {
   const handleStatusChange = (type, event) => {
     //dont remove  this function
   };
-
   const confirmStatusChange = () => {
     //dont remove this function
   };

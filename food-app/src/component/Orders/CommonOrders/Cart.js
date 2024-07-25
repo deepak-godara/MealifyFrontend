@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { RiTimerFill } from "react-icons/ri";
 import io from "socket.io-client";
+import Loader from "react-js-loader";
 import CancellationPolicy from "./CancellationPolicy";
 import OrderBillDetails from "./OrderBillDetails";
 import DataDisplay from "../../Hotels/FoodAction/DataDisplay";
@@ -13,11 +14,7 @@ function Cart() {
   const [Cart, SetCart] = useState(null);
   const ClientCtx = useContext(ClientContext);
   const SocketCtx = useSocket();
-  const [socketid, SetSocketid] = useState(SocketCtx);
-  useEffect(() => {
-    SetSocketid(SocketCtx);
-    // if(SocketCtx) SocketCtx.emit("check", {message: "cart is connected:"});
-  }, [SocketCtx]);
+  const [Loading,SetLoading]=useState(true);
   const CartSubmit = (event) => {
     console.log("socket  fom cart is : ",SocketCtx);
     event.preventDefault();
@@ -29,20 +26,19 @@ function Cart() {
   // console.log("socket  from if condition  cart is : ",SocketCtx);
   // console.log("hotel from if condition  cart is : ",Cart.HotelId);
 }
-  // if(SocketCtx){
-  //   SocketCtx.on("rejectionbyHotel" , (message)=>{
-  //        console.log(message);
-  //   })
-  // }
+  
   SetCart(null);
   };
   useEffect(() => {
     async function GetCartData() {
+      SetLoading(true);
       const Data = await GetCart(ClientCtx.ClientId);
       if (Data.status === "success") 
       {SetCart(Data.Cart);
         console.log(Data.Cart)
       }
+      setTimeout(()=>{ SetLoading(false);},200)
+     
       // console.log(ClientCtx.Socket)
       if(SocketCtx)
       SocketCtx.on("OrderConfirmationByHotel",({message,code})=>{
@@ -52,8 +48,18 @@ function Cart() {
     GetCartData();
   }, []);
   return (
-    <div>
-      {Cart !== null&&Cart.HotelId!==null && (
+    <div style={{width:"100%"}}>
+      {Loading&&<div className="Spinner-Class2"> <Loader
+                type="spinner-cub"
+                color="red"
+                // style={{ position:"absolute", top:"2.9rem"}}
+               
+                // top="2.9rem"
+                bgColor="red"
+                // title={"spinner-cub"}
+                size={50}
+              ></Loader></div>}
+      {!Loading&&Cart !== null&&Cart.HotelId!==null && (
         <div className="Order-Main-Container">
           <div className="Order-Hotel-Container">{Cart.HotelName}</div>
           <div className="Order-Time">
@@ -83,7 +89,7 @@ function Cart() {
         </div>
       )}
       {
-        (Cart==null||Cart.HotelId==null)&&<div className="Empty-Cart">
+        !Loading&&(Cart==null||Cart.HotelId==null)&&<div className="Empty-Cart">
           Your Cart is Empty
           </div>
       }

@@ -18,7 +18,7 @@ function HotelFoodDataDetail(props) {
             onClick={() => {
               SetAdddishDiv(true);
             }}
-            style={{background:"rgb(230, 235, 240)"}}
+            style={{background:"#4d5966"}}
           >
             Add Dish
           </button>

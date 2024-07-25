@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import {thunk} from "redux-thunk";
+import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import { AddressReducer } from "./reduxreducers/addressReducer";
@@ -9,7 +9,8 @@ const initialState ={};
 const reducers = combineReducers({
     Addressdata : AddressReducer,
     ActiveOrderdata:ActiveOrderReducer,
-    StatusUpdate:statusUpdateReducer
+    StatusUpdate:statusUpdateReducer,
+    // revieSave:reviewReducers
 });
 
 const middleware = [thunk];

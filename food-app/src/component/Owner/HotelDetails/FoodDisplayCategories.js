@@ -88,7 +88,7 @@ function FoodDisplayCategories(props) {
               onClick={() => {
                 SetCategory(true);
               }}
-              style={{ background: "rgb(230, 235, 240)" }}
+              style={{ background: "#4d5966" ,padding:"0.5rem" }}
             >
               Add New Category
             </button>

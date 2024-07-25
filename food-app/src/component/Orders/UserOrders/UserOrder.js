@@ -10,7 +10,7 @@ function UserOrder(props) {
   const Order = props.OrderData;
   // const [Order, StateOrder] = useState(null);
   const [ShowDetails, SetShowDetails] = useState(false);
-  console.log("order data wertyuiouyfjhv from userOrder is : " , OrderData)
+//   console.log("order data wertyuiouyfjhv from userOrder is : " , OrderData)
   // useEffect(() => {
   //   console.log("orderdata is  : "  , OrderData);
   //   async function GetOrderDatas(OrderId) {
@@ -22,7 +22,7 @@ function UserOrder(props) {
   //   GetOrderDatas(OrderData);
   // }, []);
   // const OrderItems = OrderData.Order.OrderItem;
-  console.log("item from oser order is : " , props.OrderData);
+//   console.log("item from oser order is : " , props.OrderData);
   return (
     <>
       {Order && (

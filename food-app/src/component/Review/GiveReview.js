@@ -1,19 +1,12 @@
-import React from 'react'
-import ModalPortal from '../UI/ModalPortal'
+// import React from 'react'
+// import ModalPortal from '../UI/ModalPortal'
+// import { Reviewform } from './Reviewform'
+// function GiveReview() {
+//   return (
+//     <ModalPortal>
+//           {/* <Reviewform/> */}
+//     </ModalPortal>
+//   )
+// }
 
-function GiveReview() {
-  return (
-    <ModalPortal>
-        <div>
-            <form> 
-                <label>
-
-                </label>
-                <textarea></textarea>
-            </form>
-        </div>
-    </ModalPortal>
-  )
-}
-
-export default GiveReview
+// export default GiveReview

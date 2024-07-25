@@ -3,6 +3,7 @@ import "./Main.css";
 import HotelInput from "./HotelInput";
 import AddLocation from "../../User/Address/AddLocation";
 import OwnerContext from "../../../store/AuthOwner";
+import ModalPortal from "../../UI/ModalPortal";
 import { AddHotel } from "../../../BackendApi/AddHotel";
 const intialState = {
   HotelName: undefined,
@@ -36,6 +37,9 @@ function AddNewHotel() {
   const [Image, SetImage] = useState("Add Hotel Image");
   const [isValid, SetVaild] = useState(true);
   const inputRef = useRef(null);
+  const ChnageVis=()=>{
+
+  }
   const OwnerCtx=useContext(OwnerContext)
   const SetCoordinates = (location) => {
     SetHotelData({ type: "Coordinates", val: location });
@@ -76,6 +80,7 @@ function AddNewHotel() {
     }
   };
   return (
+    <ModalPortal onClose={ChnageVis}>
     <form className="Add-Hotel-Form" onSubmit={SubmitHotelForm}>
       {!isValid && (
         <div className="Hotel-Form-Status">Please Fill All The Fields</div>
@@ -149,6 +154,7 @@ function AddNewHotel() {
         Add Hotel
       </button>
     </form>
+    </ModalPortal>
   );
 }
 

@@ -3,7 +3,7 @@ import { ACTIVE_ORDER_FAIL, ACTIVE_ORDER_REQUEST, ACTIVE_ORDER_SUCCESS } from ".
 import { STATUS_UPDATE_FAIL,STATUS_UPDATE_REQUEST,STATUS_UPDATE_SUCCESS } from "../constants/OrderConstants";
 export const GetActiveOrders = () => async (dispatch) => {
     try {
-        dispatch({ type: ACTIVE_ORDER_REQUEST });
+        dispatch({type: ACTIVE_ORDER_REQUEST });
 
         const { data } = await axios.get('http://localhost:4000/owner/ActiveOrders');
             console.log("active order from  order action side  is : " , data)
@@ -25,15 +25,8 @@ export const saveOrderStatus = ({ orderId, status }) => async (dispatch) => {
         dispatch({ type: 'STATUS_UPDATE_FAIL', payload: error.message });
     }
 };
-// export const  ConfirmdeliveryByUser  = ({orderId, status})=> async(dispatch)=>{
-//     try {
-//         const {data} = await axios.put('http://localhost:4000/owner/ActiveOrders/statusUpdate' , {orderId : orderId});
-//         console.log("order delivery confirmed by  from backend size : ");
-//         dispatch({type:STATUS_UPDATE_SUCCESS  , payload: data});
-//         console.log("order delivery confirmed by  from backend size : ");
-//     } catch (error) {
-//         console.log("error in changing status  (orderaction.js")
-//     }
-// }
+
+
+
 
 

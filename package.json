@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "react-places-autocomplete": "^7.3.0",
-    "react-slick": "^0.30.2"
-  }
-}

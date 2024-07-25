@@ -8,8 +8,10 @@ import { GetActiveOrders } from '../../../reduxtool/reduxActions/OrdersActions';
 import { useSocket } from '../../../store/SocketContext';
 import ClientContext from '../../../store/AuthClient';
 import StatusDisplay from './statusDisplay';
+import GiveReview from '../../Review/GiveReview';
+import { Reviewform } from '../../Review/Reviewform';
 
-function Orders() {
+const Ordersss= () => {
   const socket = useSocket();
   const dispatch = useDispatch();
   const activeOrderdata = useSelector((state) => state.ActiveOrderdata);
@@ -22,14 +24,14 @@ function Orders() {
   const [id, setId] = useState('');
   const [statusDisplay, setStatusDisplay] = useState(false);
   const [name, setName] = useState('');
-
-  if (socket) console.log("socket id from order main.js is:", socket.id);
+  const [DisplayReviewForm , setDisplayReviewForm] = useState(true);
 
   useEffect(() => {
     dispatch(GetActiveOrders());
     if (socket) {
       socket.on("DeliveryConfirmed", ({ status, orderId, HotelName }) => {
           dispatch(GetActiveOrders());
+          setDisplayReviewForm(true);
       });
     }
   }, [dispatch, socket]);
@@ -58,13 +60,9 @@ function Orders() {
           )}
         </div>
       </div>
-
-      {/* {Order && Order.map((item , index)=>{
-        if(item._id === id)(statusDisplay&& <StatusDisplay Status={status} OrderId={id} Name={name} onClose={() => setStatusDisplay(false)} />)
-      })} */}
-      
+      {/* {DisplayReviewForm && <Reviewform  OnClose={()=> setDisplayReviewForm(false)}/>} */}
     </>
   );
 }
 
-export default Orders;
+export default Ordersss;

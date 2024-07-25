@@ -16,6 +16,11 @@
     box-shadow: rgb(232, 232, 232) 0px -0.5px 0px inset;
     z-index: 10;
 }
+@media (max-width: 1055px) {
+  .Nav-header {
+    padding:0 2%;
+  }
+}
 .Mealify
 {
     color: black;

@@ -1,0 +1,80 @@
+.main-box {
+    /* color: green; */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    max-height: 40vh;
+  }
+  
+  .head-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0px 20px;
+  }
+  
+  .left {
+    position: relative;
+    display: inline-flex;
+    padding: 10px;
+    align-items: center;
+    /* max-width: 70%; */
+  }
+  
+  .image > img {
+    height: 8vh;
+    width: 8vh;
+    object-fit: cover;
+    border-radius: 50%;
+    /* padding: 10px 10px; */
+    margin-right: 10px;
+  }
+  
+  .name {
+    /* margin-left: 5%; */
+    font-size: 15px;
+    font-weight: bold;
+  }
+  
+  .right {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .rate {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  
+  .rating {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .rating > p {
+    margin-right: 20px;
+    font-size: 20px;
+  }
+  
+  .star {
+    font-size: 15px;
+    color: gold;
+  }
+  
+  .description_box {
+    width: 90%;
+    height: 20vh;
+    min-height: 60px;
+    border-radius: 10px;
+    overflow: auto; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px; 
+    box-sizing: border-box; 
+  }
+  

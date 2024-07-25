@@ -1,8 +1,29 @@
 .Hotel-City-Location{
     width: 80vw;
-    padding-left: 1%;
-    font-size: 1.6rem;
+    /* padding-left: 1%; */
+    font-size: 2rem;
     color: black;
+    margin-top: 1.5rem;
     font: 500;
 
+}
+.No-Hotels{
+    margin:1rem auto;
+    width:fit-content;
+    border:1px solid black;
+    background:grey;
+    padding:0.5rem;
+    border-radius:12px;
+    font-size: 2rem;
+}
+.Spinner-Class{
+    position:absolute;
+ margin:4rem auto;
+ width:80vw;
+ padding:0% 35%;
+ display:flex;
+ justify-content:center;
+ /* width:fit-content; */
+/* left: calc( 37% ); */
+/* top:0.4rem; */
 }

@@ -54,7 +54,7 @@ function OwnerHeader(props) {
                   <HeaderDropDown link={item.link} name={item.name} />
                 </div>
               ))}
-              <div onClick={props.LogOut} className="Logout-Div" >Logout</div>
+              <div onClick={OwnerCtx.removeOwner} className="Logout-Div" >Logout</div>
             </div>
           )}
         </div>
