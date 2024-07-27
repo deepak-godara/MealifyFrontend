@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+// Reviewform.js
+import React, { useEffect, useState } from 'react';
 import './reviewform.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { saveReviewAction } from '../../reduxtool/reduxActions/reviewAction';
 
-export const Reviewform = () => {
+const Reviewform = ({  OrderId , onClose }) => {
+  const dispatch = useDispatch()
   const [rating, setRating] = useState(0);
   const [description, setDescription] = useState('');
-
+const reveiw =  useSelector(state => state.ReviewSaveReduce);
   const handleRating = (newRating) => {
     setRating(newRating);
   };
@@ -14,19 +18,23 @@ export const Reviewform = () => {
   };
 
   const handleReviewLater = () => {
-    // Implement your review later logic here
-
     console.log('Review Later clicked');
+    onClose();
   };
 
   const handleSubmit = () => {
-    // Implement your submit logic here
+    dispatch(saveReviewAction({OrderId: OrderId , Rating:rating , Review:description}))
     console.log('Rating:', rating);
     console.log('Description:', description);
+    onClose();
   };
 
+  // useEffect(()=>{
+
+  // }, )
+
   return (
-    <div className='main-box'>
+    <div className='box1'>
       <div className='form'>
         <div className='rateUs'>Rate Us</div>
         <div className='star-rating'>
@@ -54,3 +62,5 @@ export const Reviewform = () => {
     </div>
   );
 };
+
+export default Reviewform;

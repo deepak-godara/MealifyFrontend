@@ -21,7 +21,7 @@ function MainPageLayout() {
   return (
     <div className="City-Locater-Div">
       {Location.map((item) => (
-        <MainPageCity items={item}></MainPageCity>
+        <MainPageCity  items={item}></MainPageCity>
       ))}
     </div>
   );

@@ -7,31 +7,35 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GetActiveOrders } from '../../../reduxtool/reduxActions/OrdersActions';
 import { useSocket } from '../../../store/SocketContext';
 import ClientContext from '../../../store/AuthClient';
-import StatusDisplay from './statusDisplay';
-import GiveReview from '../../Review/GiveReview';
-import { Reviewform } from '../../Review/Reviewform';
+// import StatusDisplay from './statusDisplay';
+
+import Modal from '../../Review/modal';
+import Reviewform from '../../Review/Reviewform';
 
 const Ordersss= () => {
   const socket = useSocket();
+  console.log("user socket is :",socket);
   const dispatch = useDispatch();
   const activeOrderdata = useSelector((state) => state.ActiveOrderdata);
   const { loading, error, Order } = activeOrderdata;
   const userctx = useContext(ClientContext);
   const clientId = userctx.ClientId;
   console.log("main.js Client id is:", clientId);
-
-  const [status, setStatus] = useState('');
+  const [showReviewForm, setShowReviewForm] = useState(true);
   const [id, setId] = useState('');
-  const [statusDisplay, setStatusDisplay] = useState(false);
-  const [name, setName] = useState('');
-  const [DisplayReviewForm , setDisplayReviewForm] = useState(true);
+
+
+  const handleClose = () => {
+    setShowReviewForm(false);
+  };
 
   useEffect(() => {
     dispatch(GetActiveOrders());
     if (socket) {
       socket.on("DeliveryConfirmed", ({ status, orderId, HotelName }) => {
           dispatch(GetActiveOrders());
-          setDisplayReviewForm(true);
+          setId(orderId);
+          setShowReviewForm(true);
       });
     }
   }, [dispatch, socket]);
@@ -59,8 +63,11 @@ const Ordersss= () => {
             <p>No past orders available</p>
           )}
         </div>
+        
+      <Modal isVisible={showReviewForm} onClose={handleClose}>
+        <Reviewform  OrderId = {id}     onClose={handleClose} />
+      </Modal>
       </div>
-      {/* {DisplayReviewForm && <Reviewform  OnClose={()=> setDisplayReviewForm(false)}/>} */}
     </>
   );
 }

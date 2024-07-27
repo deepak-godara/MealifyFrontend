@@ -23,6 +23,8 @@ import OwnerContext from "./store/AuthOwner";
 import OwnerMenu from "./component/Owner/OwnerHotelDetails/Main";
 import ViewHotelDetails from "./component/Owner/HotelDetails/ViewHotelDetails";
 import OwnerDeliverdOrder from "./component/Owner/OwnerOrders/OwnerDeliverdOrder";
+import ReviewRender from "./component/Review/ReviewRender";
+import UserReviewPage from "./component/Review/UserReviewPage";
 const Redirect = (to) => {
   const navigate = useNavigate();
   
@@ -62,6 +64,7 @@ function App() {
             <Route index element={<Ordersss />} />
             <Route path=":orderid" element={<ConfirmedOrders />} />
           </Route>
+          <Route path="review" element={<UserReviewPage/>}/>
         </Route>
       )}
       {OwnerCtx.isAuth && (
@@ -98,6 +101,7 @@ function App() {
           <Route path="order" element={<NewOrder />} />
           <Route path="active" element={<OwnerActiveOrder2/>} />
           <Route path="Deliver" element={<OwnerDeliverdOrder/>} />
+          <Route path="review" element={<ReviewRender/>} />
         </Route>
     </Routes>
     // </AuthClientProvider>
