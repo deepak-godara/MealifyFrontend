@@ -15,15 +15,18 @@ export const GetActiveOrders = () => async (dispatch) => {
 
 
 
-export const saveOrderStatus  = ({orderId, status})=> async(dispatch)=>{
+export const saveOrderStatus = ({ orderId, status }) => async (dispatch) => {
     try {
-        const {data} = await axios.put('http://localhost:4000/owner/ActiveOrders/statusUpdate' , {orderId : orderId , status: status});
-        console.log("order status changed from backend size : ");
-        dispatch({type:STATUS_UPDATE_SUCCESS  , payload: data});
-        console.log("order status changed from backend size : ");
+        const { data } = await axios.put('http://localhost:4000/owner/ActiveOrders/statusUpdate', { orderId, status });
+        console.log("Order status changed from backend side");
+        dispatch({ type: 'STATUS_UPDATE_SUCCESS', payload: data.order }); // Ensure payload contains the updated order
     } catch (error) {
-        console.log("error in changing status  (orderaction.js")
+        console.log("Error in changing status (orderAction.js)", error);
+        dispatch({ type: 'STATUS_UPDATE_FAIL', payload: error.message });
     }
-}
+};
+
+
+
 
 
