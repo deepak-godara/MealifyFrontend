@@ -4,12 +4,18 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import { AddressReducer } from "./reduxreducers/addressReducer";
 import { ActiveOrderReducer, statusUpdateReducer } from "./reduxreducers/OrderReducers";
+import { reviewOwnerdataReducer, reviewSaveReducer, reviewuserdataReducer } from "./reduxreducers/reviewReducers";
 
 const initialState ={};
 const reducers = combineReducers({
     Addressdata : AddressReducer,
     ActiveOrderdata:ActiveOrderReducer,
-    StatusUpdate:statusUpdateReducer
+    StatusUpdate:statusUpdateReducer,
+    ReviewSaveReduce:reviewSaveReducer,
+    // revieSave:reviewReducers
+    ReviewOwner:reviewOwnerdataReducer,
+    ReviewUser:reviewuserdataReducer,
+
 });
 
 const middleware = [thunk];

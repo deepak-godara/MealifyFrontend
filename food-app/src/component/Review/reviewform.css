@@ -1,0 +1,91 @@
+
+  .box1{
+    width: 100%;
+    height: 50vh;
+    max-width: 600px;
+    min-height:  250px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(239, 235, 235, 0.1);
+    border-radius: 8px;
+    background-color: #f8f8f8;
+  }
+  
+  .rateUs{
+    color: #f39c12;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .image {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vh;
+    min-width: 250px;
+
+  }
+  
+  .star-rating {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .star {
+    font-size: 2em;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.2s;
+  }
+  
+  .star.filled {
+    color: #f39c12;
+  }
+  
+  .description {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    /* padding: 10px 10px; */
+  }
+  
+  .review-later, .submit {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .review-later {
+    background-color: #bbb;
+  }
+  
+  .review-later:hover {
+    background-color: #999;
+  }
+  
+  .submit {
+    background-color: #585e59;
+    color: #fff;
+  }
+  
+  .submit:hover {
+    background-color: #218838;
+  }
+  

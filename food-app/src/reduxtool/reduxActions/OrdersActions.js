@@ -25,15 +25,8 @@ export const saveOrderStatus = ({ orderId, status }) => async (dispatch) => {
         dispatch({ type: 'STATUS_UPDATE_FAIL', payload: error.message });
     }
 };
-// export const  ConfirmdeliveryByUser  = ({orderId, status})=> async(dispatch)=>{
-//     try {
-//         const {data} = await axios.put('http://localhost:4000/owner/ActiveOrders/statusUpdate' , {orderId : orderId});
-//         console.log("order delivery confirmed by  from backend size : ");
-//         dispatch({type:STATUS_UPDATE_SUCCESS  , payload: data});
-//         console.log("order delivery confirmed by  from backend size : ");
-//     } catch (error) {
-//         console.log("error in changing status  (orderaction.js")
-//     }
-// }
+
+
+
 
 
