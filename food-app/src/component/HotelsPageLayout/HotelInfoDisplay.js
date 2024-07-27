@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React,{useContext,useState, useEffect} from "react";
 import { FaStar } from "react-icons/fa";
 import {getDistance} from "geolib"
 import ClientContext from "../../store/AuthClient";
@@ -8,13 +8,27 @@ function HotelInfoDisplay(props) {
   const Navigate = useNavigate();
   console.log(props)
   const ClientCtx=useContext(ClientContext);
+  const [Deliver,SetDeliver]=useState(true);
   console.log(ClientCtx.CurrentActiveAddress.latitude)
   const Distance=getDistance(
     { latitude:ClientCtx.CurrentActiveAddress.latitude.$numberDecimal,longitude:ClientCtx.CurrentActiveAddress.longitude.$numberDecimal},{
       latitude:props.info.Coordinates.Latitude,longitude:props.info.Coordinates.Longitude}
 
   )
-  console.log(Distance)
+  useEffect(()=>{ 
+    if(ClientCtx.CurrentActiveAddress)
+    {
+      const Distance=getDistance(
+        { latitude:ClientCtx.CurrentActiveAddress.latitude.$numberDecimal,longitude:ClientCtx.CurrentActiveAddress.longitude.$numberDecimal},{
+          latitude:props.info.Coordinates.Latitude,longitude:props.info.Coordinates.Longitude}
+    
+      )
+      if(Distance/1000>10.0)
+      {
+        SetDeliver(false);
+      }
+    }
+  },[])
   const HotelSubmition = (req, res, next) => {
     Navigate(`${props.info._id}`);
   };
@@ -37,7 +51,8 @@ function HotelInfoDisplay(props) {
           ))}
         </div>
         <div>₹100 for one</div>
-      </div>
+        </div>
+        {!Deliver&&<div className="Hotel-Deliver"> Hotel does not deliver to your  location</div>}
       <button className="Submit-Hotel-Button" onClick={HotelSubmition}></button>
     </div>
   );

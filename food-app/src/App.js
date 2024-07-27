@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import io from "socket.io-client";
+import { AddReview } from "./BackendApi/AddReview";
 // import { useLocation } from "react-router-dom";
 import "./App.css";
 import OwnerActiveOrder2 from "./component/Owner/OwnerOrders/OwnerActiveOrder2"
@@ -23,6 +24,7 @@ import OwnerContext from "./store/AuthOwner";
 import OwnerMenu from "./component/Owner/OwnerHotelDetails/Main";
 import ViewHotelDetails from "./component/Owner/HotelDetails/ViewHotelDetails";
 import OwnerDeliverdOrder from "./component/Owner/OwnerOrders/OwnerDeliverdOrder";
+import { ADD_ADDRESS } from "./reduxtool/constants/addressConstants";
 const Redirect = (to) => {
   const navigate = useNavigate();
   
@@ -33,25 +35,13 @@ const Redirect = (to) => {
 };
 function App() {
   const ClientCtx = useContext(ClientContext);
-
+// AddReview()
   const socket = io.connect("http://localhost:4000");
   const OwnerCtx = useContext(OwnerContext);
   const location = useLocation();
   console.log(OwnerCtx);
   const [user, SetUser] = useState("None");
-  // useEffect(() => {
-  //   const users = JSON.parse(localStorage.getItem("login-data"));
-  //   // console.log(users);
-  //   if (users)
-  //     if (users.user === "client") {
-  //       console.log("yes");
-
-  //       SetUser("Client");
-  //     } else {
-  //     }
-  // }, []);
   return (
-    // <AuthClientProvider>
     <Routes>
       {ClientCtx.isAuth && (
         <Route path="/User" element={<ClientLayout />}>
@@ -80,10 +70,12 @@ function App() {
           <Route path="details" element={<ViewHotelDetails />} />
           <Route path="menu" element={<OwnerMenu />} />
           <Route path="order" element={<NewOrder />} />
+          <Route path="active" element={<OwnerActiveOrder2/>} />
+          <Route path="Deliver" element={<OwnerDeliverdOrder/>} />
         </Route>
       )}
       <Route path="/" element={<CommonLayout />}>
-        <Route index element={<HomePage />} />
+        <Route index element={ClientCtx.isAuth&&ClientCtx.CurrentActiveAddress?<Redirect  to={`/location/${ClientCtx.CurrentActiveAddress.Address}`}/>:<HomePage />} />
         <Route
           path="/location/:locationid/:hotelid"
           element={<HotelDetails />}
@@ -91,16 +83,7 @@ function App() {
         <Route path="/location/:locationid" element={<LocationPage />} />
       </Route>
      
-        <Route path="/owner" element={OwnerCtx.OwnerHotelId!==undefined?<OwnerLayout />:<Redirect to="/owner/addhotel"/>}>
-          <Route index element={<OwnerMainPage />} />
-          {/* <Route  path="/updatemenu" element={} */}
-          <Route path="menu" element={<OwnerMenu/>}/>
-          <Route path="order" element={<NewOrder />} />
-          <Route path="active" element={<OwnerActiveOrder2/>} />
-          <Route path="Deliver" element={<OwnerDeliverdOrder/>} />
-        </Route>
     </Routes>
-    // </AuthClientProvider>
   );
 }
 

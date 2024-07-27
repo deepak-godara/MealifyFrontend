@@ -230,7 +230,7 @@ function User(prop) {
                             // top="2.9rem"
                             bgColor="red"
                             // title={"spinner-cub"}
-                            size={50}
+                            size={70}
                           ></Loader>
                         </div>
                       )}

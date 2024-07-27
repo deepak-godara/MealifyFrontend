@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect, useState } from "react";
 import ClientContext from "./AuthClient";
+import { AddReview } from "../BackendApi/AddReview";
 import { GetUser } from "../BackendApi/GetUser";
 import io from "socket.io-client";
 const IntialState = {
@@ -85,10 +86,11 @@ function AuthClientProvider(props) {
   // const socket = io("http://localhost:4000");
   useEffect(() => {
     async function fecthLoginStatus() {
-      
+     
       const userDatajson = localStorage.getItem("login-data");
       const userData = JSON.parse(userDatajson);
       if (userData && userData.user === "client") {
+       
         GetUser(userData._id).then((Data) => {
           console.log(Data.User)
           addClient(Data.User);

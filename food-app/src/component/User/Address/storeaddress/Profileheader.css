@@ -10,7 +10,7 @@ html {
 }
 
 .max-width {
-    display: flex;
+    display: flex;   
     justify-content: center;
     align-items: center;
     position: relative;
@@ -57,7 +57,7 @@ html {
     align-items: center;
     font-size: 3rem;
     font-weight: 400;
-    width: 45vw;
+    max-width: 50%;
 }
 
 .email-logo {
@@ -115,10 +115,9 @@ html {
 .right-review-header {
     position: relative;
     background: transparent;
-    position: relative;
     display: flex;
     flex-direction: column;
-    width: 20vw;
+    max-width: 50%;
 }
 
 .details {
@@ -126,6 +125,8 @@ html {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    position: relative;
+    width: 100%;
 }
 
 .data {
@@ -138,6 +139,7 @@ html {
     font-size: 1rem; 
     padding: 0 0.9375rem; 
     color: white;
+    position: relative;
 }
 .data>p{
     background: transparent;

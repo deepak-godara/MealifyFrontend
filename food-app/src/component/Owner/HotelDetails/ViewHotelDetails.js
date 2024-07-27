@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useReducer, useContext } from "react";
 import { useParams } from "react-router-dom";
+import Loader from "react-js-loader";
 import OwnerContext from "../../../store/AuthOwner";
 import HotelInfoDisplay from "./HotelInfoDisplay";
 import FoodDisplayCategories from "./FoodDisplayCategories";
@@ -25,7 +26,7 @@ const HotelDataReducerFunc = (state = intialState, action) => {
   else Data.image = action.val;
   return Data;
 };
-function ViewHotelDetails(props) {
+export function ViewHotelDetails(props) {
   const [HotelData, SetHotelData] = useReducer(
     HotelDataReducerFunc,
     intialState
@@ -33,31 +34,26 @@ function ViewHotelDetails(props) {
 
   const [HotelMenu, SetHotelMenu] = useState([]);
   const params = useParams();
+  const [loading, SetLoading] = useState(true);
   const [hotelid, SetHotelId] = useState(null);
-  const owner=useContext(OwnerContext);
+  const owner = useContext(OwnerContext);
   if (hotelid !== params.hotelid) SetHotelId(params.hotelid);
   useEffect(() => {
     async function getDetails() {
       let Data;
-      console.log(owner)
-      if(owner.isAuth)
-      {
-
+      console.log(owner);
+      if (owner.isAuth) {
         Data = await fetch(
           `http://localhost:4000/${owner.OwnerHotelId}/getdata`,
           {
             method: "GET",
           }
         );
-      }
-      else
-      { Data = await fetch(
-        `http://localhost:4000/${params.hotelid}/getdata`,
-        {
+      } else {
+        Data = await fetch(`http://localhost:4000/${params.hotelid}/getdata`, {
           method: "GET",
-        }
-      );
-    }
+        });
+      }
       const js = await Data.json();
       console.log(js);
       if (js.status === "200") {
@@ -70,27 +66,45 @@ function ViewHotelDetails(props) {
         SetHotelData({ type: "Ad", val: js.hotel.Image });
         SetHotelData({ type: "Rating", val: js.hotel.Rating.$numberDecimal });
         SetHotelData({ type: "Count", val: js.hotel.Count });
-        if(js.Menu===null)
-        SetHotelMenu([])
-      else
-        SetHotelMenu(js.Menu.Menu);
+        if (js.Menu === null) SetHotelMenu([]);
+        else SetHotelMenu(js.Menu.Menu);
       }
+      SetLoading(false);
     }
     getDetails();
   }, [params.hotelid]);
   return (
     <>
       <div className="View-Hotel-Data-Display">
-        <HotelInfoDisplay HotelData={HotelData}></HotelInfoDisplay>
+        {loading && (
+          <div className="Spinner-Class3" style={{marginTop:"10rem",height:"5rem",width:"4rem"}}>
+            {" "}
+            <Loader
+              type="spinner-cub"
+              color="red"
+              // style={{ position:"absolute", top:"2.9rem"}}
 
-        <div className="View-Hotel-Data-Category">
-          <CategoryData menu={HotelMenu}></CategoryData>
+              // top="2.9rem"
+              bgColor="red"
+              // title={"spinner-cub"}
+              size={90}
+            ></Loader>
+          </div>
+        )}
+        {!loading && (
+          <>
+            <HotelInfoDisplay HotelData={HotelData}></HotelInfoDisplay>
 
-          <FoodDisplayCategories
-            menu={HotelMenu}
-            Name={HotelData.name}
-          ></FoodDisplayCategories>
-        </div>
+            <div className="View-Hotel-Data-Category">
+              <CategoryData menu={HotelMenu}></CategoryData>
+
+              <FoodDisplayCategories
+                menu={HotelMenu}
+                Name={HotelData.name}
+              ></FoodDisplayCategories>
+            </div>
+          </>
+        )}
       </div>
     </>
   );
