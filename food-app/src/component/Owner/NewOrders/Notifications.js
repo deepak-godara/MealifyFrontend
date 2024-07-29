@@ -39,14 +39,18 @@ function Notifications() {
     getToggleButtonProps,
     getMenuProps,
     getItemProps,
+    closeMenu
   } = useSelect({
     items: notifications,
     onSelectedItemChange: ({ isOpen }) => {
+      
+      closeMenu()
       if (!isOpen) {
         console.log('Dropdown is closed');
         // You can call any function you want here when the dropdown closes
         setNotifications([]);
       }
+      isOpen=false;
     },
   });
   return (
@@ -76,7 +80,7 @@ function Notifications() {
           style={{
             height: "2.5rem",
             width: "2.5rem",
-            color: isOpen ? "red" : "grey",
+            color: isOpen ? "rgb(77, 89, 102)" : "grey",
           }}
         />
         <IoMdArrowDropdown />

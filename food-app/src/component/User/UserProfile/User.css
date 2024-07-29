@@ -131,18 +131,24 @@ align-items: center;
   padding: 0.8rem 2.5rem;
   
   font-size: 1.3rem;
+  margin-bottom: 5rem;
   color: rgb(239, 237, 237);
   cursor: pointer;
-  background-color: rgb(239, 79, 95);
+  background-color: rgb(77, 89, 102);
+  transition: ease-out 0.2s;
+}
+.User-Data-Button:hover{
+  /* background-color: rgb(245, 157, 157); */
+  padding:1rem 2.5rem;
 }
 .User-Cancel-Button{
     padding: 0.8rem 2.5rem;
-  
+  height:fit-content;
   font-size: 1.3rem;
-  color: rgb(239, 79, 95);
+  color: rgb(239, 237, 237);
   cursor: pointer;
-  border:1px solid  rgb(239, 79, 95);;
-  background-color: rgb(255, 255, 255);
+  border:1px solid  rgb(128, 132, 137);
+  background-color: rgb(77, 89, 102);
 }
 .Update-Profile {
   width: 100%;

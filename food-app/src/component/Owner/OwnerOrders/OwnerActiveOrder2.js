@@ -54,7 +54,7 @@ const OwnerActiveOrder2 = () => {
               // style={{ position:"absolute", top:"2.9rem"}}
 
               // top="2.9rem"
-              bgColor="red"
+              bgColor="rgb(77, 89, 102)"
               // title={"spinner-cub"}
               size={50}
             ></Loader>

@@ -14,6 +14,7 @@ const IntialState = {
   Gender: null,
   Socket: null,
   Orders:[],
+  Review:0,
   ForeGroundImage: null,
   BackGroundImage: null,
 };
@@ -25,6 +26,7 @@ const AddClientReducer = (state = IntialState, action) => {
 
     newState.ClientEmail = action.item.Email;
     newState.ClientUserName = action.item.UserName;
+    newState.Review=action.item.Review;
     if (action.item.DOB) newState.ClientDob = action.item.DOB;
     if (action.item.Gender) newState.Gender = action.item.Gender;
     if (action.item.ForeGroundImage)
@@ -45,6 +47,7 @@ const AddClientReducer = (state = IntialState, action) => {
     newState.ClientId = "";
     newState.ClientEmail = "";
     newState.ClientUserName = "";
+    newState.Review=0
     
   }
   return newState;
@@ -75,6 +78,7 @@ function AuthClientProvider(props) {
     ClientDob: ClientData.ClientDob,
     Gender: ClientData.Gender,
     Socket: ClientData.Socket,
+    Review:ClientData.Review,
     ForeGroundImage: ClientData.ForeGroundImage,
     BackGroundImage: ClientData.BackGroundImage,
     CurrentActiveAddress:ClientData.CurrentActiveAddress,
@@ -95,7 +99,8 @@ function AuthClientProvider(props) {
           console.log(Data.User)
           addClient(Data.User);
           // addSocket(socket);
-          setData(true);
+          setTimeout(()=>{setData(true);},300)
+          
           
         });
       } else {

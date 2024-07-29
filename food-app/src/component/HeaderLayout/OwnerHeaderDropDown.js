@@ -8,7 +8,7 @@ export const OwnerHeaderArray=[
     {
         id:1,
         name:"Orders",
-        link:"Orders"
+        link:"/owner/order"
     },
     {
         id:2,

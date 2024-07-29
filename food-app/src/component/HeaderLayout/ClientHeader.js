@@ -17,8 +17,11 @@ function ClientHeader(props) {
     getToggleButtonProps,
     getMenuProps,
     getItemProps,
+    closeMenu
   } = useSelect({
     items: ClientHeaderArray,
+    if (selectedItem) {
+    }
   });
   return (
     <Fragment>

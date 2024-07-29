@@ -74,7 +74,7 @@ function AddLocation(props) {
         mapContainerStyle={{
           width: "100%",
           height: "90%",
-          borderRadius:"12px"
+          borderRadius:"12px",
         }}
         center={mapCenter}
         zoom={14}

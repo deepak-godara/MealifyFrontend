@@ -8,7 +8,9 @@
     align-items: center;
     justify-content: center;
     z-index: 1;
-     width: 328px;
+     width: 32%;
+     min-width:350px;
+     max-width:98%;
      margin-bottom: auto;
      padding:1% 1%;
 

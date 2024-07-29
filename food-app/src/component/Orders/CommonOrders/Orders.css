@@ -46,13 +46,13 @@
     color:rgb(50, 50, 50);
 }
 .Timer-Icon{
-    color:red;
+    color:rgb(77, 89, 102);
     padding-top: 0.5rem;
     height: 2rem;
     width:2rem;
 }
 .Order-Button{
-    background-color: red;
+    background-color:rgb(77, 89, 102);
     width:100%;
     box-sizing: border-box;
     border-radius: 12px;
@@ -96,7 +96,7 @@
       text-align: center;
       padding:1rem;
       color:rgb(141, 140, 140);
-      background:linear-gradient(270deg, rgb(255, 237, 239) 0%, rgba(251, 246, 247, 0) 92.47%);
+      background:rgb(77, 89, 102);
       border-radius: 12px;
       border:1px solid rgb(236, 235, 235);
 }

@@ -23,7 +23,7 @@
   .All-Order-Box {
     display: flex;
     flex-direction: column;
-    border: 1px solid rgb(195, 192, 192);
+    border: 1px solid rgb(77, 89, 102);
     align-items: center;
     text-decoration: none;
     background-color: white;
@@ -163,9 +163,9 @@
   }
   .Order-Detail-Button {
     padding: 0.6rem;
-    border: 1px solid rgb(245, 81, 81);
+    border: 1px solid rgb(77, 89, 102);
     background: none;
-    color: rgb(254, 154, 154);
+    color: rgb(77, 89, 102);
   }
   
   .ActiveOrderClass{

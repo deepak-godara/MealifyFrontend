@@ -12,6 +12,7 @@
     box-sizing: border-box;
     width: 20%;
 }
+
 .Food-Category-Display div{
     font-size: 1.2rem;
 }
@@ -23,3 +24,9 @@
 .New-Category-DivClass{
     background: linear-gradient(to right, #f8f7f0, #f0945b);
 }
+@media (max-width: 600px) {
+
+    .Food-Category-Display{
+     display: none;
+    }
+  }

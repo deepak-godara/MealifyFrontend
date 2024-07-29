@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import "./HeaderLayout.css";
 import "./ClientLayout.css";
+import Footer from "../mainpageUi/footer";
 import HeaderLayout from "../HeaderLayout/HeaderLayout";
 function CommonLayout() {
   return (
@@ -14,6 +15,7 @@ function CommonLayout() {
           <Outlet />
         </div>
       </div>
+      <div className="Footer-Div" > <Footer/> </div>
     </div>
   );
 }

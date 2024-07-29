@@ -13,3 +13,9 @@
     justify-content: flex-start;
     row-gap: 0.5rem;
 }
+@media (max-width: 600px) {
+
+    .Display-Food-Item-Categories{
+    width:98%;
+    }
+  }
