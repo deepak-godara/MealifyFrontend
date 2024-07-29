@@ -3,6 +3,7 @@ import { Outlet, Link } from 'react-router-dom';
 import './ClientLayout.css'
 import Layout from '../SideBar/OwnerSideBar/Layout';
 import OwnerHeader from '../HeaderLayout/OwnerHeader';
+import Footer from '../mainpageUi/footer';
 // import NewOrder from '../Owner/OwnerOrders/Main';
 // import OwnerActiveOrders from '../Owner/OwnerOrders/OwnerActiveOrders';
 function OwnerLayout() {
@@ -22,6 +23,7 @@ function OwnerLayout() {
             <Outlet/>
             </div>
           </div>
+          <div className="Footer-Div" > <Footer/> </div>
         </div>
   )
 }

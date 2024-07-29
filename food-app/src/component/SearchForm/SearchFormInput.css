@@ -10,7 +10,7 @@ width:95%;
     position: absolute;
     width: 100%;
     left: -5%;
-    padding: 0.2rem;
+    /* padding: 0.2rem; */
     top: 3.5rem;
 }
 .Search-DropDown-Location{
@@ -20,9 +20,6 @@ width:95%;
     background-color: rgb(255, 255, 255);
     font-size: 1rem;
     color: black;
-    width:80%;
-    
-   
     min-height: 0rem;
     min-width: 0rem;
     width: 150%;

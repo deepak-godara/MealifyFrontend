@@ -27,11 +27,18 @@ function OwnerHeader(props) {
   };
   const {
     isOpen,
+    selectedItem,
     getToggleButtonProps,
     getItemProps,
     getMenuProps,
+    closeMenu
   } = useSelect({
     items: OwnerHeaderArray,
+    onSelectedItemChange: ({ selectedItem }) => {
+      if (selectedItem) {
+        closeMenu() // Close the dropdown when an item is selected
+      }
+    },
   });
   return (
     <>

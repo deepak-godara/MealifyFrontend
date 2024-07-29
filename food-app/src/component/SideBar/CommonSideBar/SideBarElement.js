@@ -12,7 +12,7 @@ function SideBarElement(props) {
               style={{
                 height: "1.25rem",
                 width: "1.25rem",
-                color:"rgb(133,133,133)",
+                color:"rgb(167, 164, 164)",
                 minHeight: "1.125rem",
                 minWidth: "1.125rem",
               }}

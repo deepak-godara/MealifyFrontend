@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import "./HeaderLayout.css";
+import Footer from "../mainpageUi/footer";
 import ClientHeader from "../HeaderLayout/ClientHeader";
 import Layout from "../SideBar/ClientSideBar/Layout";
 import "./ClientLayout.css";
@@ -23,6 +24,7 @@ function ClientLayout() {
           <Outlet />
         </div>
       </div>
+      <div className="Footer-Div" > <Footer/> </div>
     </div>
   );
 }

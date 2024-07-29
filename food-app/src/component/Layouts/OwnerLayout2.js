@@ -1,5 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom';
+import Footer from '../mainpageUi/footer';
 import OwnerHeader from '../HeaderLayout/OwnerHeader'
 function OwnerLayout2() {
   return (
@@ -13,6 +14,7 @@ function OwnerLayout2() {
     <div className="Body-Container">
         <Outlet />
     </div>
+    <div className="Footer-Div" > <Footer/> </div>
   </div>
   )
 }

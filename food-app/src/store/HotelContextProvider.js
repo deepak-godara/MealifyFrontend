@@ -8,7 +8,12 @@ function HotelContextProvider(props) {
     const [CategoryList, SetCategoryList] = useState(null);
     const AddHotels = (data) => {
         if (data.Hotels) {
-            SetHotels(data.Hotels)
+            SetHotels((prevHotels)=>[...prevHotels,...data.Hotels])
+        }
+        if(data.NoHotels)
+        {
+            console.log("Svds")
+            SetHotels([]);
         }
         if (data.location) {
             SetLocation(data.location)

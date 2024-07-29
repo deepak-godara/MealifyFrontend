@@ -10,7 +10,6 @@ const Mainpage = () => {
     <div><MainpageUpperpart/></div>
     <div><MainPageInfo/></div>
     <div><Mainpagemidpart/></div>
-    <div> <Footer/> </div>
     <div>Copy right @</div>
     </>
   )

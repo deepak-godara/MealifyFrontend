@@ -21,7 +21,7 @@ export const SocketProvider = ({ children }) => {
       setSocket(newSocket);
       SetisOpen(true);
       newSocket.emit("join", { id: ClientCtx.ClientId, User: "User" });
-      console.log(newSocket);
+    SetisOpen(false)
     }
     if (OwnerCtx.isAuth) {
       console.log("owner socket");
@@ -29,35 +29,15 @@ export const SocketProvider = ({ children }) => {
       SetisOpen(true);
       newSocket.emit("join", { id: OwnerCtx.OwnerId, User: "Owner" });
       console.log(newSocket);
+       SetisOpen(false);
     }
-    // Cleanup on unmount or page refresh
-    // const cleanup = () => {
-    //   if(ClientCtx.isAuth)
-    //   newSocket.emit("disconnec",{id:ClientCtx.ClientId });
-    // if(OwnerCtx.isAuth)
-    // newSocket.emit("disconnec",{id:OwnerContext.OwnerId });
-    //   // Additional cleanup if needed
-
-    // const cleanup = () => {
-    //   if (ClientCtx.isAuth) {
-    //     newSocket.emit("disconnec", { id: ClientCtx.ClientId });
-    //   }
-    //   if (OwnerCtx.isAuth) {
-    //     newSocket.emit("disconnec", { id: OwnerCtx.OwnerId });
-    //   }
-    //   // Additional cleanup if needed
-    // };
-
-    // window.addEventListener('beforeunload', cleanup);
-
-    // return () => {
-    //   window.removeEventListener('beforeunload', cleanup);
-    //   cleanup();
-    // };
   }, []);
 
   return (
-    <SocketContext.Provider value={socket}>{children}</SocketContext.Provider>
+    <>
+    {isOpen?<></>:
+    <SocketContext.Provider value={socket}>{children}</SocketContext.Provider>}
+    </>
   );
 };
 

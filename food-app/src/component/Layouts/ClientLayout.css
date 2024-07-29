@@ -11,7 +11,7 @@
 .Body-Container {
   position: relative;
   display: flex;
-  width: 80vw;
+  width: 75vw;
   flex-direction: row;
   /* background-color: white; */
   align-items: flex-start;
@@ -30,7 +30,12 @@
 .Side-Bar-Container{
 position:sticky;
 width:40%;
-top:-1.8rem;
+top:0rem;
+
+}
+.Footer-Div{
+  width:75vw;
+  margin-top: 2rem;
 }
 @media (max-width: 1055px) {
   .Side-Bar-Container {
@@ -46,19 +51,28 @@ top:-1.8rem;
   .Common-Body-Container{
     width:100vw;
   }
+  .Footer-Div{
+    width:90vw;
+    margin-top: 2rem;
+  }
+}
+.Common-Body-Container{
+  width:75%;
+  min-height:40vw;
+}
+.Common-Main-Body-Container{
+  width:100%;
 }
 @media (max-width: 759px) {
 
   .Body-Container {
-    width: 95vw;
+    width: 100%;
+  }
+  .Footer-Div{
+    width:100vw;
+    margin-top: 2rem;
   }
   .Common-Body-Container{
-    width:90vw;
+    width:100%;;
   }
-}
-.Common-Body-Container{
-  width:80vw;
-}
-.Common-Main-Body-Container{
-  width:100%;
 }

@@ -4,8 +4,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 90%;
-    margin: 2rem auto;
+    width: 100%;
+    margin: 0rem auto 2rem auto;
 }
 .View-Hotel-Data-Category{
     display: flex;
@@ -24,7 +24,7 @@
 .Info-Separation-Line{
     width: 100%;
     height: 0%;
-    border:1.5px solid rgb(174, 173, 173);
+    border:1.5px solid rgb(77, 89, 102);
     /* margin-bottom: 3px; */
 }
 @media only screen and (max-width: 768px) {

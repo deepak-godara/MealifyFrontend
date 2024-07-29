@@ -31,7 +31,7 @@ const Profileheader = () => {
                         <button class="edit-button" onClick={ChangeProfileDivVisibility}><FiEdit style={{color:"white", height:"1rem", width:"1rem",paddingBottom:"0.2rem"}}/> <div>Edit Profile</div></button>
                     <div class="details">
                         <div class="data">
-                            <p>0</p>
+                            <p>{ClientCtx.Review}</p>
                             <p>Reviews</p>
                         </div>
                         <div class="data">      

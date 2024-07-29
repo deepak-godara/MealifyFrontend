@@ -63,7 +63,7 @@ const Address = () => {
           >
             <div className="Add-Address-Box">
               <GoPlusCircle
-                style={{ color: "red", height: "1.5rem", width: "1.5rem" }}
+                style={{ color: "rgb(77, 89, 102)", height: "1.5rem", width: "1.5rem" }}
               />
               <div>Add address</div>
             </div>
@@ -89,7 +89,7 @@ const Address = () => {
                   Delete
                 </button>
               </div>
-              <div className="Make_Default_Address" style={{backgroundColor:ClientCtx.CurrentActiveAddress.Aid===x.Aid?"#EF4F5F":"white"}} onClick={()=>{SetCurrentAddress(x.Aid)}}></div>
+              <div className="Make_Default_Address" style={{backgroundColor:ClientCtx.CurrentActiveAddress.Aid===x.Aid?"rgb(77, 89, 102)":"white"}} onClick={()=>{SetCurrentAddress(x.Aid)}}></div>
             </div>
           ))}
         </div>

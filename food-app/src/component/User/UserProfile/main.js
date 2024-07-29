@@ -99,11 +99,11 @@ function User(prop) {
                 <div className="Spinner-Class3" style={{marginTop:"22.5%"}}>
                   <Loader
                     type="spinner-cub"
-                    color="red"
+                    color="rgb(77, 89, 102)"
                     // style={{ position:"absolute", top:"2.9rem"}}
 
                     // top="2.9rem"
-                    bgColor="red"
+                    bgColor="rgb(77, 89, 102)"
                     // title={"spinner-cub"}
                     size={50}
                   ></Loader>
@@ -224,11 +224,11 @@ function User(prop) {
                         <div className="Spinner-Class3" >
                           <Loader
                             type="spinner-cub"
-                            color="red"
+                            color="rgb(77, 89, 102)"
                             // style={{ position:"absolute", top:"2.9rem"}}
 
                             // top="2.9rem"
-                            bgColor="red"
+                            bgColor="rgb(77, 89, 102)"
                             // title={"spinner-cub"}
                             size={70}
                           ></Loader>

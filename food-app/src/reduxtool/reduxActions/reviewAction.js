@@ -16,12 +16,12 @@ import axios from "axios";
     }
  }
 
- export const GetOwnerReviews = ({ id }) => async (dispatch) => {
-    dispatch({ type: REVIEW_OWNERDATA_REQUEST });
+ export const GetOwnerReviews = (id,PageNumber,PageSize) => async (dispatch) => {
+    dispatch({ type: REVIEW_OWNERDATA_REQUEST ,datas:PageNumber>=1?true:false});
     try {
       console.log("Hotel id is", id);
-      const { data } = await axios.get(`http://localhost:4000/${id}/owner/review`);
-      dispatch({ type: REVIEW_OWNERDATA_SUCCESS, payload: data });
+      const { data } = await axios.get(`http://localhost:4000/${id}/owner/review?PageNumber=${PageNumber}&PageSize=${PageSize}`);
+      dispatch({ type: REVIEW_OWNERDATA_SUCCESS, payload: data,datas:PageNumber>=1?true:false });
       console.log(data);
       console.log("Owner review data fetched successfully by action");
     } catch (error) {
@@ -31,14 +31,15 @@ import axios from "axios";
   };
   
   
- export  const GetUserReviews =({id})=> async(dispatch)=>{
-    dispatch({type:REVIEW_USERDATA_REQUEST})
+ export  const GetUserReviews =(id,PageNumber,PageSize)=> async(dispatch)=>{
+  console.log(PageNumber)
+    dispatch({type:REVIEW_USERDATA_REQUEST,datas:PageNumber>=1?true:false})
     try {
-        const {data} =  await  axios.get(`http://localhost:4000/${id}/user/review`);
-        dispatch({type:REVIEW_USERDATA_SUCCESS , payload: data});
+        const {data} =  await  axios.get(`http://localhost:4000/${id}/user/review?PageNumber=${PageNumber}&PageSize=${PageSize}`);
+        dispatch({type:REVIEW_USERDATA_SUCCESS , payload: data,datas:PageNumber>=1?true:false});
         console.log(" user  review data fetched  successfully by action " , data)
     } catch (error) {
-        dispatch({type : REVIEW_USERDATA_FAILS , payload:error})
+        dispatch({type : REVIEW_USERDATA_FAILS , payload:error,data:PageNumber>=1})
     }
     
  }

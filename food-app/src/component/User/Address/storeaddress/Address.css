@@ -23,7 +23,7 @@
     flex-direction:column;
     justify-content: space-around;
     border-radius: 5px;
-    width:30%;
+    width:30.5%;
     min-width:12rem;
     height:12rem;
     position:relative;
@@ -86,7 +86,7 @@
     padding: 0.5rem;
     text-align: center;
     background-color:transparent;
-    color:red;
+    color:rgb(77, 89, 102);
     border: none;
 }
 .Address-Symbol{

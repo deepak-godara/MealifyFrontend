@@ -59,7 +59,7 @@ function CompleteAddress(props) {
         <div className="Address-Name">Delivery Location</div>
         <div
           className="User-Data-Input"
-          style={{ height: "50px", overflow: "hidden", paddingBottom: "1rem" }}
+          style={{ height: "50px", overflow: "hidden", paddingBottom: "0rem" }}
         >
           {props.LocName}
         </div>
@@ -116,11 +116,11 @@ function CompleteAddress(props) {
           </button>}
            {Loading&&<div className="Spinner-Class3"> <Loader
             type="spinner-cub"
-            color="red"
+            color="rgb(77, 89, 102)"
             // style={{ position:"absolute", top:"2.9rem"}}
            
             // top="2.9rem"
-            bgColor="red"
+            bgColor="rgb(77, 89, 102)"
             // title={"spinner-cub"}
             size={50}
           ></Loader></div>}
