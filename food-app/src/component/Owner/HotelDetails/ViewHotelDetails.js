@@ -3,9 +3,10 @@ import { useParams } from "react-router-dom";
 import Loader from "react-js-loader";
 import OwnerContext from "../../../store/AuthOwner";
 import HotelInfoDisplay from "./HotelInfoDisplay";
-import FoodDisplayCategories from "./FoodDisplayCategories";
-import CategoryData from "./CategoryData";
+// import FoodDisplayCategories from "./FoodDisplayCategories";
+// import CategoryData from "./CategoryData";
 import "./ViewHotelDetails.css";
+import HotelDisplayHeader from "./HotelDisplayHeader";
 const intialState = {
   name: "",
   Categories: [],
@@ -93,16 +94,9 @@ export function ViewHotelDetails(props) {
         )}
         {!loading && (
           <>
-            <HotelInfoDisplay HotelData={HotelData}></HotelInfoDisplay>
-
-            <div className="View-Hotel-Data-Category">
-              <CategoryData menu={HotelMenu}></CategoryData>
-
-              <FoodDisplayCategories
-                menu={HotelMenu}
-                Name={HotelData.name}
-              ></FoodDisplayCategories>
-            </div>
+            <HotelInfoDisplay HotelData={HotelData} HotelMenu ={HotelMenu} ></HotelInfoDisplay>
+            {/* <HotelDisplayHeader/> */}
+           
           </>
         )}
       </div>

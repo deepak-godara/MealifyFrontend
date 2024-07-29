@@ -1,0 +1,46 @@
+.Container-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: 10px;
+  }
+  
+  .info-box {
+    margin: 15px 0px;
+  }
+  
+  .info-box > button {
+    color: rgb(28, 28, 28);
+    font-size: 1rem;
+    background-color: transparent;
+    margin-left: 10px;
+  }
+  
+  .header-section {
+    border-bottom: 2px solid rgb(202, 187, 187);
+  }
+  
+  .main-buttons {
+    margin-bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    border: none;
+  }
+  
+  .main-buttons > button {
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+    color: #696969;
+    white-space: nowrap;
+    margin-left: 15px;
+    cursor: pointer; /* Add this for better UX */
+  }
+  
+  .clicked {
+    border-bottom: 2px solid rgb(228, 80, 80);
+  }
+.content-section{
+    position: relative;
+}  

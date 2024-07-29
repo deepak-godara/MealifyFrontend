@@ -1,6 +1,7 @@
 import React from "react";
 import "./HotelInfoDetails.css";
 import { FaStar } from "react-icons/fa";
+import HotelDisplayHeader from "./HotelDisplayHeader";
 function HotelInfoDisplay(props) {
   return (
     <>
@@ -30,7 +31,8 @@ function HotelInfoDisplay(props) {
           ))}
         </div>
         <div>{props.HotelData.address}</div>
-        <div className="Info-Separation-Line"></div>
+        <div> <HotelDisplayHeader  HotelData = {props.HotelData} HotelMenu = {props.HotelMenu}/></div>
+        {/* <div className="Info-Separation-Line"></div> */}
       </div>
     </>
   );
