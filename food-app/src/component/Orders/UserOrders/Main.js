@@ -34,7 +34,6 @@ const Ordersss = () => {
     dispatch(GetActiveOrders());
     if (socket) {
       socket.on("DeliveryConfirmed", ({ status, orderId, HotelName }) => {
-        
         setId(orderId);
         setShowReviewForm(true);
       });

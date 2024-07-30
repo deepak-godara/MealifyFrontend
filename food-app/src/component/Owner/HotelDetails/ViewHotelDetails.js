@@ -6,7 +6,9 @@ import HotelInfoDisplay from "./HotelInfoDisplay";
 import FoodDisplayCategories from "./FoodDisplayCategories";
 import CategoryData from "./CategoryData";
 import "./ViewHotelDetails.css";
+import HotelDisplayHeader from "./HotelDisplayHeader";
 const intialState = {
+  id : null,
   name: "",
   Categories: [],
   address: "",
@@ -23,6 +25,7 @@ const HotelDataReducerFunc = (state = intialState, action) => {
   } else if (action.type === "AddAddress") Data.address = action.val;
   else if (action.type === "Rating") Data.Rating = action.val;
   else if (action.type === "Count") Data.Count = action.val;
+  else if (action.type === 'id') Data.id = action.val;
   else Data.image = action.val;
   return Data;
 };
@@ -38,6 +41,7 @@ export function ViewHotelDetails(props) {
   const [hotelid, SetHotelId] = useState(null);
   const owner = useContext(OwnerContext);
   if (hotelid !== params.hotelid) SetHotelId(params.hotelid);
+  console.log("jotel data is " , HotelData);
   useEffect(() => {
     async function getDetails() {
       let Data;
@@ -55,10 +59,11 @@ export function ViewHotelDetails(props) {
         });
       }
       const js = await Data.json();
-      console.log(js);
+      console.log("the hotel details data is  : " , js);
       if (js.status === "200") {
         SetHotelData({ type: "AddName", val: js.hotel.Name });
         SetHotelData({ type: "Categories", val: js.hotel.Category });
+        SetHotelData({ type: "id", val: js.hotel._id });
         SetHotelData({
           type: "AddAddress",
           val: js.hotel.City + " , " + js.hotel.Street,
@@ -93,16 +98,17 @@ export function ViewHotelDetails(props) {
         )}
         {!loading && (
           <>
-            <HotelInfoDisplay HotelData={HotelData}></HotelInfoDisplay>
-
-            <div className="View-Hotel-Data-Category">
-              <CategoryData menu={HotelMenu}></CategoryData>
-
-              <FoodDisplayCategories
-                menu={HotelMenu}
-                Name={HotelData.name}
-              ></FoodDisplayCategories>
-            </div>
+            <HotelInfoDisplay HotelData={HotelData} HotelMenu ={HotelMenu} ></HotelInfoDisplay>
+            {/* <HotelDisplayHeader/> */}
+            {owner.isAuth && 
+                 <div className="View-Hotel-Data-Category">
+                 <CategoryData menu={HotelMenu}></CategoryData>
+                 <FoodDisplayCategories
+                   menu={HotelMenu}
+                   Name={HotelData.name}
+                 ></FoodDisplayCategories>
+               </div>
+}
           </>
         )}
       </div>

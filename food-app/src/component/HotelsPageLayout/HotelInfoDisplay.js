@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "./HotelInfoDisplay.css";
 function HotelInfoDisplay(props) {
   const Navigate = useNavigate();
-  console.log(props)
+  console.log("hnsn cfoCASOI oias o" , props)
   const ClientCtx=useContext(ClientContext);
   const [Deliver,SetDeliver]=useState(true);
   // console.log(ClientCtx.CurrentActiveAddress.latitude)

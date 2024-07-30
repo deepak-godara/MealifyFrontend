@@ -5,9 +5,10 @@ import CategoryDisplay from './CategoryDisplay';
 import AddNewCategories from './AddNewCategories';
 function CategoryData(props) {
   const [AddCategoryDiv,SetCategoryDiv]=useState(false)
+  console.log("catogory data is " , props.menu);
   return (
     <div className='Food-Category-Display'>
-      {(props.menu!==null||props.menu.length!==0)&&
+      {(props.menu!==null||props.menu.length!==0)&& 
         props.menu.map(item=><CategoryDisplay key={item.Name} item={item.Name}></CategoryDisplay>)
       }
       {(props.menu===null||props.menu.length===0)&&<div>No category to display</div>}

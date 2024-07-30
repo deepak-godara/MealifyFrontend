@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./HotelInfoDetails.css";
 import { FaStar } from "react-icons/fa";
+import HotelDisplayHeader from "./HotelDisplayHeader";
+import ClientContext from "../../../store/AuthClient";
 function HotelInfoDisplay(props) {
+   const  ClientCtx = useContext(ClientContext);
   return (
     <>
       <div className="Hotel-Data-Image">
@@ -30,7 +33,8 @@ function HotelInfoDisplay(props) {
           ))}
         </div>
         <div>{props.HotelData.address}</div>
-        <div className="Info-Separation-Line"></div>
+        { ClientCtx.isAuth  ? <div> <HotelDisplayHeader  HotelData = {props.HotelData} HotelMenu = {props.HotelMenu}/></div> : 
+        <div className="Info-Separation-Line"></div>}
       </div>
     </>
   );
