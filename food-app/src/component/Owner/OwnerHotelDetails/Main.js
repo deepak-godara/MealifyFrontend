@@ -2,9 +2,11 @@ import React, { useEffect, useContext, useState } from "react";
 import OwnerContext from "../../../store/AuthOwner";
 import { GetOwnerHotelMenu } from "../../../BackendApi/GetOwnerHotelMenu";
 import "./Main.css"
+import UseScrollToTop from "../../UI/UseScroll";
 import FoodDisplayCategories from "../HotelDetails/FoodDisplayCategories";
 function OwnerMenu() {
   const OwnerCtx = useContext(OwnerContext);
+  UseScrollToTop();
   const [MenuData, SetMenuData] = useState([]);
   const [Error, SetError] = useState(false);
   async function GetData() {

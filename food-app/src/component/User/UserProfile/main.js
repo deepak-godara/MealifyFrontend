@@ -10,8 +10,10 @@ import { UploadPersonalImage } from "../../../BackendApi/UploadPersonalmage";
 import { UploadBackImage } from "../../../BackendApi/UploadUserBackImage";
 import { UpdateProfile } from "../../../BackendApi/UpdateProfile";
 import Loader from "react-js-loader";
+import UseScrollToTop from "../../UI/UseScroll";
 import ModalPortal from "../../UI/ModalPortal";
 function User(prop) {
+  UseScrollToTop();
   const clientCtx = useContext(ClientContext);
   const [ProfileDiv, SetProfileDiv] = useState(false);
   const [isOpen1, SetisOpen1] = useState(false);

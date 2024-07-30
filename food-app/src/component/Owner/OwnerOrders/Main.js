@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { useSocket } from "../../../store/SocketContext";
 import OrderLists from "./OrderLists";
 import Loader from "react-js-loader"
+import UseScrollToTop from "../../UI/UseScroll";
 import OwnerContext from "../../../store/AuthOwner";
 import { getNewOrder } from "../../../BackendApi/GetNewOrders";
 
 function NewOrder() {
   const OwnerCtx=useContext(OwnerContext)
+  UseScrollToTop();
   const SocketCtx = useSocket();
   const [laoding, Setlaoding]=useState(true);
   const [NewOrder, SetNewOrder] = useState([]);

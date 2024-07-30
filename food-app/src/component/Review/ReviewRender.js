@@ -3,12 +3,14 @@ import './review.css';
 import { GetOwnerReviews } from '../../reduxtool/reduxActions/reviewAction';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from "react-js-loader"
+import UseScrollToTop from '../UI/UseScroll';
 import OwnerContext from '../../store/AuthOwner';
 import ReviewPage from './Review';
 
 const ReviewRender = () => {
   const ctx = useContext(OwnerContext);
   const dispatch = useDispatch();
+  UseScrollToTop();
   const [hotelId, setHotelId] = useState(null);
   const PageSize = 5;
   useEffect(() => {

@@ -3,9 +3,11 @@ import UserReview from "./UserReview";
 import { useDispatch, useSelector } from "react-redux";
 import { GetUserReviews } from "../../reduxtool/reduxActions/reviewAction";
 import ClientContext from "../../store/AuthClient";
+import UseScrollToTop from "../UI/UseScroll";
 import Loader from "react-js-loader";
 const UserReviewPage = () => {
   const ctx = useContext(ClientContext);
+  UseScrollToTop();
   console.log("Client is:", ctx.ClientId);
   const id = ctx.ClientId;
   const [PageNumber, SetPageNumber] = useState(0);

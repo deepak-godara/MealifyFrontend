@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./Address.css";
+import UseScrollToTop from "../../../UI/UseScroll";
 import { SetDefaultAddress } from "../../../../BackendApi/Address";
 import { GoPlusCircle } from "react-icons/go";
 import ClientContext from "../../../../store/AuthClient";
@@ -24,13 +25,13 @@ const Address = () => {
     console.log("SetAddressVisibility called");
     SetAddressDiv(false);
   };
-
+  UseScrollToTop ()
   const dispatch = useDispatch();
   const Addressdata = useSelector((state) => state.Addressdata);
   const { error, loading, address } = Addressdata;
 
   useEffect(() => {
-    console.log("useEffect block: address.js");
+    
     setListOfAddress(ClientCtx.Address);
   }, [ClientCtx.Address,ClientCtx.CurrentActiveAddress]);
 

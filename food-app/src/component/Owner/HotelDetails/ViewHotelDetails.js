@@ -6,6 +6,7 @@ import HotelInfoDisplay from "./HotelInfoDisplay";
 import FoodDisplayCategories from "./FoodDisplayCategories";
 import CategoryData from "./CategoryData";
 import "./ViewHotelDetails.css";
+import UseScrollToTop from "../../UI/UseScroll";
 const intialState = {
   name: "",
   Categories: [],
@@ -31,7 +32,7 @@ export function ViewHotelDetails(props) {
     HotelDataReducerFunc,
     intialState
   );
-
+  UseScrollToTop();
   const [HotelMenu, SetHotelMenu] = useState([]);
   const params = useParams();
   const [loading, SetLoading] = useState(true);

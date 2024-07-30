@@ -17,10 +17,12 @@ function HotelsPageLayout() {
   const [Loading, SetLoading] = useState(true);
   const [Loading2, SetLoading2] = useState(false);
   const PageSize = 3;
+  const [ShowButton, GetShowButton] = useState(true);
   const locationName = parts[0].trim();
   const [LocationName, SetLocationName] = useState("");
   const LoadMoreFunc = async () => {
     SetLoading2(true);
+    console.log("vsdvs")
     const count = hotelCtx.Hotels.length / PageSize;
     let url = `http://localhost:4000/gethotels/${Params.locationid}?PageNumber=${count}&PageSize=${PageSize}`;
     if (Dish)
@@ -35,11 +37,14 @@ function HotelsPageLayout() {
       headers: { "Content-type": "application/json" },
     });
     const js = await data.json();
+    console.log(js)
     if (js.status === "200") {
+      console.log("sdv"+js.HotelData)
       if (js.HotelData.length > 0) {
         hotelCtx.AddHotels({ Hotels: js.HotelData, location: locationName });
       } else {
-        hotelCtx.AddHotels({ Hotels: js.HotelData, location: locationName });
+        GetShowButton(false);
+        console.log("hiii")
       }
     }
     SetLoading2(false);
@@ -67,7 +72,7 @@ function HotelsPageLayout() {
         if (js.HotelData.length > 0) {
           hotelCtx.AddHotels({ Hotels: js.HotelData, location: locationName });
         } else {
-          hotelCtx.AddHotels({ Hotels: js.HotelData, location: locationName });
+          GetShowButton(false)
         }
       }
       SetLoading(false);
@@ -99,14 +104,8 @@ function HotelsPageLayout() {
         Best Restaurants in {hotelCtx.Location}{" "}
       </div>
       {!Loading && (
-        <>
-          {hotelCtx.Hotels.length > 0 && (
             <HotelsPageMapping></HotelsPageMapping>
-          )}
-          {hotelCtx.Hotels.length === 0 && (
-            <div className="No-Hotels">No hotels to display</div>
-          )}
-        </>
+         
       )}
       {Loading && (
         <div className="Spinner-Class">
@@ -119,7 +118,7 @@ function HotelsPageLayout() {
         </div>
       )}
       {Loading2 ? (
-        <div className="Spinner-Class">
+        <div className="Spinner-Class" style={{position:"relative"}}>
           <Loader
             type="spinner-cub"
             color="red"
@@ -129,16 +128,18 @@ function HotelsPageLayout() {
         </div>
       ) : (
         <div className="User-Review-Button">
-          {!Loading&&hotelCtx.Hotels.length%PageSize===0&&
-          <button
-            className="User-Data-Button"
-            onClick={() => {
-              LoadMoreFunc();
-            }}
-          >
-            Get More Hotels
-          </button>
-}
+          {!Loading &&
+            hotelCtx.Hotels.length % PageSize === 0 &&
+            ShowButton && (
+              <button
+                className="User-Data-Button"
+                onClick={() => {
+                  LoadMoreFunc();
+                }}
+              >
+                Get More Hotels
+              </button>
+            )}
         </div>
       )}
     </>

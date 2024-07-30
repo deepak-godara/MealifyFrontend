@@ -1,11 +1,14 @@
 import React,{useState} from 'react'
+import { useEffect } from "react";
 import ModalPortal from '../component/UI/ModalPortal';
 import OwnerLoginForm from '../component/Authorization/OwnerLoginForm';
+import UseScrollToTop from '../component/UI/UseScroll';
 import OwnerSignUpForm from '../component/Authorization/OwnerSignUpForm';
 import './Login.css'
 // import ModalPortal from '../component/UI/ModalPortal';
 function OwnerLogin(props) {
   console.log('owner');
+  UseScrollToTop();
 const [Login,SetLogin]=useState(true);
 const ChangeOptions=()=>{
     SetLogin(!Login);

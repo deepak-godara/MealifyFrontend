@@ -4,6 +4,7 @@ import UserOrder from "./UserOrder";
 import "./UserOrder.css";
 import Loader from "react-js-loader";
 import Activeorder from "./Activeorder";
+import UseScrollToTop from "../../UI/UseScroll";
 import { useDispatch, useSelector } from "react-redux";
 import { GetActiveOrders } from "../../../reduxtool/reduxActions/OrdersActions";
 import { useSocket } from "../../../store/SocketContext";
@@ -15,6 +16,7 @@ import Reviewform from "../../Review/Reviewform";
 
 const Ordersss = () => {
   const socket = useSocket();
+  UseScrollToTop();
   console.log("user socket is :", socket);
   const dispatch = useDispatch();
   const activeOrderdata = useSelector((state) => state.ActiveOrderdata);

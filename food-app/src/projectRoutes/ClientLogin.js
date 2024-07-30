@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ModalPortal from "../component/UI/ModalPortal";
 import ClientSignUpForm from "../component/Authorization/ClientSignUpForm";
 import ClientLoginForm from "../component/Authorization/ClientLoginForm";
+import UseScrollToTop from "../component/UI/UseScroll";
 import "./Login.css";
 function Login(props) {
   console.log(props);
@@ -9,6 +10,7 @@ function Login(props) {
   const ChangeOptions = () => {
     SetLogin(!Login);
   };
+ UseScrollToTop();
   return (
     <ModalPortal onClose={props.OnClose}>
       <div className="static-login-options">

@@ -4,6 +4,7 @@ import { GetActiveOrders } from '../../../reduxtool/reduxActions/OrdersActions';
 import OwnerActiveOrders from './OwnerActiveOrders';
 import Loader from "react-js-loader"
 import './OwnerActiveOrders.css';
+import UseScrollToTop from '../../UI/UseScroll';
 import { useSocket } from '../../../store/SocketContext';
 import OwnerContext from '../../../store/AuthOwner';
 import StatusDisplay from '../../Orders/UserOrders/statusDisplay';
@@ -11,6 +12,7 @@ import StatusDisplay from '../../Orders/UserOrders/statusDisplay';
 const OwnerActiveOrder2 = () => {
   const socket = useSocket();
   const dispatch = useDispatch();
+  UseScrollToTop();
   const activeOrderdata = useSelector((state) => state.ActiveOrderdata);
   const { loading, error, Order } = activeOrderdata;
   const ownerctx = useContext(OwnerContext);

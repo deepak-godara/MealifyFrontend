@@ -7,6 +7,7 @@ import CancellationPolicy from "./CancellationPolicy";
 import OrderBillDetails from "./OrderBillDetails";
 import DataDisplay from "../../Hotels/FoodAction/DataDisplay";
 import "./Orders.css";
+import UseScrollToTop from "../../UI/UseScroll";
 import AddItem from "./AddItem";
 import { GetCart } from "../../../BackendApi/Cart";
 import ClientContext from "../../../store/AuthClient";
@@ -35,6 +36,7 @@ function CartValid(props){
   );
 }
 function Cart() {
+  UseScrollToTop();
   const [Cart, SetCart] = useState(null);
   const ClientCtx = useContext(ClientContext);
   const SocketCtx = useSocket();
