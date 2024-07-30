@@ -1,12 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./HotelDisplayHeader.css";
+import { useDispatch, useSelector } from 'react-redux';
 import Orderonline from "./contentRender/Orderonline";
 import OwnerContext from "../../../store/AuthOwner";
 import Photos from "./contentRender/Photos";
 import Menu from "./contentRender/Menu";
+import ReviewDisplay from "./contentRender/ReviewDiaplay";
+import    HotelContext  from '../../../store/HotelsContext'
 const HotelDisplayHeader = (props) => {
   const [click, setClick] = useState("overview");
-  const   ctx =  useContext(OwnerContext);
+  const ctx = useContext(OwnerContext);
+  const hotelctx = useContext(HotelContext);
+ console.log("hotel data is auhsd c  : " , props.HotelData.id)
   useEffect(() => {
     console.log(click);
   }, [click]);
@@ -14,43 +19,43 @@ const HotelDisplayHeader = (props) => {
   return (
     <div className="Container-box">
       <div className="info-box">
-        <button>*Direction</button>
-        <button>*Bookmark</button>
-        <button>*Share</button>
+        <button>Direction</button>
+        <button>Bookmark</button>
+        <button>Share</button>
       </div>
       <div className="header-section">
         <div className="main-buttons">
           <button
             type="button"
-            className={click === "overview" ? "clicked" : ""}
+            className={click === "overview" ? "active" : ""}
             onClick={() => setClick("overview")}
           >
             Overview
           </button>
           <button
             type="button"
-            className={click === "OrderOnline" ? "clicked" : ""}
+            className={click === "OrderOnline" ? "active" : ""}
             onClick={() => setClick("OrderOnline")}
           >
             Order Online
           </button>
           <button
             type="button"
-            className={click === "Reviews" ? "clicked" : ""}
+            className={click === "Reviews" ? "active" : ""}
             onClick={() => setClick("Reviews")}
           >
             Reviews
           </button>
           <button
             type="button"
-            className={click === "Photos" ? "clicked" : ""}
+            className={click === "Photos" ? "active" : ""}
             onClick={() => setClick("Photos")}
           >
             Photos
           </button>
           <button
             type="button"
-            className={click === "Menu" ? "clicked" : ""}
+            className={click === "Menu" ? "active" : ""}
             onClick={() => setClick("Menu")}
           >
             Menu
@@ -58,17 +63,13 @@ const HotelDisplayHeader = (props) => {
         </div>
       </div>
 
-
-
       <div className="content-section">
-        {click === "overview" && <div>Overview Content</div>}
-        {click === "OrderOnline" && <div><Orderonline   HotelData = {props.HotelData} HotelMenu = {props.HotelMenu} /></div>}
-        {click === "Reviews" && <div> Review data</div>}
-        {click === "Photos" && <div><Photos/></div>}
-        {click === "Menu" && <div><Menu/></div>}
-
+        {click === "overview" && <div><Menu /></div>}
+        {click === "OrderOnline" && <div><Orderonline HotelData={props.HotelData} HotelMenu={props.HotelMenu} /></div>}
+        {click === "Reviews" && <div><ReviewDisplay  id = {props.HotelData.id} /></div>}
+        {click === "Photos" && <div><Photos HotelData={props.HotelData} /></div>}
+        {click === "Menu" && <div><Menu /></div>}
       </div>
-
     </div>
   );
 };

@@ -23,5 +23,128 @@
 }
 
 .menu{
-    
+    position: relative;
+    width: 100%;
+    /* border: 1px solid red; */
+    margin: 10px 0px;
+    top: 3%;
+    /* height: 50vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.menu-name{
+    position: relative;
+    color: black;
+    margin: 20px 20px;
+}
+.image-menu {
+    position: relative; 
+     left: 5%;
+    display: flex;
+    height: 40vh;
+    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+    margin:  20px 20px;
+    padding-left: 5px;
+    padding: 20px 0px;
+
+}
+.image-menu>img {
+    height: 20vh;
+    width: 100%;    
+}
+.image-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    object-fit: cover;
+    width: 30%;
+}
+.itemname{
+display: flex;
+flex-direction: column;
+padding: 5px 10px;
+}
+.mname{
+    font-size: 14px;
+    color: black;
+}
+
+.menu-information{
+    width: 100%;
+    overflow: auto;
+    margin-left: 30px;
+}
+.para1{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin: 10px 0px;
+}
+.first-row{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px 0px;
+}
+.main-review-Content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    /* border: 1px solid red; */
+    margin-top: 20px;
+    padding: 15px  15px ;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+
+}
+.firstRow>img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.followers{
+    display: flex;
+
+}
+.followers>p{
+     margin-left: 10px;
+}
+.user-name{
+    margin-left: 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.firstRow{
+     display: flex;
+     margin-bottom: 10px;
+}
+.secondRow{
+    margin-left: 40px;
+}
+.ReviewDiscription{
+    margin-left: 10px;
+    padding: 10px 10px ;
+}
+
+.Hotel-Rating-Div{
+    display: flex;
+    padding: 0rem 0.7rem;
+    border-radius: 6px;
+    color: white;
+    background-color: green;
+    column-gap: 0.4rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.disc{
+    margin-top: 10px;
+    margin-left: 10px;
+    color: black;
 }

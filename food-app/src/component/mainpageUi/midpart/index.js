@@ -5,7 +5,7 @@ import './midpart.css'
 const Mainpagemidpart = () => {
   return (
     <>
-    <MainPageInfo></MainPageInfo>
+    {/* <MainPageInfo></MainPageInfo> */}
   <MainPageLayout></MainPageLayout>
     </>
   )

@@ -1,0 +1,36 @@
+.deliverycollection{
+    background-color: var(--inactive-color);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0px;
+}
+
+.max-width{
+    max-width:1100px;
+    margin: 0px auto ;
+    box-sizing: border-box;
+}
+
+.absolute-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.collection-title{
+    font-size: 30px;
+    color:var(--heading-text);
+    margin-bottom: 32px;
+    font-weight: 600;
+}
+.slick-next:before, .slick-prev:before{
+    color: var(--Zomato-gray);
+}
+.cur-po{
+    cursor: pointer;
+}
+.item{
+    margin: 0px 10px;
+}

@@ -4,6 +4,11 @@ import { useParams, useLocation } from "react-router-dom";
 import HotelContext from "../../store/HotelsContext";
 import "./HotelsPageLayout.css";
 import HotelsPageMapping from "./HotelsPageMapping";
+import HomePage from "../../zomatiodata/pages/home";
+import Delivery from "../../zomatiodata/component/delivery";
+import TabOptions from "../../zomatiodata/component/common/tabOptions";
+import Filters from "../../zomatiodata/component/common/filters";
+import DiningOut from "../../zomatiodata/component/diningout";
 export async function getUpdatedHotels(type) {}
 function HotelsPageLayout() {
   const Params = useParams();
@@ -94,7 +99,11 @@ function HotelsPageLayout() {
     getMenus();
   }, [Params.locationid]);
   return (
-    <>
+    <> 
+    <HomePage/>
+    {/* <TabOptions/>
+    <Filters/>
+    <DiningOut/> */}
       <div className="Hotel-City-Location">
         Best Restaurants in {hotelCtx.Location}{" "}
       </div>
@@ -103,6 +112,7 @@ function HotelsPageLayout() {
           {hotelCtx.Hotels.length > 0 && (
             <HotelsPageMapping></HotelsPageMapping>
           )}
+         
           {hotelCtx.Hotels.length === 0 && (
             <div className="No-Hotels">No hotels to display</div>
           )}

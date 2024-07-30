@@ -3,14 +3,17 @@ import MainpageUpperpart from './upperpart'
 import Mainpagemidpart from './midpart'
 import MainPageInfo from '../MainPageLayout/MainPageInfo'
 import Footer from './footer'
+import './mainpagecollection.css'
+import Mainpagecollection from './Mainpagecollection'
 const Mainpage = () => {
   return (
     <>
-    
-    <div><MainpageUpperpart/></div>
-    <div><MainPageInfo/></div>
-    <div><Mainpagemidpart/></div>
-    <div>Copy right @</div>
+    <div className='mainPage'>
+    <div className='mainPage'><MainpageUpperpart/></div>
+    <div className='mainPage'><Mainpagecollection/></div>
+    <div className='mainPage'><MainPageInfo/></div>
+    <div className='mainPage'><Mainpagemidpart/></div>
+    </div>
     </>
   )
 }
