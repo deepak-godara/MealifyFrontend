@@ -23,8 +23,9 @@ function ClientHeader(props) {
   });
   return (
     <Fragment>
+        <div className="Client-Search-Form">
       <SearchForm></SearchForm>
-      
+      </div>
       <div className="Client-Header-Block">
       <Notifications/>
         <button {...getToggleButtonProps()} className="Client-Profile">

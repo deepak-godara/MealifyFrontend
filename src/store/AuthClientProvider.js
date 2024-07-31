@@ -46,6 +46,7 @@ const AddClientReducer = (state = IntialState, action) => {
     newState.ClientEmail = "";
     newState.ClientUserName = "";
     newState.Review=0
+    newState.CurrentActiveAddress=null;
     
   }
   return newState;

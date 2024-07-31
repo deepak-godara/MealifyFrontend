@@ -20,7 +20,9 @@ function Header(props) {
   console.log(clientCtx.isAuth)
   return (
     <Fragment >
+      <div className="Client-Search-Form">
         <SearchForm/>
+        </div>
         <div >
            {!clientCtx.isAuth&&<div className='LoginNavlink' >
             <div onClick={LoginDisplay} >Login</div>

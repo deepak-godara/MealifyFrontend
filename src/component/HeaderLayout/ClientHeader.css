@@ -83,3 +83,11 @@
     align-items: center;
     column-gap: 1.5rem;
 }
+.Client-Search-Form{
+    width:55%;
+}
+@media (max-width: 759px) {
+
+    .Client-Search-Form {
+      display:none;
+    }}

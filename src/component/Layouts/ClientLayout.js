@@ -5,6 +5,7 @@ import Footer from "../mainpageUi/footer";
 import ClientHeader from "../HeaderLayout/ClientHeader";
 import Layout from "../SideBar/ClientSideBar/Layout";
 import "./ClientLayout.css";
+import SearchForm from "../SearchForm/SearchForm";
 import Profileheader from "../User/Address/storeaddress/Profileheader";
 function ClientLayout() {
   return (
@@ -14,6 +15,9 @@ function ClientLayout() {
           <div className="Mealify">Mealify</div>
           <ClientHeader />
         </div>
+      </div>
+      <div className="Search-Form-Main-Divs">
+      <SearchForm/>
       </div>
       <Profileheader />
       <div className="Body-Container">

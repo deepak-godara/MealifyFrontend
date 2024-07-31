@@ -111,7 +111,7 @@ function HotelsPageLayout() {
          
       )}
       {Loading && (
-        <div className="Spinner-Class">
+        <div className="Spinner-Class" style={{position:"relative"}}>
           <Loader
             type="spinner-cub"
             color="red"

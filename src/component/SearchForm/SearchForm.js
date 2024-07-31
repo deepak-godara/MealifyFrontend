@@ -24,7 +24,7 @@ function SearchForm(props) {
         <SearchFormInput func={getSearchLocation}></SearchFormInput>
       </form>
       <div className="Search-Form-Separation"></div>
-      <form className="Search-Form-Main-Div">
+      <form className="Search-Form-Main-Div AnotherDiv">
         <button className="Search-Form-Button " type="submit">
           <FaSearch className="Fa-Search" />
         </button>

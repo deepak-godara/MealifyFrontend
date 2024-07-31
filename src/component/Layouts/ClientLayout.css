@@ -36,6 +36,11 @@ top:0rem;
   width:75vw;
   margin-top: 2rem;
 }
+.Search-Form-Main-Divs{
+  display: none;
+  width:100%;
+  margin-bottom: 2rem;
+}
 @media (max-width: 1055px) {
   .Side-Bar-Container {
     display: none;
@@ -74,4 +79,9 @@ top:0rem;
   .Common-Body-Container{
     width:100%;;
   }
+}
+@media (max-width: 555px){
+.Search-Form-Main-Divs{
+  display: block;
+}
 }

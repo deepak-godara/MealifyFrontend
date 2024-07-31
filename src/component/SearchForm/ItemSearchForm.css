@@ -7,6 +7,11 @@
     justify-content: flex-start;
 
 }
+/* @media (max-width: 800px) {
+    .Search-Form-Div {
+      display: none;
+    }
+} */
 .Search-Item-Input{
     border: none;
     font: 1rem;
