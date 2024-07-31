@@ -39,7 +39,7 @@ top:0rem;
 .Search-Form-Main-Divs{
   display: none;
   width:100%;
-  margin-bottom: 2rem;
+  margin: 2rem 0rem;
 }
 @media (max-width: 1055px) {
   .Side-Bar-Container {
