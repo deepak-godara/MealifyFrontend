@@ -16,6 +16,11 @@ export const OwnerHeaderArray=[
         link:"/owner/active"
 
     }
+    ,{
+        id:3,
+        name:"Delivered Orders",
+        link:"/owner/deliver"
+    }
     ,
     {
         id:3,

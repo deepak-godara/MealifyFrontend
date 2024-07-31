@@ -17,7 +17,7 @@ box-sizing: border-box;
   height:100vh;
   transition: ease-out 1s;
   position: fixed;
-  min-width: 25rem;
+  /* min-width: 25rem; */
   z-index: 600;
   background-color: white;
   display: flex;
@@ -186,4 +186,16 @@ align-items: center;
 }
 .Add-Close-Div{
     font-size: 1.3rem;;
+}
+@media (max-width: 1055px) {
+  .User-Profile-Container {
+    max-width:95%;
+    margin:2%;
+    height:100%;
+    width:96%;
+    position:fixed;
+    box-sizing: border-box;
+    /* justify-content: center;
+    align-items:center; */
+  }
 }

@@ -91,7 +91,7 @@ function FoodDisplayCategories(props) {
             >
               Add New Category
             </button>
-            {OpenCategory && <AddNewCategories func={SetCategory} />}
+            {OpenCategory && <AddNewCategories func={()=>{SetCategory(false)}} />}
           </>
         )}
       </div>

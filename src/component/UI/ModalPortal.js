@@ -10,7 +10,7 @@ const Overlay=(props)=>
 const ModalOverlay=(props)=>
 {
     return(
-        <div style={{backgroundColor:"white"}}  >
+        <div style={{backgroundColor:"white",width:"100%"}}  >
             {props.children}
             </div>
     )

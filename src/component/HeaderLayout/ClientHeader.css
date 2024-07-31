@@ -66,6 +66,7 @@
     position: absolute;
     top:3.5rem;
     z-index:300;
+    right:0rem;
     /* left:2rem; */
     width:10.5rem;
     display: flex;

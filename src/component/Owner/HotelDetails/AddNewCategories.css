@@ -73,3 +73,40 @@ background-color: rgb(255, 255, 255);
     background: none;
     font-size: 1.2rem;
 }
+@media (max-width: 555px) {
+    .Add-Category-Form {
+      flex-direction: column;
+      max-width:95%;
+      margin:2%;
+      margin-top:30%;
+      align-items:flex-start;
+
+    }
+    .Add-Category-div{
+        flex-direction: column;
+        width:100%;
+    }
+    .Add-Category-div1{
+        width:100%;
+    }
+    .Add-Category-div1 input{
+        width:95%;
+        max-width: 95%;
+    }
+    .Add-Category-div1 select{
+        width: 95%;
+        /* margin:0rem auto; */
+    }
+    .Add-Category-button{
+        width:93%;
+       
+        /* display: flex; */
+        text-align: center;
+        /* margin:0rem auto; */
+        margin:0.5rem 0rem;
+        margin-left:0.3rem;
+        flex-direction: row;
+        justify-content: flex-end;
+        /* padding-right: 3rem; */
+    }
+}

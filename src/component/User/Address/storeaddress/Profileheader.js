@@ -38,10 +38,6 @@ const Profileheader = () => {
                             <p>0</p>
                             <p>Photos</p>
                         </div>
-                        <div class="data">
-                            <p>0</p>
-                            <p>Followers</p>
-                        </div>
                     </div>
                 </div>
             </div>

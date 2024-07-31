@@ -52,7 +52,7 @@ function AddNewDish(props) {
       <div className="Add-Dish-div">
         <div className="Add-Dish-div1">
           <label> Food Name</label>
-          <input
+          <input 
             type="text"
             value={FoodName}
             name="foodname"
@@ -96,6 +96,9 @@ function AddNewDish(props) {
       </div>
       <div className="Add-Dish-button">
         <button type="submit">Add Dish</button>
+      </div>
+      <div className="Add-Dish-button">
+        <button onClick={()=>{props.OnClose()}}>Cancel Dish</button>
       </div>
     </form>
     </ModalPortal>

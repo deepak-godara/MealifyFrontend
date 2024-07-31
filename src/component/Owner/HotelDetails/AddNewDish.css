@@ -1,5 +1,5 @@
 .Add-Dish-Form{
-    position: fixed;
+    position: absolute;
 display: flex;
 flex-direction: column;
 align-items: flex-end;
@@ -10,8 +10,11 @@ max-width: 80%;
 /* left: 35px; */
 margin: 10rem calc( 50vw - 20rem);
 z-index: 600;
+/* overflow: scroll; */
+height:max-content;
 margin-bottom:0rem;
 padding: 1rem;
+box-sizing: border-box;
 border-radius: 9px;
 background-color: rgb(255, 255, 255);
 }
@@ -83,4 +86,39 @@ background-color: rgb(255, 255, 255);
     border: none;
     background: none;
     font-size: 1.2rem;
+}
+@media (max-width: 555px) {
+    .Add-Dish-Form {
+      flex-direction: column;
+      max-width:95%;
+      margin:2%;
+      align-items:flex-start;
+
+    }
+    .Add-Dish-div{
+        flex-direction: column;
+        width:100%;
+    }
+    .Add-Dish-div1{
+        width:100%;
+    }
+    .Add-Dish-div1 input{
+        width:95%;
+        max-width: 95%;
+    }
+    .Add-Dish-div1 select{
+        width: 95%;
+        /* margin:0rem auto; */
+    }
+    .Add-Dish-button{
+        width:93%;
+       
+        /* display: flex; */
+        /* margin:0rem auto; */
+        margin:0.5rem 0rem;
+        margin-left:0.3rem;
+        flex-direction: row;
+        justify-content: flex-end;
+        /* padding-right: 3rem; */
+    }
 }

@@ -31,6 +31,7 @@
     background-color: white;
     box-sizing: border-box; 
 }
+
 .Add-Address-Box{
     margin:auto;
     display:flex;
@@ -92,4 +93,13 @@
 }
 .Address-Symbol{
     padding-top:0.1rem;
+}
+@media (max-width: 1055px) {
+    .address-container {
+      justify-content: center;
+      align-items:center;
+    }
+    .Address-box{
+        width:90%;
+    }
 }

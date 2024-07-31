@@ -31,7 +31,7 @@ function AddNewCategories(props) {
     FoodCategorySubmit();
   };
   return (
-    <ModalPortal onClose={props.OnClose}>
+    <ModalPortal onClose={props.func}>
       <form className="Add-Category-Form" onSubmit={handleFoodFormSubmit}>
         <div className="Add-Category-div">
           <div className="Add-Category-div1">
@@ -45,7 +45,10 @@ function AddNewCategories(props) {
           </div>
         </div>
         <div className="Add-Category-button">
-          <button type="submit">Add Dish</button>
+          <button type="submit">Add Category</button>
+        </div>
+        <div className="Add-Category-button">
+          <button onClick={()=>{props.func()}}>Cancel</button>
         </div>
       </form>
     </ModalPortal>
