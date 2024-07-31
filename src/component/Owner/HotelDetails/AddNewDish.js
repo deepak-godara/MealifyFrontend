@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import "./AddNewDish.css";
 import ModalPortal from "../../UI/ModalPortal";
 import OwnerContext from "../../../store/AuthOwner";
+import UseScrollToTop from "../../UI/UseScroll";
 import { Ports } from "../../../BackendApi/Url";
 function AddNewDish(props) {
   const OwnerCtx=useContext(OwnerContext)
+  UseScrollToTop()
   const [FoodName, SetFoodName] = useState("");
   const [FoodPrice, SetFoodPrice] = useState("");
   const [FoodCategory, SetFoodCategory] = useState("");

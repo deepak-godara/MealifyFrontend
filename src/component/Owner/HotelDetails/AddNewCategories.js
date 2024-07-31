@@ -3,8 +3,10 @@ import "./AddNewCategories.css";
 import { Ports } from "../../../BackendApi/Url";
 import OwnerContext from "../../../store/AuthOwner";
 import ModalPortal from "../../UI/ModalPortal";
+import UseScrollToTop from "../../UI/UseScroll";
 function AddNewCategories(props) {
   const OwnerCtx=useContext(OwnerContext);
+  UseScrollToTop()
   const [FoodCategory, SetFoodCategory] = useState("");
   const handleCategoryFormChange = (event) => {
     SetFoodCategory(event.target.value);
