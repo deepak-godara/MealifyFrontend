@@ -1,0 +1,1 @@
+export const Ports="https://mealifybackend1.onrender.com"

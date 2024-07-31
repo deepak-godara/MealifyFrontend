@@ -1,0 +1,34 @@
+.View-Hotel-Data-Display{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0rem auto 2rem auto;
+}
+.View-Hotel-Data-Category{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin: 1.5rem auto;
+    box-sizing: border-box;
+}
+.Category-Data-Partion{
+    height: 100%;
+    width: 2px;
+    background-color: rgb(135, 135, 135);
+}
+.Info-Separation-Line{
+    width: 100%;
+    height: 0%;
+    border:1.5px solid rgb(77, 89, 102);
+    /* margin-bottom: 3px; */
+}
+@media only screen and (max-width: 768px) {
+    .View-Hotel-Data-Display{
+        width: 95vw;
+    }
+}
