@@ -1,6 +1,7 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ClientAuthorization.css";
+import Loader from "react-js-loader"
 const InitialState = {
   UserName: "UserName",
   Password: "Password",
@@ -46,6 +47,7 @@ function ClientAuthorization(props) {
   const [ClientData, SetClientData] = useReducer(ClientReducer, InitialState);
   const [ErrorData, SetErrorData] = useReducer(errorClientLogin, InitialError);
   const Navigate = useNavigate();
+  const [Loading,SetLoading]=useState(false);
   const ClientChange = (event) => {
     SetClientData({ type: event.target.name, val: event.target.value });
     if (ErrorData.err === "true") SetErrorData({ type: "noerror" });
@@ -61,6 +63,7 @@ function ClientAuthorization(props) {
   const ClientDataSubmit = (event) => {
     event.preventDefault();
     async function fetchClient() {
+      SetLoading(true);
       const data = await fetch(props.loginlink, {
         method: "POST",
         body: JSON.stringify({
@@ -91,6 +94,7 @@ function ClientAuthorization(props) {
       } else if (js.status === "202") {
         SetErrorData({ type: "SetError", val: js.message });
       }
+      SetLoading(false);
     }
 
     fetchClient();
@@ -104,7 +108,7 @@ function ClientAuthorization(props) {
       {ErrorData.err === "true" && (
         <div className="login-error-options">{ErrorData.message}</div>
       )}
-
+{!Loading&&<>
       <div className="add-client1-div">
         <label className="add-client1-label">UserName:</label>
         <input
@@ -142,6 +146,22 @@ function ClientAuthorization(props) {
         ></input>
       </div>
       <button className="add-client1-button">Login</button>
+      </>
+      }
+      {Loading && (
+                        <div className="Spinner-Class3" >
+                          <Loader
+                            type="spinner-cub"
+                            color="rgb(77, 89, 102)"
+                            // style={{ position:"absolute", top:"2.9rem"}}
+
+                            // top="2.9rem"
+                            bgColor="rgb(77, 89, 102)"
+                            // title={"spinner-cub"}
+                            size={70}
+                          ></Loader>
+                        </div>
+                      )}
     </form>
   );
 }

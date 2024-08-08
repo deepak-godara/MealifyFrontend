@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState,useRef } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { RiTimerFill } from "react-icons/ri";
 import io from "socket.io-client";
 import Loader from "react-js-loader";
@@ -12,12 +12,12 @@ import AddItem from "./AddItem";
 import { GetCart } from "../../../BackendApi/Cart";
 import ClientContext from "../../../store/AuthClient";
 import { useSocket } from "../../../store/SocketContext";
-function CartValid(props){
+function CartValid(props) {
   const divRef = useRef(null);
   useEffect(() => {
-    setTimeout(()=>{
+    setTimeout(() => {
       props.func();
-    },1000)
+    }, 1000);
   }, []);
   return (
     <div className="AddAdresss" ref={divRef}>
@@ -33,16 +33,15 @@ function Cart() {
   const SocketCtx = useSocket();
   const [Valid, SetValid] = useState(true);
   const [Loading, SetLoading] = useState(true);
-  const [Visible,SetVisible]=useState(false);
+  const [Visible, SetVisible] = useState(false);
   const CartSubmit = (event) => {
     console.log("socket  fom cart is : ", SocketCtx);
     event.preventDefault();
     console.log(SocketCtx);
 
-    if(!Valid)
-    {
+    if (!Valid) {
       SetVisible(true);
-    return;
+      return;
     }
     if (SocketCtx) {
       console.log(Cart);
@@ -63,16 +62,17 @@ function Cart() {
         SetCart(Data.Cart);
         console.log(Data.Cart);
       }
-
-      const Distance = await GetDistance(
-        Data.Cart.HotelId,
-        ClientCtx.CurrentActiveAddress.latitude.$numberDecimal,
-        ClientCtx.CurrentActiveAddress.longitude.$numberDecimal
-      );
-      console.log(Distance+ "   dist")
-      if (Distance.Distance/1000 > 10) {
-        console.log("rfb")
-        SetValid(false);
+      if (ClientCtx.CurrentActiveAddress) {
+        const Distance = await GetDistance(
+          Data.Cart.HotelId,
+          ClientCtx.CurrentActiveAddress.latitude.$numberDecimal,
+          ClientCtx.CurrentActiveAddress.longitude.$numberDecimal
+        );
+        console.log(Distance + "   dist");
+        if (Distance.Distance / 1000 > 10) {
+          console.log("rfb");
+          SetValid(false);
+        }
       }
       setTimeout(() => {
         SetLoading(false);
@@ -96,7 +96,7 @@ function Cart() {
           ></Loader>
         </div>
       )}
-      {!Loading && Cart !== null && Cart.HotelId !== null && (
+      {!Loading && Cart !== null && Cart.HotelId !== null&&Cart.HotelId!==undefined && (
         <div className="Order-Main-Container">
           <div className="Order-Hotel-Container">{Cart.HotelName}</div>
           <div className="Order-Time">
@@ -124,7 +124,15 @@ function Cart() {
           </button>
         </div>
       )}
-      {Visible&&<div className="Hii"><CartValid func={()=>{SetVisible(false)}}/></div>}
+      {Visible && (
+        <div className="Hii">
+          <CartValid
+            func={() => {
+              SetVisible(false);
+            }}
+          />
+        </div>
+      )}
       {!Loading && (Cart == null || Cart.HotelId == null) && (
         <div className="Empty-Cart">Your Cart is Empty</div>
       )}

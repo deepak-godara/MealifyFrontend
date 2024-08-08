@@ -1,5 +1,6 @@
-import React, { useReducer} from "react";
+import React, { useReducer, useState} from "react";
 import "./ClientAuthorization.css";
+import Loader from "react-js-loader"
 // import Client from '../../../../backend/models/client'
 const InitialState = {
   UserName: "UserName",
@@ -52,6 +53,7 @@ function ClientSignUp(props) {
     ClientSignReducer,
     InitialState
   );
+  const [Loading,SetLoading]=useState(false);
   const [ErrorData, SetErrorData] = useReducer(errorClientLogin, InitialError);
   const ClientChange = (event) => {
     SetClientSignData({ type: event.target.name, val: event.target.value });
@@ -70,7 +72,7 @@ function ClientSignUp(props) {
   const ClientDataSubmit = (event) => {
     event.preventDefault();
     async function fetchClient() {
-      console.log(ClientSignData)
+      SetLoading(true);
       const data = await fetch(props.loginlink, {
         method: "POST",
         body: JSON.stringify({
@@ -86,6 +88,7 @@ function ClientSignUp(props) {
       if (js.status === "200") props.onChangeLogin();
       else if (js.status === "202")
         SetErrorData({ type: "SetError", val: js.message });
+      SetLoading(false);
     }
 
     fetchClient();
@@ -95,7 +98,7 @@ function ClientSignUp(props) {
       {ErrorData.err === "true" && (
         <div className="login-error-options">{ErrorData.message}</div>
       )}
-
+      {!Loading&&<>
       <div className="add-client1-div">
         <label className="add-client1-label">UserName:</label>
         <input
@@ -144,7 +147,9 @@ function ClientSignUp(props) {
           onBlur={ClientBlurFocus}
         ></input>
       </div>
-      <button className="add-client1-button">SignUp</button>
+      <button className="add-client1-button">SignUp</button></>
+}
+      
     </form>
   );
 }
