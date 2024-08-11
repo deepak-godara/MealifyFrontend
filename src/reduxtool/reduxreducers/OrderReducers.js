@@ -1,5 +1,6 @@
-import { OWNER_ACTIVE_ORDER_REQUEST, OWNER_ACTIVE_ORDER_FAIL, OWNER_ACTIVE_ORDER_SUCCESS } from "../constants/OrderConstants";
+import { OWNER_ACTIVE_ORDER_REQUEST, OWNER_ACTIVE_ORDER_FAIL, OWNER_ACTIVE_ORDER_SUCCESS, SHOW_DELIVERY_CONFIRMATION, CLOSE_DELIVERY_CONFIRMATION, DELIVERYCONFIRM } from "../constants/OrderConstants";
 import { USER_ACTIVE_ORDER_FAIL ,USER_ACTIVE_ORDER_REQUEST, USER_ACTIVE_ORDER_SUCCESS } from "../constants/OrderConstants";
+
 export const OwnerActiveOrderReducer = (state = { Order: [] }, action) => {
     switch(action.type) { 
         case OWNER_ACTIVE_ORDER_REQUEST:
@@ -49,6 +50,39 @@ export const UserActiveOrderReducer = (state = { Order: [] }, action) => {
     }
 };
 
+const initialState = {
+    deliveryConfirmation: false,
+    orderId: null,
+    Delivered: false,
+};
+
+export const DeliveryconfirmationReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case SHOW_DELIVERY_CONFIRMATION:
+            return {
+                ...state,
+                deliveryConfirmation: true,
+                orderId: action.payload.orderId,
+            };
+        case CLOSE_DELIVERY_CONFIRMATION:
+            return {
+                ...state,
+                deliveryConfirmation: false,
+                orderId: null,
+                // Delivered: false,  
+            };
+        case DELIVERYCONFIRM:
+            return {
+                ...state,
+                Delivered: action.payload, 
+            };
+        default:
+            return state;
+    }
+};
+
+
+
 export const statusUpdateReducer = (state = {order:{}}, action) => {
     switch (action.type) {
         case 'STATUS_UPDATE_SUCCESS':
@@ -59,3 +93,4 @@ export const statusUpdateReducer = (state = {order:{}}, action) => {
             return state;
     }
 };
+
