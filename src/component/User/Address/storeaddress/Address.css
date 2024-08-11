@@ -25,11 +25,13 @@
     justify-content: space-around;
     border-radius: 5px;
     width:30.5%;
-    min-width:12rem;
+    max-width: 15rem;
     height:12rem;
     position:relative;
     background-color: white;
     box-sizing: border-box; 
+    min-height: fit-content;
+    overflow-y: auto;
 }
 
 .Add-Address-Box{

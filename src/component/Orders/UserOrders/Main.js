@@ -6,7 +6,7 @@ import Loader from "react-js-loader";
 import Activeorder from "./Activeorder";
 import UseScrollToTop from "../../UI/UseScroll";
 import { useDispatch, useSelector } from "react-redux";
-import { GetActiveOrders } from "../../../reduxtool/reduxActions/OrdersActions";
+import {GetUserActiveOrders } from "../../../reduxtool/reduxActions/OrdersActions";
 import { useSocket } from "../../../store/SocketContext";
 import ClientContext from "../../../store/AuthClient";
 // import StatusDisplay from './statusDisplay';
@@ -19,7 +19,7 @@ const Ordersss = () => {
   UseScrollToTop();
   console.log("user socket is :", socket);
   const dispatch = useDispatch();
-  const activeOrderdata = useSelector((state) => state.ActiveOrderdata);
+  const activeOrderdata = useSelector((state) => state.UserOrdersdata);
   const { loading, error, Order } = activeOrderdata;
   const userctx = useContext(ClientContext);
   const clientId = userctx.ClientId;
@@ -29,11 +29,11 @@ const Ordersss = () => {
 
   const handleClose = () => {
     setShowReviewForm(false);
-    dispatch(GetActiveOrders());
+    dispatch(GetUserActiveOrders({id :clientId }));
   };
 
   useEffect(() => {
-    dispatch(GetActiveOrders());
+    dispatch(GetUserActiveOrders({id :clientId }));
     if (socket) {
       socket.on("DeliveryConfirmed", ({ status, orderId, HotelName }) => {
         setId(orderId);

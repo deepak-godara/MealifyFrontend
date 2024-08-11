@@ -1,7 +1,7 @@
 
 import React, { useEffect, useContext} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetActiveOrders } from '../../../reduxtool/reduxActions/OrdersActions';
+import { GetOwnerActiveOrders} from '../../../reduxtool/reduxActions/OrdersActions';
 import './OwnerActiveOrders.css';
 import { useSocket } from '../../../store/SocketContext';
 import UserOrder from '../../Orders/UserOrders/UserOrder';
@@ -12,13 +12,14 @@ const OwnerDeliverdOrder = () => {
   const socket = useSocket();
   UseScrollToTop();
   const dispatch = useDispatch();
-  const activeOrderdata = useSelector((state) => state.ActiveOrderdata);
-  const { loading, error, Order } = activeOrderdata;
+  const DeliveredOrderdata = useSelector((state) => state.UserOrdersdata);
+  const { loading, error, Order } = DeliveredOrderdata;
+  // let Order = DeliveredOrder;
   const ownerctx = useContext(OwnerContext)
   const hotelOwnerId = ownerctx.OwnerHotelId;
   useEffect(() => {
-    dispatch(GetActiveOrders());
-  }, [dispatch]);
+    dispatch(GetOwnerActiveOrders({id :hotelOwnerId}));
+  }, [dispatch , hotelOwnerId]);
 
 
 
@@ -27,9 +28,9 @@ const OwnerDeliverdOrder = () => {
       socket.on("DeliveryConfirmed" , ({orderId , status}) =>{
          console.log(" order deleiverd by owner  : " , orderId , status);
       })
-      dispatch(GetActiveOrders())
+      dispatch(GetOwnerActiveOrders({id :hotelOwnerId}))
     }
-  } , [dispatch ])
+  } , [dispatch , hotelOwnerId, socket])
   
   return (
     <>
