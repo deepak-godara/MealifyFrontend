@@ -21,6 +21,7 @@ import ViewHotelDetails from "./component/Owner/HotelDetails/ViewHotelDetails";
 import OwnerDeliverdOrder from "./component/Owner/OwnerOrders/OwnerDeliverdOrder";
 import ReviewRender from "./component/Review/ReviewRender";
 import UserReviewPage from "./component/Review/UserReviewPage";
+import DeliveryConfirmationPopup from "./component/DeliveryConfirmpopup/DeliveryConfirmationPopup";
 const Redirect = (to) => {
   const navigate = useNavigate();
 
@@ -34,6 +35,8 @@ function App() {
   const OwnerCtx = useContext(OwnerContext);
   const location = useLocation();
   return (
+    <>
+      <DeliveryConfirmationPopup/>
     <Routes>
       {/* {ClientCtx.isAuth && (
         <Route path="/User" element={<ClientLayout />}>
@@ -94,6 +97,7 @@ function App() {
       </Route>
       <Route path="*" element={<Redirect to="/" />} /> */}
     </Routes>
+    </>
   );
 }
 

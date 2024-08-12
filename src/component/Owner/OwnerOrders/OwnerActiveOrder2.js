@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetActiveOrders } from '../../../reduxtool/reduxActions/OrdersActions';
+import {GetOwnerActiveOrders } from '../../../reduxtool/reduxActions/OrdersActions';
 import OwnerActiveOrders from './OwnerActiveOrders';
 import Loader from "react-js-loader"
 import './OwnerActiveOrders.css';
@@ -13,10 +13,11 @@ const OwnerActiveOrder2 = () => {
   const socket = useSocket();
   const dispatch = useDispatch();
   UseScrollToTop();
-  const activeOrderdata = useSelector((state) => state.ActiveOrderdata);
+  const activeOrderdata = useSelector((state) => state.OwnerOrderdata);
   const { loading, error, Order } = activeOrderdata;
   const ownerctx = useContext(OwnerContext);
   const hotelOwnerId = ownerctx.OwnerHotelId;
+  // const  owerid = ownerctx.OwnerId;
 
   // Rename state variable to avoid conflict with component name
   const [showStatusDisplay, setShowStatusDisplay] = useState(false);
@@ -25,13 +26,13 @@ const OwnerActiveOrder2 = () => {
   const[name  , setName] =  useState('');
 
   useEffect(() => {
-    dispatch(GetActiveOrders());
-  }, [dispatch]);
+    dispatch(GetOwnerActiveOrders({id:hotelOwnerId}));
+  }, [dispatch , hotelOwnerId]);
 
   useEffect(() => {
     if (socket) {
       const handleDeliveryConfirmed = ({ orderId, status , Name}) => {
-        dispatch(GetActiveOrders());
+        dispatch(GetOwnerActiveOrders({id:hotelOwnerId}));
         setShowStatusDisplay(true);
         setId(orderId);
         setStatus(status);
@@ -40,7 +41,7 @@ const OwnerActiveOrder2 = () => {
 
       socket.on("DeliveryConfirmed", handleDeliveryConfirmed);
     }
-  }, [dispatch, socket]);
+  }, [dispatch, socket , hotelOwnerId]);
 
   return (
     <>
