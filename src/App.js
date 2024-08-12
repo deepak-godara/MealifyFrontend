@@ -35,7 +35,7 @@ function App() {
   const location = useLocation();
   return (
     <Routes>
-      {ClientCtx.isAuth && (
+      {/* {ClientCtx.isAuth && (
         <Route path="/User" element={<ClientLayout />}>
           <Route index element={<Cart />} />
           <Route path="address" element={<Address />} />
@@ -92,7 +92,7 @@ function App() {
           />
         </Route>
       </Route>
-      <Route path="*" element={<Redirect to="/" />} />
+      <Route path="*" element={<Redirect to="/" />} /> */}
     </Routes>
   );
 }

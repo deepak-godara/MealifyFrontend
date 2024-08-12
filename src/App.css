@@ -6,7 +6,16 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.grids{
+  height: 100vh;
+            margin: 0;
+  width:100vw;
+            background-color: #ffffff;
+            background-image: 
+                linear-gradient(to right, #ccc 1px, transparent 1px),
+                linear-gradient(to bottom, #ccc 1px, transparent 1px);
+            background-size: 18px 18px; /* Adjust the size of the grid cells */
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
