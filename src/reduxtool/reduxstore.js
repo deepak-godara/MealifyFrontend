@@ -3,18 +3,19 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import { AddressReducer } from "./reduxreducers/addressReducer";
-import { ActiveOrderReducer, statusUpdateReducer } from "./reduxreducers/OrderReducers";
+import { DeliveryconfirmationReducer, OwnerActiveOrderReducer, statusUpdateReducer , UserActiveOrderReducer } from "./reduxreducers/OrderReducers";
 import { reviewOwnerdataReducer, reviewSaveReducer, reviewuserdataReducer } from "./reduxreducers/reviewReducers";
 
 const initialState ={};
 const reducers = combineReducers({
     Addressdata : AddressReducer,
-    ActiveOrderdata:ActiveOrderReducer,
+    OwnerOrderdata:OwnerActiveOrderReducer,
     StatusUpdate:statusUpdateReducer,
     ReviewSaveReduce:reviewSaveReducer,
-    // revieSave:reviewReducers
+    UserOrdersdata :UserActiveOrderReducer,
     ReviewOwner:reviewOwnerdataReducer,
     ReviewUser:reviewuserdataReducer,
+    DeliveryConfirmation :DeliveryconfirmationReducer,
 
 });
 

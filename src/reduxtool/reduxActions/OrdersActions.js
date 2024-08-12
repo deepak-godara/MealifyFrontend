@@ -1,19 +1,31 @@
 import axios from "axios";
 import { Ports } from "../../BackendApi/Url";
-import { ACTIVE_ORDER_FAIL, ACTIVE_ORDER_REQUEST, ACTIVE_ORDER_SUCCESS } from "../constants/OrderConstants";
-import { STATUS_UPDATE_FAIL,STATUS_UPDATE_REQUEST,STATUS_UPDATE_SUCCESS } from "../constants/OrderConstants";
-export const GetActiveOrders = () => async (dispatch) => {
-    try {
-        dispatch({type: ACTIVE_ORDER_REQUEST });
+import { OWNER_ACTIVE_ORDER_FAIL, OWNER_ACTIVE_ORDER_REQUEST, OWNER_ACTIVE_ORDER_SUCCESS } from "../constants/OrderConstants";
+import { USER_ACTIVE_ORDER_FAIL ,USER_ACTIVE_ORDER_REQUEST, USER_ACTIVE_ORDER_SUCCESS } from "../constants/OrderConstants";
 
-        const { data } = await axios.get(`${Ports}/owner/ActiveOrders`);
+export const GetOwnerActiveOrders = ({id}) => async (dispatch) => {
+    console.log("ownerid from actin sideis : " , id)
+    try {
+        dispatch({type: OWNER_ACTIVE_ORDER_REQUEST });
+        const { data } = await axios.get(`${Ports}/Owner/${id}/ActiveOrders`);
             console.log("active order from  order action side  is : " , data)
-        dispatch({ type: ACTIVE_ORDER_SUCCESS, payload: data });
+        dispatch({ type: OWNER_ACTIVE_ORDER_SUCCESS, payload: data });
     } catch (error) {
-        dispatch({ type: ACTIVE_ORDER_FAIL, payload: error });
+        dispatch({ type: OWNER_ACTIVE_ORDER_FAIL, payload: error });
     }
 };
-
+export const GetUserActiveOrders = ({id}) => async (dispatch) => {
+    console.log("userid from actin sideis : " , id)
+    try {
+        dispatch({type: USER_ACTIVE_ORDER_REQUEST });
+        const { data } = await axios.get(`${Ports}/User/${id}/ActiveOrders`);
+            console.log("active order from  order action side  is : " , data)
+        dispatch({ type: USER_ACTIVE_ORDER_SUCCESS, payload: data });
+    } catch (error) {
+        dispatch({ type: USER_ACTIVE_ORDER_FAIL, payload: error });
+        console.log("active error  is " , error)
+    }
+};
 
 
 export const saveOrderStatus = ({ orderId, status }) => async (dispatch) => {
