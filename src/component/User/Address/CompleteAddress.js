@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { AddressTypeArray } from "./AddressType";
 import AddressTypes from "./AddressTypes";
-import Loader from "react-js-loader"
+import Loader from "react-js-loader";
 import ClientContext from "../../../store/AuthClient";
 import { AddAddress } from "../../../BackendApi/Address";
 
@@ -11,17 +11,18 @@ function CompleteAddress(props) {
   const [Line1, SetLine1] = useState(null);
   const [Line2, SetLine2] = useState(null);
   const [isValid, SetValid] = useState(false);
-  const [Loading,SetLoading]=useState(false);
+  const [Loading, SetLoading] = useState(false);
   const [AddressType, SetAddressType] = useState("Home");
   const AddressFunc = ({ val, type }) => {
     if (type === "Line1") {
       SetLine1(val);
+      if (val !== "" && Line2 != null && Line2 !== "") SetValid(true);
+      else SetValid(false);
     } else {
       SetLine2(val);
+      if (val !== "" && Line1 != null && Line1 !== "") SetValid(true);
+      else SetValid(false);
     }
-    if (Line1 !== null && Line1 !== "" && Line2 !== null && Line2 !== "")
-      SetValid(true);
-    else SetValid(false);
   };
   const AddAddressType = (val) => {
     SetAddressType(val);
@@ -37,16 +38,17 @@ function CompleteAddress(props) {
         Coordinates: props.Coordinates,
         Type: AddressType,
       };
-      const Data= await AddAddress({ Address: AddressData, ClientId: ClientCtx.ClientId });
-      console.log(Data);
-      if(Data.status===true)
-      {
+      const Data = await AddAddress({
+        Address: AddressData,
+        ClientId: ClientCtx.ClientId,
+      });
+      if (Data.status === true) {
         console.log("ji");
         ClientCtx.addClient(Data.Address);
         props.CloseFunc();
       }
       SetLoading(false);
-        }
+    }
   };
   return (
     <form className="User-Address-Form">
@@ -107,24 +109,31 @@ function CompleteAddress(props) {
         )}
         {props.Location && (
           <>
-          {!Loading&&
-          <button
-            className={!isValid ? "Not-Add-Address" : "Add-Address"}
-            onClick={SubmitAddressFunc}
-          >
-            Save and Proceed
-          </button>}
-           {Loading&&<div className="Spinner-Class3"> <Loader
-            type="spinner-cub"
-            color="rgb(77, 89, 102)"
-            // style={{ position:"absolute", top:"2.9rem"}}
-           
-            // top="2.9rem"
-            bgColor="rgb(77, 89, 102)"
-            // title={"spinner-cub"}
-            size={50}
-          ></Loader></div>}
-        </>)}
+            {!Loading && (
+              <button
+                className={!isValid ? "Not-Add-Address" : "Add-Address"}
+                onClick={SubmitAddressFunc}
+              >
+                Save and Proceed
+              </button>
+            )}
+            {Loading && (
+              <div className="Spinner-Class3">
+                {" "}
+                <Loader
+                  type="spinner-cub"
+                  color="rgb(77, 89, 102)"
+                  // style={{ position:"absolute", top:"2.9rem"}}
+
+                  // top="2.9rem"
+                  bgColor="rgb(77, 89, 102)"
+                  // title={"spinner-cub"}
+                  size={50}
+                ></Loader>
+              </div>
+            )}
+          </>
+        )}
       </div>
     </form>
   );
